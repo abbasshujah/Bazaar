@@ -18,6 +18,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     @IBOutlet weak var ShopCollectionView: UICollectionView!
     
     var image = ["pinks", "religion 5", "relgion 7", "religion 5", "relgion 7", "religion 5", "relgion 7", "rlgion 7", "relgion 7", "relgion 7"]
+    
+    var location = ["pinks", "religion 5", "relgion 7", "religion 5", "relgion 7", "religion 5", "relgion 7", "rlgion 7", "relgion 7", "relgion 7"]
+    
+    var name = ["pinks", "religion 5", "relgion 7", "religion 5", "relgion 7", "religion 5", "relgion 7", "rlgion 7", "relgion 7", "relgion 7"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -56,8 +61,29 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Shop_cell", for: indexPath) as! ShopCollectionViewCell
         cell.Shop_image.image = UIImage(named: image[indexPath.row])
+        cell.Shop_name.text = name[indexPath.row]
+        cell.Shop_adress.text = location[indexPath.row]
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        performSegue(withIdentifier:"Test", sender: indexPath)
+        
+        
+    }
+    
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "Test"{
+            let index = sender as! NSIndexPath
+            let shopVC = segue.destination as! ShopViewController
+            shopVC.adress_variable = location[index.item]
+            shopVC.shop_name = name[index.item]
+        }
+    }
+    
     
     @IBAction func OpenAccountMenu(_ sender: Any) {
         
