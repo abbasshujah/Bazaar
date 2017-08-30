@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -27,11 +27,11 @@
                                 <rect key="frame" x="6" y="24" width="363" height="42"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yH9-hg-tmw">
-                                        <rect key="frame" x="8" y="4" width="52" height="34"/>
+                                        <rect key="frame" x="8" y="4" width="57" height="34"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="34" id="rpJ-Vt-DMY"/>
                                         </constraints>
-                                        <state key="normal" title="Dehaze"/>
+                                        <state key="normal" title="Account"/>
                                         <connections>
                                             <action selector="OpenAccountMenu:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZHS-yJ-Fdm"/>
                                         </connections>
@@ -46,13 +46,13 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WgJ-vj-VVe">
-                                        <rect key="frame" x="304" y="4" width="51" height="32"/>
+                                        <rect key="frame" x="301" y="4" width="54" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="32" id="N7H-09-1db"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                        <state key="normal" title="search">
-                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Search">
+                                            <color key="titleColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                     </button>
                                 </subviews>
@@ -207,12 +207,14 @@
                                 <rect key="frame" x="8" y="24" width="359" height="42"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Tn-fp-5H9">
-                                        <rect key="frame" x="8" y="4" width="51" height="34"/>
+                                        <rect key="frame" x="8" y="4" width="38" height="34"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="34" id="KSS-63-6ZB"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <state key="normal" title="Button"/>
+                                        <state key="normal" title="Back">
+                                            <color key="titleColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
                                         <connections>
                                             <action selector="GoBackToMain:" destination="OQ3-NB-tj2" eventType="touchUpInside" id="yib-AB-ToS"/>
                                             <segue destination="BYZ-38-t0r" kind="show" identifier="GoBackToMain" id="cQt-ao-zik"/>
@@ -228,13 +230,13 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TxW-MI-f8U">
-                                        <rect key="frame" x="300" y="4" width="51" height="32"/>
+                                        <rect key="frame" x="297" y="4" width="54" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="32" id="oYo-Bj-coq"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                        <state key="normal" title="search">
-                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Search">
+                                            <color key="titleColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                     </button>
                                 </subviews>
