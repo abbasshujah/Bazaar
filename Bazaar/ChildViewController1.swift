@@ -16,7 +16,13 @@ class ChildViewController1: UIViewController, IndicatorInfoProvider {
         super.viewDidLoad()
     }
     
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
+    
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        return IndicatorInfo(title: "child1")
+        return IndicatorInfo(title: "child 1")
     }
 }
