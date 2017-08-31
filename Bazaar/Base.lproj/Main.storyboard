@@ -203,34 +203,80 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gv9-SE-gUX">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gv9-SE-gUX" customClass="ButtonBarView" customModule="XLPagerTabStrip">
+                                <rect key="frame" x="0.0" y="72" width="375" height="595"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="TWL-Js-5aa">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="91"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="dpT-Yk-FUr">
-                                            <size key="itemSize" width="50" height="50"/>
-                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        </collectionViewFlowLayout>
-                                        <cells/>
-                                    </collectionView>
-                                </subviews>
                             </scrollView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="TWL-Js-5aa" customClass="ButtonBarView">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="HKe-QW-mRs"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="dpT-Yk-FUr">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="TWL-Js-5aa" secondAttribute="trailing" id="05K-wV-QkI"/>
+                            <constraint firstItem="TWL-Js-5aa" firstAttribute="top" secondItem="2cl-oA-WBV" secondAttribute="top" id="BnS-u4-Gu8"/>
+                            <constraint firstItem="TWL-Js-5aa" firstAttribute="leading" secondItem="2cl-oA-WBV" secondAttribute="leading" id="k0v-gE-jeT"/>
+                            <constraint firstItem="TWL-Js-5aa" firstAttribute="top" secondItem="2cl-oA-WBV" secondAttribute="top" id="lFY-bz-U2h"/>
+                            <constraint firstItem="TWL-Js-5aa" firstAttribute="top" secondItem="2cl-oA-WBV" secondAttribute="top" id="sVs-eo-k0p"/>
+                            <constraint firstAttribute="trailing" secondItem="TWL-Js-5aa" secondAttribute="trailing" id="toI-xh-8vE"/>
+                            <constraint firstItem="TWL-Js-5aa" firstAttribute="leading" secondItem="2cl-oA-WBV" secondAttribute="leading" id="wT3-Fn-h79"/>
+                        </constraints>
                     </view>
                     <connections>
-                        <outlet property="view" destination="gv9-SE-gUX" id="VNq-QN-xh0"/>
+                        <outlet property="buttonBarView" destination="gv9-SE-gUX" id="kMT-UM-NKa"/>
+                        <outlet property="containerView" destination="gv9-SE-gUX" id="52O-Yc-TAD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m39-kc-0BQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="914.39999999999998" y="188.45577211394306"/>
+        </scene>
+        <!--Child View Controller1-->
+        <scene sceneID="pxH-Gg-rZe">
+            <objects>
+                <viewController storyboardIdentifier="child1" id="Fj9-g1-MRE" customClass="ChildViewController1" customModule="Bazaar" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Jfe-eb-mHe"/>
+                        <viewControllerLayoutGuide type="bottom" id="IQC-mP-AWI"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="u97-ZH-Qjy">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vf0-VP-Nie" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1669" y="191"/>
+        </scene>
+        <!--Child View Controller2-->
+        <scene sceneID="G61-EB-Van">
+            <objects>
+                <viewController storyboardIdentifier="child2" id="JSj-S1-eNH" customClass="ChildViewController2" customModule="Bazaar" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ITK-Dv-771"/>
+                        <viewControllerLayoutGuide type="bottom" id="keX-e2-IN2"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="r9L-gv-ng3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AKk-ld-cPO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2316" y="197"/>
         </scene>
         <!--Shop View Controller-->
         <scene sceneID="ACm-jo-MbQ">
