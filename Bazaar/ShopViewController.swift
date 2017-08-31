@@ -7,11 +7,12 @@
 //
 
 import UIKit
+//import XLPagerTabStrip
+
+//class ShopViewController: ButtonBarPagerTabStripViewController {
 
 class ShopViewController: UIViewController {
-    
-    
-    
+
     
     var adress_variable = "test"
     var shop_name = "test"
