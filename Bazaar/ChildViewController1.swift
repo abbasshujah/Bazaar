@@ -6,7 +6,6 @@
 //  Copyright © 2017 Syed Abbas. All rights reserved.
 //
 
-import Foundation
 import XLPagerTabStrip
 import UIKit
 

@@ -14,7 +14,7 @@ class ShopViewController: ButtonBarPagerTabStripViewController {
     let purpleInspireColor = UIColor(red:0.13, green:0.03, blue:0.25, alpha:1.0)
 //
 //class ShopViewController: UIViewController {
-    
+    var Pages = [UIViewController]()
 
     var adress_variable = "test"
     var shop_name = "test"
@@ -73,9 +73,13 @@ class ShopViewController: ButtonBarPagerTabStripViewController {
     */
     
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
-        let child_1 = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "child1")
-        let child_2 = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "child2")
-        return [child_1, child_2]
+        
+        Pages.append(UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "child1"))
+        Pages.append(UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "child2"))
+//        let child_1 = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "child1")
+//        let child_2 = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "child2")
+//        return [child_1, child_2]
+        return Pages
     }
 
     
