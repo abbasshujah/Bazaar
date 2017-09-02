@@ -20,9 +20,7 @@ class ShopViewController: ButtonBarPagerTabStripViewController {
     var shop_name = "test"
 
     override func viewDidLoad() {
-        
-        
-        
+
         print ("trying to print")
         print (shop_name)
         //address.text = adress_variable
@@ -76,9 +74,7 @@ class ShopViewController: ButtonBarPagerTabStripViewController {
         
         Pages.append(UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "child1"))
         Pages.append(UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "child2"))
-//        let child_1 = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "child1")
-//        let child_2 = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "child2")
-//        return [child_1, child_2]
+
         return Pages
     }
 
