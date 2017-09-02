@@ -14,9 +14,16 @@
 		43945DA01F44118E00BDE07E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43945D9E1F44118E00BDE07E /* LaunchScreen.storyboard */; };
 		43945DB21F466DFA00BDE07E /* ShopCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43945DB11F466DFA00BDE07E /* ShopCollectionViewCell.swift */; };
 		43945E741F5AFBD000BDE07E /* SearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43945E731F5AFBD000BDE07E /* SearchTextField.swift */; };
+		43945E761F5B24F000BDE07E /* ShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43945E751F5B24F000BDE07E /* ShopViewController.swift */; };
+		43945E781F5B2A5800BDE07E /* ChildViewController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43945E771F5B2A5800BDE07E /* ChildViewController1.swift */; };
+		43945E7A1F5B2A6900BDE07E /* ChildViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43945E791F5B2A6800BDE07E /* ChildViewController2.swift */; };
+		43945E7C1F5B2A7700BDE07E /* ChildViewController3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43945E7B1F5B2A7700BDE07E /* ChildViewController3.swift */; };
+		54FB0FA4A06013F4757B6169 /* Pods_Bazaar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48F74588A90C900D9D7C7FC9 /* Pods_Bazaar.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2B52146B7C5E0BC66E493135 /* Pods-Bazaar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bazaar.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bazaar/Pods-Bazaar.debug.xcconfig"; sourceTree = "<group>"; };
+		3D6EE8BDD8E82634E5845C3C /* Pods-Bazaar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bazaar.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bazaar/Pods-Bazaar.release.xcconfig"; sourceTree = "<group>"; };
 		43945D921F44118E00BDE07E /* Bazaar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bazaar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		43945D951F44118E00BDE07E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		43945D971F44118E00BDE07E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -26,6 +33,11 @@
 		43945DA11F44118E00BDE07E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		43945DB11F466DFA00BDE07E /* ShopCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopCollectionViewCell.swift; sourceTree = "<group>"; };
 		43945E731F5AFBD000BDE07E /* SearchTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTextField.swift; sourceTree = "<group>"; };
+		43945E751F5B24F000BDE07E /* ShopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopViewController.swift; sourceTree = "<group>"; };
+		43945E771F5B2A5800BDE07E /* ChildViewController1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChildViewController1.swift; sourceTree = "<group>"; };
+		43945E791F5B2A6800BDE07E /* ChildViewController2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChildViewController2.swift; sourceTree = "<group>"; };
+		43945E7B1F5B2A7700BDE07E /* ChildViewController3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChildViewController3.swift; sourceTree = "<group>"; };
+		48F74588A90C900D9D7C7FC9 /* Pods_Bazaar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bazaar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54FB0FA4A06013F4757B6169 /* Pods_Bazaar.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +57,8 @@
 			children = (
 				43945D941F44118E00BDE07E /* Bazaar */,
 				43945D931F44118E00BDE07E /* Products */,
+				B284867698BA64813755AA22 /* Pods */,
+				BE7D014F08BBE02E64BB1203 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -61,6 +76,10 @@
 				43945D951F44118E00BDE07E /* AppDelegate.swift */,
 				43945D971F44118E00BDE07E /* ViewController.swift */,
 				43945D991F44118E00BDE07E /* Main.storyboard */,
+				43945E751F5B24F000BDE07E /* ShopViewController.swift */,
+				43945E771F5B2A5800BDE07E /* ChildViewController1.swift */,
+				43945E791F5B2A6800BDE07E /* ChildViewController2.swift */,
+				43945E7B1F5B2A7700BDE07E /* ChildViewController3.swift */,
 				43945E731F5AFBD000BDE07E /* SearchTextField.swift */,
 				43945DB11F466DFA00BDE07E /* ShopCollectionViewCell.swift */,
 				43945D9C1F44118E00BDE07E /* Assets.xcassets */,
@@ -70,6 +89,23 @@
 			path = Bazaar;
 			sourceTree = "<group>";
 		};
+		B284867698BA64813755AA22 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2B52146B7C5E0BC66E493135 /* Pods-Bazaar.debug.xcconfig */,
+				3D6EE8BDD8E82634E5845C3C /* Pods-Bazaar.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		BE7D014F08BBE02E64BB1203 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				48F74588A90C900D9D7C7FC9 /* Pods_Bazaar.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -77,9 +113,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 43945DA41F44118E00BDE07E /* Build configuration list for PBXNativeTarget "Bazaar" */;
 			buildPhases = (
+				A105E9B240048BA85B11C29C /* [CP] Check Pods Manifest.lock */,
 				43945D8E1F44118E00BDE07E /* Sources */,
 				43945D8F1F44118E00BDE07E /* Frameworks */,
 				43945D901F44118E00BDE07E /* Resources */,
+				037DEA90F0A978B46F71DC1D /* [CP] Embed Pods Frameworks */,
+				4B6727742728A7C453F3524B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -137,15 +176,73 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		037DEA90F0A978B46F71DC1D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Bazaar/Pods-Bazaar-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/XLPagerTabStrip/XLPagerTabStrip.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XLPagerTabStrip.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Bazaar/Pods-Bazaar-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4B6727742728A7C453F3524B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Bazaar/Pods-Bazaar-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A105E9B240048BA85B11C29C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Bazaar-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		43945D8E1F44118E00BDE07E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				43945DB21F466DFA00BDE07E /* ShopCollectionViewCell.swift in Sources */,
+				43945E781F5B2A5800BDE07E /* ChildViewController1.swift in Sources */,
 				43945D981F44118E00BDE07E /* ViewController.swift in Sources */,
+				43945E7C1F5B2A7700BDE07E /* ChildViewController3.swift in Sources */,
+				43945E761F5B24F000BDE07E /* ShopViewController.swift in Sources */,
 				43945D961F44118E00BDE07E /* AppDelegate.swift in Sources */,
 				43945E741F5AFBD000BDE07E /* SearchTextField.swift in Sources */,
+				43945E7A1F5B2A6900BDE07E /* ChildViewController2.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,6 +363,7 @@
 		};
 		43945DA51F44118E00BDE07E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2B52146B7C5E0BC66E493135 /* Pods-Bazaar.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Bazaar/Info.plist;
@@ -278,6 +376,7 @@
 		};
 		43945DA61F44118E00BDE07E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3D6EE8BDD8E82634E5845C3C /* Pods-Bazaar.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Bazaar/Info.plist;

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Bazaar/ViewController.swift"
+            timestampString = "526070263.887377"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1"
+            endingLineNumber = "1">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Bazaar.ViewController.__deallocating_deinit"
+                  moduleName = "Bazaar"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shaziaakhtar/Desktop/Bazaar/Bazaar/ViewController.swift"
+                  timestampString = "526071897.672653"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Bazaar.ViewController.init (nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; Bazaar.ViewController"
+                  moduleName = "Bazaar"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shaziaakhtar/Desktop/Bazaar/Bazaar/ViewController.swift"
+                  timestampString = "526071897.675386"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "72">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Bazaar.ViewController.__allocating_init (nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; Bazaar.ViewController"
+                  moduleName = "Bazaar"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shaziaakhtar/Desktop/Bazaar/Bazaar/ViewController.swift"
+                  timestampString = "526071897.677867"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "23">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Bazaar.ViewController.__allocating_init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;Bazaar.ViewController&gt;"
+                  moduleName = "Bazaar"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shaziaakhtar/Desktop/Bazaar/Bazaar/ViewController.swift"
+                  timestampString = "526071897.680292"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Bazaar.ViewController.init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;Bazaar.ViewController&gt;"
+                  moduleName = "Bazaar"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shaziaakhtar/Desktop/Bazaar/Bazaar/ViewController.swift"
+                  timestampString = "526071897.683489"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "31">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
