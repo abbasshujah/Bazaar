@@ -72,15 +72,30 @@ class ShopViewController: ButtonBarPagerTabStripViewController {
     
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
         
-        Pages.append(UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "child1"))
+        self.Pages.append(UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "child1"))
         
         
         
-        Pages.append(UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "child1"))
-
-        return Pages
+        
+        
+        self.Pages.append(UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "child1"))
+        
+        Set_viewNames(pages: self.Pages)
+        return self.Pages
     }
     
+    
+    func Set_viewNames(pages: [UIViewController]){
+        let pages_size = pages.count
+        var Pages_ChildController = [ChildViewController1]()
+        for var i in (0..<pages_size){
+            Pages_ChildController.append((pages[i] as? ChildViewController1)!)
+        }
+        for var i in (0..<pages_size){
+            Pages_ChildController[i].View_title(Title: "\(i)")
+        }
+    
+    }
     
     
     

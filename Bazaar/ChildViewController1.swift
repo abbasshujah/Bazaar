@@ -26,6 +26,7 @@ class ChildViewController1: UIViewController, IndicatorInfoProvider {
     }
     
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
+    
         return IndicatorInfo(title: "\(View_title)")
         
     }

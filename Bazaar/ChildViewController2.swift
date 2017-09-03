@@ -13,7 +13,10 @@ class ChildViewController2: UIViewController, IndicatorInfoProvider {
     var View_title = "dlksfksdfnk"
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
+    
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
