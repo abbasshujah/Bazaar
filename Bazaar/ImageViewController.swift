@@ -29,27 +29,19 @@ class ImageViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func showImage() {
-//        TODO: Get Url from firebase
-        let ref = Database.database().reference()
-        ref.child("Basilique").child("StoreImage").observe(.value) { (snap: DataSnapshot) in
-            let url = snap.value as! String
-        }
+//    func showImage() {
+////        TODO: Get Url from firebase
+//        let ref = Database.database().reference()
+//        ref.child("Basilique").child("StoreImage").observe(.value) { (snap: DataSnapshot) in
+//            let url = snap.value as! String
+//        }
+    
+//        img = ImageViewController.imageCache.object(forKey: url) as! UIImage
         
-        img = ImageViewController.imageCache.object(forKey: url) as! UIImage
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+      
 //        ref.child("Product Info").observe(.value) { (snapshot: DataSnapshot) in
 //            let snapshotValue = snapshot.value as! String
 //            self.showProductInfo.text = snapshotValue
 //        }
-    }
+//    }
 }
