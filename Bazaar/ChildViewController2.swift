@@ -10,9 +10,13 @@ import UIKit
 import XLPagerTabStrip
 
 class ChildViewController2: UIViewController, IndicatorInfoProvider {
+    var View_title = "dlksfksdfnk"
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
+    
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -21,7 +25,7 @@ class ChildViewController2: UIViewController, IndicatorInfoProvider {
 
     
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        return IndicatorInfo(title: "child 2")
+        return IndicatorInfo(title: "\(View_title)")
     }
     
 }
