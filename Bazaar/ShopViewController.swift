@@ -57,7 +57,7 @@ class ShopViewController: ButtonBarPagerTabStripViewController {
     }
     
     @IBAction func GoBackToMain(_ sender: Any) {
-        performSegue(withIdentifier: "GoBackToMain", sender: self)
+        performSegue(withIdentifier: "ToMainFromShop", sender: self)
     }
 
     /*
@@ -73,10 +73,20 @@ class ShopViewController: ButtonBarPagerTabStripViewController {
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
         
         Pages.append(UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "child1"))
+        
+        
+        
         Pages.append(UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "child1"))
 
         return Pages
     }
+    
+    
+    
+    
+    
+    
+    
 
     
 
