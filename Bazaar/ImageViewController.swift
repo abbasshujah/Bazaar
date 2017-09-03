@@ -12,7 +12,13 @@ import Alamofire
 
 class ImageViewController: UIViewController {
     
-    @IBOutlet weak var imageView: UIImageView!
+    static var imageCache = NSCache<AnyObject, AnyObject>()
+    
+    var url = ""
+    
+    @IBOutlet weak var img: UIImageView!
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,11 +30,26 @@ class ImageViewController: UIViewController {
     }
     
     func showImage() {
-        
+//        TODO: Get Url from firebase
         let ref = Database.database().reference()
-        ref.child("Product Info").observe(.value) { (snapshot: DataSnapshot) in
-            let snapshotValue = snapshot.value as! String
-            self.showProductInfo.text = snapshotValue
+        ref.child("Basilique").child("StoreImage").observe(.value) { (snap: DataSnapshot) in
+            let url = snap.value as! String
         }
+        
+        img = ImageViewController.imageCache.object(forKey: url) as! UIImage
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+//        ref.child("Product Info").observe(.value) { (snapshot: DataSnapshot) in
+//            let snapshotValue = snapshot.value as! String
+//            self.showProductInfo.text = snapshotValue
+//        }
     }
 }

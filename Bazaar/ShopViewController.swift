@@ -73,7 +73,7 @@ class ShopViewController: ButtonBarPagerTabStripViewController {
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
         
         Pages.append(UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "child1"))
-        Pages.append(UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "child2"))
+        Pages.append(UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "child1"))
 
         return Pages
     }
