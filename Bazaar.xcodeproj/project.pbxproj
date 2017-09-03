@@ -15,6 +15,10 @@
 		43945DA01F44118E00BDE07E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43945D9E1F44118E00BDE07E /* LaunchScreen.storyboard */; };
 		43945DB21F466DFA00BDE07E /* ShopCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43945DB11F466DFA00BDE07E /* ShopCollectionViewCell.swift */; };
 		43945E5E1F53515800BDE07E /* ShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43945E5D1F53515800BDE07E /* ShopViewController.swift */; };
+		7D3E39FB1F579C2900627D9F /* ChildViewController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D3E39FA1F579C2900627D9F /* ChildViewController1.swift */; };
+		7D3E39FD1F579C3400627D9F /* ChildViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D3E39FC1F579C3400627D9F /* ChildViewController2.swift */; };
+		7D4A0BCB1F5B6535007E23FD /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D4A0BCA1F5B6535007E23FD /* ImageViewController.swift */; };
+		7D4A0BCD1F5B67CE007E23FD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7D4A0BCC1F5B67CE007E23FD /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +31,10 @@
 		43945DA11F44118E00BDE07E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		43945DB11F466DFA00BDE07E /* ShopCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopCollectionViewCell.swift; sourceTree = "<group>"; };
 		43945E5D1F53515800BDE07E /* ShopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopViewController.swift; sourceTree = "<group>"; };
+		7D3E39FA1F579C2900627D9F /* ChildViewController1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChildViewController1.swift; sourceTree = "<group>"; };
+		7D3E39FC1F579C3400627D9F /* ChildViewController2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChildViewController2.swift; sourceTree = "<group>"; };
+		7D4A0BCA1F5B6535007E23FD /* ImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
+		7D4A0BCC1F5B67CE007E23FD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B955C90BE439793E3FF6BBE8 /* Pods-Bazaar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bazaar.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bazaar/Pods-Bazaar.debug.xcconfig"; sourceTree = "<group>"; };
 		F933126B9CDE29727A9E5975 /* Pods-Bazaar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bazaar.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bazaar/Pods-Bazaar.release.xcconfig"; sourceTree = "<group>"; };
 		FC295DA87E1E15574C9D22C0 /* Pods_Bazaar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bazaar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -73,6 +81,10 @@
 				43945D9C1F44118E00BDE07E /* Assets.xcassets */,
 				43945D9E1F44118E00BDE07E /* LaunchScreen.storyboard */,
 				43945DA11F44118E00BDE07E /* Info.plist */,
+				7D4A0BCC1F5B67CE007E23FD /* GoogleService-Info.plist */,
+				7D3E39FA1F579C2900627D9F /* ChildViewController1.swift */,
+				7D3E39FC1F579C3400627D9F /* ChildViewController2.swift */,
+				7D4A0BCA1F5B6535007E23FD /* ImageViewController.swift */,
 			);
 			path = Bazaar;
 			sourceTree = "<group>";
@@ -157,6 +169,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				43945DA01F44118E00BDE07E /* LaunchScreen.storyboard in Resources */,
+				7D4A0BCD1F5B67CE007E23FD /* GoogleService-Info.plist in Resources */,
 				43945D9D1F44118E00BDE07E /* Assets.xcassets in Resources */,
 				43945D9B1F44118E00BDE07E /* Main.storyboard in Resources */,
 			);
@@ -173,7 +186,6 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Bazaar/Pods-Bazaar-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/XLPagerTabStrip/XLPagerTabStrip.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
@@ -182,7 +194,6 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XLPagerTabStrip.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
@@ -234,9 +245,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				43945E5E1F53515800BDE07E /* ShopViewController.swift in Sources */,
+				7D3E39FB1F579C2900627D9F /* ChildViewController1.swift in Sources */,
 				43945DB21F466DFA00BDE07E /* ShopCollectionViewCell.swift in Sources */,
+				7D4A0BCB1F5B6535007E23FD /* ImageViewController.swift in Sources */,
 				43945D981F44118E00BDE07E /* ViewController.swift in Sources */,
 				43945D961F44118E00BDE07E /* AppDelegate.swift in Sources */,
+				7D3E39FD1F579C3400627D9F /* ChildViewController2.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
@@ -14,7 +15,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     @IBOutlet weak var AccountMenuWidth: NSLayoutConstraint!
     
-
     @IBOutlet weak var ShopCollectionView: UICollectionView!
     
     var image = ["pinks", "religion 5", "relgion 7", "religion 5", "relgion 7", "religion 5", "relgion 7", "rlgion 7", "relgion 7", "relgion 7"]
@@ -43,10 +43,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         AccountMenuLeading.constant = -1 * (shopItemSize + 9)
         
-        
-        
-        
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -69,7 +65,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         performSegue(withIdentifier:"Test", sender: indexPath)
-        
         
     }
     

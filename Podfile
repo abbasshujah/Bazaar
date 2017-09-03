@@ -6,10 +6,9 @@ target 'Bazaar' do
   use_frameworks!
 
   # Pods for tabs_test
-    pod 'XLPagerTabStrip', :git => 'https://github.com/KelvinJin/XLPagerTabStrip', :branch => 'swift3'
-    pod 'Firebase'
-    pod 'Firebase/Auth'
-    pod 'Firebase/Database'
-    pod 'Alamofire', '~> 4.4'
-
+  pod 'XLPagerTabStrip', :git => 'https://github.com/KelvinJin/XLPagerTabStrip', :branch => 'swift3'
+  pod 'Firebase'
+  pod 'Firebase/Core'
+  pod 'Firebase/Database'
+  pod 'Alamofire', '~> 4.4'
 end
