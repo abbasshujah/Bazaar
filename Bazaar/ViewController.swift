@@ -8,8 +8,12 @@
 
 import UIKit
 import Alamofire
+import Firebase
 
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    var url = ""
+    var image_array = [String]()
     
     @IBOutlet weak var AccountMenuLeading: NSLayoutConstraint!
     
@@ -42,6 +46,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         AccountMenuWidth.constant = shopItemSize + 9
         
         AccountMenuLeading.constant = -1 * (shopItemSize + 9)
+        loadImages()
+        
         
     }
 
@@ -69,13 +75,28 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     
     
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "Test"{
             let index = sender as! NSIndexPath
             let shopVC = segue.destination as! ShopViewController
             shopVC.adress_variable = location[index.item]
             shopVC.shop_name = name[index.item]
+        }
+    }
+    
+    func loadImages() {
+        // TODO: Get image urls from firebase
+        let ref = Database.database().reference()
+        ref.observe(.value) { (snapshot: DataSnapshot) in
+            if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
+                for snap in snapshots{
+//                    print("SNAP:\(snap)")
+                    let temp = snap.childSnapshot(forPath: "StoreImage")
+                    self.image_array.append(temp.value as! String)
+                }
+                
+            }
+            print(self.image_array)
         }
     }
     
