@@ -78,41 +78,48 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             var img: UIImage?
             let url = URL(string: self.image_urls[indexPath.row])
             
+//            TODO: update images and store it in cache
             img = ViewController.imageCache.object(forKey: url as AnyObject) as? UIImage
             
             URLSession.shared.dataTask(with: url!) { (data, response, error) in
                 
-                if img != nil{
-                    cell.Shop_image.image = img
-                    } else{
-                    
-                    if error != nil {
-                        //                    print("Failed fetching image:", error)
-                        return
-                    }
-                    
-                    guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-                        print("Not a proper HTTPURLResponse or statusCode")
-                        return
-                    }
-                    
-                    DispatchQueue.main.async {
-                        let img = UIImage(data: data!)
-                        cell.Shop_image.image = img
-                        ViewController.imageCache.setObject(img!, forKey: url! as AnyObject)
-                    }
-                }
-            }.resume()
-            
-//                guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-//                    print("Not a proper HTTPURLResponse or statusCode")
-//                    return
-//                }
-//                
-//                DispatchQueue.main.async {
-//                    cell.Shop_image.image = UIImage(data: data!)
+//                if img != nil{
+//                    print("hehe")
+//                    cell.Shop_image.image = img
+//                    } else{
+//                    
+//                    if error != nil {
+//                        print("Failed fetching image:", error)
+//                        return
+//                    }
+//                    
+//                    guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+//                        print("Not a proper HTTPURLResponse or statusCode")
+//                        return
+//                    }
+//                    
+//                    DispatchQueue.main.async {
+//                        let img = UIImage(data: data!)
+//                        cell.Shop_image.image = img
+//                        ViewController.imageCache.setObject(img!, forKey: url! as AnyObject)
+//                    }
 //                }
 //            }.resume()
+            
+//              TODO: Load up images and dont store in cache
+                if error != nil {
+                    print("Failed fetching image:", error)
+                    return
+                }
+                guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+                    print("Not a proper HTTPURLResponse or statusCode")
+                    return
+                }
+                
+                DispatchQueue.main.async {
+                    cell.Shop_image.image = UIImage(data: data!)
+                }
+            }.resume()
             
 //            var img: UIImage?
 //            
