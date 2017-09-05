@@ -61,8 +61,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print(self.image_array.count)
-        return self.image.count
+//        print(self.image_array.count)
+        return self.image_array.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -98,7 +98,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         var ref: DatabaseReference!
         ref = Database.database().reference()
-
         
         ref.observe(.value, with: { (snapshot: DataSnapshot) in
             if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
