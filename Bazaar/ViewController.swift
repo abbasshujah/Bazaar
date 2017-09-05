@@ -8,8 +8,10 @@
 
 import UIKit
 import Alamofire
+import Firebase
 
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+    
     @IBOutlet weak var TopBar: UIView!
     
     @IBOutlet weak var AccountMenuLeading: NSLayoutConstraint!
@@ -17,6 +19,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     @IBOutlet weak var AccountMenuWidth: NSLayoutConstraint!
     
     @IBOutlet weak var ShopCollectionView: UICollectionView!
+    
+    var image_urls = [String]()
     
     var image = ["pinks", "TimHortons", "TimHortons", "Balilque", "TimHortons", "TimHortons", "Balilque", "Balilque", "Balilque", "TimHortons"]
     
@@ -48,6 +52,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         AccountMenuWidth.constant = shopItemSize + 9
         
         AccountMenuLeading.constant = -1 * (shopItemSize + 9)
+        loadImages()
         
     }
 
@@ -57,11 +62,12 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return image.count
+        return self.image_urls.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Shop_cell", for: indexPath) as! ShopCollectionViewCell
+        
         cell.Shop_image.image = UIImage(named: image[indexPath.row])
         cell.Shop_name.text = name[indexPath.row]
         cell.Shop_adress.text = location[indexPath.row]
@@ -85,6 +91,26 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }
     }
     
+    func loadImages(){
+        // TODO: Get image urls from firebase
+        
+        var ref: DatabaseReference!
+        ref = Database.database().reference()
+        
+        ref.observe(.value, with: { (snapshot: DataSnapshot) in
+            if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
+                
+                for snap in snapshots{
+                    //                    print("SNAP:\(snap)")
+                    let temp = snap.childSnapshot(forPath: "StoreImage")
+                    self.image_urls.append(temp.value as! String)
+                }
+                self.ShopCollectionView.reloadData()
+                
+            }
+            
+        })
+    }
     
     @IBAction func OpenAccountMenu(_ sender: Any) {
         
