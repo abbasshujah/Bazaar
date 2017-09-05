@@ -74,9 +74,11 @@ class ShopViewController: ButtonBarPagerTabStripViewController {
         
         self.Pages.append(UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "child1"))
         
+        self.Pages.append(UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "child1"))
         
+        self.Pages.append(UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "child1"))
         
-        
+        self.Pages.append(UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "child1"))
         
         self.Pages.append(UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "child1"))
         
