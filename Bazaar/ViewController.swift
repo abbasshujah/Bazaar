@@ -75,24 +75,44 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Shop_cell", for: indexPath) as? ShopCollectionViewCell{
             
-            
+            var img: UIImage?
             let url = URL(string: self.image_urls[indexPath.row])
             
+            img = ViewController.imageCache.object(forKey: url as AnyObject) as? UIImage
+            
             URLSession.shared.dataTask(with: url!) { (data, response, error) in
-                if error != nil {
-//                    print("Failed fetching image:", error)
-                    return
-                }
                 
-                guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-                    print("Not a proper HTTPURLResponse or statusCode")
-                    return
-                }
-                
-                DispatchQueue.main.async {
-                    cell.Shop_image.image = UIImage(data: data!)
+                if img != nil{
+                    cell.Shop_image.image = img
+                    } else{
+                    
+                    if error != nil {
+                        //                    print("Failed fetching image:", error)
+                        return
+                    }
+                    
+                    guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+                        print("Not a proper HTTPURLResponse or statusCode")
+                        return
+                    }
+                    
+                    DispatchQueue.main.async {
+                        let img = UIImage(data: data!)
+                        cell.Shop_image.image = img
+                        ViewController.imageCache.setObject(img!, forKey: url! as AnyObject)
+                    }
                 }
             }.resume()
+            
+//                guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+//                    print("Not a proper HTTPURLResponse or statusCode")
+//                    return
+//                }
+//                
+//                DispatchQueue.main.async {
+//                    cell.Shop_image.image = UIImage(data: data!)
+//                }
+//            }.resume()
             
 //            var img: UIImage?
 //            
@@ -106,7 +126,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
 //            } else{
 //                
 //                request = Alamofire.request(url!).validate(contentType: ["image/*"]).response(completionHandler: { request, response, data, err in
-//                    
+//
 //                    if err == nil{
 //                        let img = UIImage(data: data!)!
 //                        cell.Shop_image.image = img
@@ -115,16 +135,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
 //                    
 //                })
 //            }
-            
-//            request = Alamofire.request(.GET, url!).validate(contentType: ["image/*"]).response(completionHandler: { request, response, data, err in
-//                if err == nil {
-//                    let img = UIImage(data: data!)!
-//                    self.appImg.image = img
-//                    FeedVC.imageCache.setObject(img, forKey: self.post!.imageUrl!)
-//                }
-//            })
-            
 //            cell.Shop_image.image = UIImage(named: image[indexPath.row])
+            
             cell.Shop_name.text = name[indexPath.row]
             cell.Shop_adress.text = location[indexPath.row]
             return cell
