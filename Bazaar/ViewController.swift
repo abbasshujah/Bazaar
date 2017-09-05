@@ -20,6 +20,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     @IBOutlet weak var ShopCollectionView: UICollectionView!
     
+    static var imageCache = NSCache<AnyObject, AnyObject>()
+    
+    // Create request so we can cancel it when its not on screen
+    var request: Request?
+    
     var image_urls = [String]()
     
     var image = ["pinks", "TimHortons", "TimHortons", "Balilque", "TimHortons", "TimHortons", "Balilque", "Balilque", "Balilque", "TimHortons"]
@@ -62,16 +67,71 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        print(self.image_urls.count)
         return self.image_urls.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Shop_cell", for: indexPath) as! ShopCollectionViewCell
         
-        cell.Shop_image.image = UIImage(named: image[indexPath.row])
-        cell.Shop_name.text = name[indexPath.row]
-        cell.Shop_adress.text = location[indexPath.row]
-        return cell
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Shop_cell", for: indexPath) as? ShopCollectionViewCell{
+            
+            
+            let url = URL(string: self.image_urls[indexPath.row])
+            
+            URLSession.shared.dataTask(with: url!) { (data, response, error) in
+                if error != nil {
+//                    print("Failed fetching image:", error)
+                    return
+                }
+                
+                guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+                    print("Not a proper HTTPURLResponse or statusCode")
+                    return
+                }
+                
+                DispatchQueue.main.async {
+                    cell.Shop_image.image = UIImage(data: data!)
+                }
+            }.resume()
+            
+//            var img: UIImage?
+//            
+//            // Go to image chache and get object for key.
+//            // Url is oing to be the key in cache and value is going to be the image data
+//            img = ViewController.imageCache.object(forKey: url as AnyObject) as? UIImage
+//            
+//            // If the image is already in cache, just load it from cache
+//            if img != nil{
+//                cell.Shop_image.image = img
+//            } else{
+//                
+//                request = Alamofire.request(url!).validate(contentType: ["image/*"]).response(completionHandler: { request, response, data, err in
+//                    
+//                    if err == nil{
+//                        let img = UIImage(data: data!)!
+//                        cell.Shop_image.image = img
+////                        ViewController.imageCache.setObject(img, forKey: url)
+//                    }
+//                    
+//                })
+//            }
+            
+//            request = Alamofire.request(.GET, url!).validate(contentType: ["image/*"]).response(completionHandler: { request, response, data, err in
+//                if err == nil {
+//                    let img = UIImage(data: data!)!
+//                    self.appImg.image = img
+//                    FeedVC.imageCache.setObject(img, forKey: self.post!.imageUrl!)
+//                }
+//            })
+            
+//            cell.Shop_image.image = UIImage(named: image[indexPath.row])
+            cell.Shop_name.text = name[indexPath.row]
+            cell.Shop_adress.text = location[indexPath.row]
+            return cell
+            
+        } else{
+            return ShopCollectionViewCell()
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -99,16 +159,14 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         ref.observe(.value, with: { (snapshot: DataSnapshot) in
             if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
-                
+                self.image_urls = []
                 for snap in snapshots{
                     //                    print("SNAP:\(snap)")
                     let temp = snap.childSnapshot(forPath: "StoreImage")
                     self.image_urls.append(temp.value as! String)
                 }
-                self.ShopCollectionView.reloadData()
-                
             }
-            
+            self.ShopCollectionView.reloadData()
         })
     }
     
@@ -124,7 +182,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             self.view.layoutIfNeeded()
         })
 
-        
     }
     @IBAction func CloseAccountMenu(_ sender: Any) {
     
