@@ -12,7 +12,8 @@ import Firebase
 
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
-    var url = ""
+    static var url = ""
+    
     var image_array = [String]()
     
     @IBOutlet weak var AccountMenuLeading: NSLayoutConstraint!
@@ -28,7 +29,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     var name = ["pinks", "religion 5", "relgion 7", "religion 5", "relgion 7", "religion 5", "relgion 7", "rlgion 7", "relgion 7", "relgion 7"]
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+        
         // Do any additional setup after loading the view, typically from a nib.
         self.ShopCollectionView.delegate = self
         self.ShopCollectionView.dataSource = self
@@ -47,7 +50,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         AccountMenuLeading.constant = -1 * (shopItemSize + 9)
         loadImages()
-        
+//        self.image_array.append("111111111")
+//        print(self.image_array)
         
     }
 
@@ -57,11 +61,16 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return image.count
+        print(self.image_array.count)
+        return self.image.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Shop_cell", for: indexPath) as! ShopCollectionViewCell
+        
+//        loadImages()
+        print(self.image_array)
         cell.Shop_image.image = UIImage(named: image[indexPath.row])
         cell.Shop_name.text = name[indexPath.row]
         cell.Shop_adress.text = location[indexPath.row]
@@ -74,7 +83,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
     }
     
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "Test"{
             let index = sender as! NSIndexPath
@@ -84,40 +92,48 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }
     }
     
-    func loadImages() {
+    func loadImages(){
         // TODO: Get image urls from firebase
-        let ref = Database.database().reference()
-        ref.observe(.value) { (snapshot: DataSnapshot) in
+        var temp_str = "abcd"
+        
+        var ref: DatabaseReference!
+        ref = Database.database().reference()
+
+        
+        ref.observe(.value, with: { (snapshot: DataSnapshot) in
             if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
+//                self.image_array=[]
+//                print(snapshots)
+                
                 for snap in snapshots{
 //                    print("SNAP:\(snap)")
                     let temp = snap.childSnapshot(forPath: "StoreImage")
-                    self.image_array.append(temp.value as! String)
+                    temp_str = temp.value as! String
+                    self.image_array.append(temp_str)
                 }
+                self.ShopCollectionView.reloadData()
                 
             }
-            print(self.image_array)
-        }
+            
+        })
+//        self.image_array.append("111111111")
+//        print(self.image_array)
+//        print(temp_str)
     }
-    
     
     @IBAction func OpenAccountMenu(_ sender: Any) {
         
         AccountMenuLeading.constant = 0
-        
         //let shopItemSize = UIScreen.main.bounds.width/2
-        
         //AccountMenuWidth.constant = shopItemSize
         
         UIView.animate(withDuration: 0.3, animations: {
             self.view.layoutIfNeeded()
         })
-
-        
     }
+    
     @IBAction func CloseAccountMenu(_ sender: Any) {
     
-        
         let shopItemSize = UIScreen.main.bounds.width/2
         AccountMenuLeading.constant = -shopItemSize
         
