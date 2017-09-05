@@ -10,6 +10,7 @@ import UIKit
 import Alamofire
 
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+    @IBOutlet weak var SliderMenu: UIView!
     @IBOutlet weak var TopBar: UIView!
     
     @IBOutlet weak var AccountMenuLeading: NSLayoutConstraint!
@@ -47,7 +48,12 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         ShopCollectionView.collectionViewLayout = Layout
         AccountMenuWidth.constant = shopItemSize + 9
         
-        AccountMenuLeading.constant = -1 * (shopItemSize + 9)
+        AccountMenuLeading.constant = -1 * (shopItemSize + 50)
+        
+        SliderMenu.layer.shadowOpacity = 10
+        SliderMenu.layer.shadowRadius = 20
+        
+        
         
     }
 
@@ -104,7 +110,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
         
         let shopItemSize = UIScreen.main.bounds.width/2
-        AccountMenuLeading.constant = -shopItemSize
+        AccountMenuLeading.constant = -(shopItemSize + 50)
         
         //AccountMenuWidth.constant = shopItemSize
         
