@@ -10,6 +10,7 @@ import UIKit
 import Alamofire
 
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+    @IBOutlet weak var TopBar: UIView!
     
     @IBOutlet weak var AccountMenuLeading: NSLayoutConstraint!
     
@@ -17,7 +18,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     @IBOutlet weak var ShopCollectionView: UICollectionView!
     
-    var image = ["pinks", "religion 5", "relgion 7", "religion 5", "relgion 7", "religion 5", "relgion 7", "rlgion 7", "relgion 7", "relgion 7"]
+    var image = ["pinks", "TimHortons", "TimHortons", "Balilque", "TimHortons", "TimHortons", "Balilque", "Balilque", "Balilque", "TimHortons"]
     
     var location = ["pinks", "religion 5", "relgion 7", "religion 5", "relgion 7", "religion 5", "relgion 7", "rlgion 7", "relgion 7", "relgion 7"]
     
@@ -25,6 +26,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        TopBar.layer.shadowColor = UIColor(red:0/255.0, green:0/255.0, blue:0/255.0, alpha: 1.0).cgColor
+        TopBar.layer.shadowOffset = CGSize(width: 0, height: 1.25)
+        TopBar.layer.shadowRadius = 1.2
+        TopBar.layer.shadowOpacity = 0.45
+        
         // Do any additional setup after loading the view, typically from a nib.
         self.ShopCollectionView.delegate = self
         self.ShopCollectionView.dataSource = self
