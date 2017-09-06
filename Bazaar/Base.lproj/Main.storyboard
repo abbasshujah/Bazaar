@@ -123,6 +123,10 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gmw-9e-Ch8" userLabel="AccountMenu">
                                 <rect key="frame" x="0.0" y="20" width="259" height="647"/>
                                 <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="087-2T-QaT">
+                                        <rect key="frame" x="0.0" y="63" width="259" height="584"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0DT-c3-prZ">
                                         <rect key="frame" x="16" y="10" width="235" height="45"/>
                                         <subviews>
@@ -138,8 +142,8 @@
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Account" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h9u-uG-hHb">
                                                 <rect key="frame" x="46" y="0.0" width="189" height="45"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                                <color key="textColor" red="0.30422050028234959" green="0.34482086518775923" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -147,9 +151,13 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.67095649242401123" green="0.92977052927017212" blue="0.70239168405532837" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="087-2T-QaT" secondAttribute="trailing" id="0d9-RG-4OI"/>
+                                    <constraint firstItem="087-2T-QaT" firstAttribute="top" secondItem="0DT-c3-prZ" secondAttribute="bottom" constant="8" id="4qF-NL-ZGt"/>
+                                    <constraint firstAttribute="bottom" secondItem="087-2T-QaT" secondAttribute="bottom" id="NQO-PL-8KF"/>
                                     <constraint firstItem="0DT-c3-prZ" firstAttribute="leading" secondItem="gmw-9e-Ch8" secondAttribute="leading" constant="16" id="XHD-u1-Rmq"/>
                                     <constraint firstAttribute="trailing" secondItem="0DT-c3-prZ" secondAttribute="trailing" constant="8" id="da5-G4-RhN"/>
                                     <constraint firstAttribute="width" constant="259" id="gT5-NY-jHh" userLabel="width"/>
+                                    <constraint firstItem="087-2T-QaT" firstAttribute="leading" secondItem="gmw-9e-Ch8" secondAttribute="leading" id="haJ-sp-aSw"/>
                                     <constraint firstItem="0DT-c3-prZ" firstAttribute="top" secondItem="gmw-9e-Ch8" secondAttribute="top" constant="10" id="oVF-eF-wAh"/>
                                 </constraints>
                             </view>
@@ -172,6 +180,7 @@
                         <outlet property="AccountMenuLeading" destination="VBH-VR-YQM" id="crT-IT-oE8"/>
                         <outlet property="AccountMenuWidth" destination="gT5-NY-jHh" id="Dpn-2t-PRC"/>
                         <outlet property="ShopCollectionView" destination="eeu-X8-6NI" id="WJ8-Hv-OWC"/>
+                        <outlet property="SliderMenu" destination="gmw-9e-Ch8" id="R3U-jN-oxO"/>
                         <outlet property="TopBar" destination="u6V-Nv-L5t" id="A5a-Bn-Mco"/>
                         <segue destination="OQ3-NB-tj2" kind="show" identifier="Test" id="CoJ-OM-TJF"/>
                     </connections>
@@ -325,6 +334,21 @@
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cf2-NN-5xK">
                                 <rect key="frame" x="0.0" y="74" width="375" height="593"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5al-y5-bHh">
+                                        <rect key="frame" x="10" y="12" width="354" height="354"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="5al-y5-bHh" secondAttribute="height" multiplier="1:1" id="h0c-59-YoP"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="5al-y5-bHh" firstAttribute="top" secondItem="cf2-NN-5xK" secondAttribute="top" constant="12" id="67H-la-hfr"/>
+                                    <constraint firstItem="5al-y5-bHh" firstAttribute="leading" secondItem="cf2-NN-5xK" secondAttribute="leading" constant="10" id="KLw-2b-fPa"/>
+                                    <constraint firstItem="5al-y5-bHh" firstAttribute="centerX" secondItem="cf2-NN-5xK" secondAttribute="centerX" id="Kv1-a3-XiP"/>
+                                    <constraint firstAttribute="trailing" secondItem="5al-y5-bHh" secondAttribute="trailing" constant="10" id="OGi-h3-Mq8"/>
+                                    <constraint firstAttribute="bottom" secondItem="5al-y5-bHh" secondAttribute="bottom" constant="390" id="aCP-y0-FHw"/>
+                                </constraints>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -339,12 +363,13 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="TopBar" destination="XD5-O0-6oM" id="FCS-hK-sFa"/>
                         <segue destination="OQ3-NB-tj2" kind="show" identifier="GoBackToShop" id="bqO-Le-SNw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nj3-jH-f8B" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1823" y="931"/>
+            <point key="canvasLocation" x="1821.5999999999999" y="930.58470764617698"/>
         </scene>
         <!--Shop View Controller-->
         <scene sceneID="ACm-jo-MbQ">
@@ -443,6 +468,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="TopBar" destination="BBw-DK-98g" id="xG3-AB-Olj"/>
                         <outlet property="buttonBarView" destination="JuM-hj-6nl" id="1Qc-uq-wRx"/>
                         <outlet property="containerView" destination="94x-Y6-i15" id="O7b-L0-BuI"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="ToMainFromShop" id="zDT-ki-hsJ"/>
@@ -458,6 +484,6 @@
         <image name="search" width="16" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="CoJ-OM-TJF"/>
+        <segue reference="bqO-Le-SNw"/>
     </inferredMetricsTieBreakers>
 </document>

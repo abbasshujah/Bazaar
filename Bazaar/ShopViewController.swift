@@ -10,6 +10,9 @@ import UIKit
 import XLPagerTabStrip
 
 class ShopViewController: ButtonBarPagerTabStripViewController {
+    
+    @IBOutlet weak var TopBar: UIView!
+    
 
     let purpleInspireColor = UIColor(red:0.13, green:0.03, blue:0.25, alpha:1.0)
 //
@@ -20,9 +23,12 @@ class ShopViewController: ButtonBarPagerTabStripViewController {
     var shop_name = "test"
 
     override func viewDidLoad() {
+        
+        TopBar.layer.shadowColor = UIColor(red:0/255.0, green:0/255.0, blue:0/255.0, alpha: 1.0).cgColor
+        TopBar.layer.shadowOffset = CGSize(width: 0, height: 1.25)
+        TopBar.layer.shadowRadius = 1.2
+        TopBar.layer.shadowOpacity = 0.45
 
-        print ("trying to print")
-        print (shop_name)
         //address.text = adress_variable
         
         //adress.text = adress_variable
@@ -35,9 +41,9 @@ class ShopViewController: ButtonBarPagerTabStripViewController {
         settings.style.buttonBarItemBackgroundColor = .white
         settings.style.selectedBarBackgroundColor = purpleInspireColor
         settings.style.buttonBarItemFont = .boldSystemFont(ofSize: 14)
-        settings.style.selectedBarHeight = 2.0
+        settings.style.selectedBarHeight = 5.0
         settings.style.buttonBarMinimumLineSpacing = 0
-        settings.style.buttonBarItemTitleColor = .black
+        settings.style.buttonBarItemTitleColor = .white
         settings.style.buttonBarItemsShouldFillAvailiableWidth = true
         settings.style.buttonBarLeftContentInset = 0
         settings.style.buttonBarRightContentInset = 0
