@@ -27,6 +27,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     var image_urls = [String]()
     
+    var store_names = [String]()
+    
     var image = ["pinks", "TimHortons", "TimHortons", "Balilque", "TimHortons", "TimHortons", "Balilque", "Balilque", "Balilque", "TimHortons"]
     
     var location = ["pinks", "religion 5", "relgion 7", "religion 5", "relgion 7", "religion 5", "relgion 7", "rlgion 7", "relgion 7", "relgion 7"]
@@ -67,7 +69,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print(self.image_urls.count)
         return self.image_urls.count
     }
     
@@ -78,34 +79,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             var img: UIImage?
             let url = URL(string: self.image_urls[indexPath.row])
             
-//            TODO: update images and store it in cache
+//            TODO: Load up images and store it in cache
             img = ViewController.imageCache.object(forKey: url as AnyObject) as? UIImage
             
             URLSession.shared.dataTask(with: url!) { (data, response, error) in
                 
-//                if img != nil{
-//                    print("hehe")
-//                    cell.Shop_image.image = img
-//                    } else{
-//                    
-//                    if error != nil {
-//                        print("Failed fetching image:", error)
-//                        return
-//                    }
-//                    
-//                    guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-//                        print("Not a proper HTTPURLResponse or statusCode")
-//                        return
-//                    }
-//                    
-//                    DispatchQueue.main.async {
-//                        let img = UIImage(data: data!)
-//                        cell.Shop_image.image = img
-//                        ViewController.imageCache.setObject(img!, forKey: url! as AnyObject)
-//                    }
-//                }
-//            }.resume()
-            
 //              TODO: Load up images and dont store in cache
                 if error != nil {
                     print("Failed fetching image:", error)
@@ -121,30 +99,34 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                 }
             }.resume()
             
-//            var img: UIImage?
-//            
-//            // Go to image chache and get object for key.
-//            // Url is oing to be the key in cache and value is going to be the image data
-//            img = ViewController.imageCache.object(forKey: url as AnyObject) as? UIImage
-//            
-//            // If the image is already in cache, just load it from cache
-//            if img != nil{
-//                cell.Shop_image.image = img
-//            } else{
-//                
-//                request = Alamofire.request(url!).validate(contentType: ["image/*"]).response(completionHandler: { request, response, data, err in
+//                if img != nil{
+//                    print("hehe")
+//                    cell.Shop_image.image = img
+//                    } else{
 //
-//                    if err == nil{
-//                        let img = UIImage(data: data!)!
-//                        cell.Shop_image.image = img
-////                        ViewController.imageCache.setObject(img, forKey: url)
+//                    if error != nil {
+//                        print("Failed fetching image:", error)
+//                        return
 //                    }
-//                    
-//                })
-//            }
+//
+//                    guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+//                        print("Not a proper HTTPURLResponse or statusCode")
+//                        return
+//                    }
+//
+//                    DispatchQueue.main.async {
+//                        let img = UIImage(data: data!)
+//                        cell.Shop_image.image = img
+//                        ViewController.imageCache.setObject(img!, forKey: url! as AnyObject)
+//                    }
+//                }
+//            }.resume()
+
+            
+            
 //            cell.Shop_image.image = UIImage(named: image[indexPath.row])
             
-            cell.Shop_name.text = name[indexPath.row]
+            cell.Shop_name.text = self.store_names[indexPath.row]
             cell.Shop_adress.text = location[indexPath.row]
             return cell
             
@@ -171,22 +153,34 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     
     func loadImages(){
-        // TODO: Get image urls from firebase
+  // TODO: Get image urls from firebase
         
         var ref: DatabaseReference!
         ref = Database.database().reference()
         
         ref.observe(.value, with: { (snapshot: DataSnapshot) in
+            
+
             if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
+                
+//                print(snapshots)
                 self.image_urls = []
+                self.store_names = []
                 for snap in snapshots{
-                    //                    print("SNAP:\(snap)")
+                    //print("SNAP:\(snap)")
+//                    if let storeDict = snap.value as? Dictionary<String,AnyObject>{
+////                        print(snap.value)
+//                        self.store_names.append(snap.key)
+//                    }
+                    
                     let temp = snap.childSnapshot(forPath: "StoreImage")
                     self.image_urls.append(temp.value as! String)
+                    
                 }
             }
             self.ShopCollectionView.reloadData()
         })
+
     }
     
     @IBAction func OpenAccountMenu(_ sender: Any) {
