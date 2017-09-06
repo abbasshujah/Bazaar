@@ -8,9 +8,12 @@
 
 import UIKit
 import Alamofire
+import Firebase
 
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+
     @IBOutlet weak var SliderMenu: UIView!
+  
     @IBOutlet weak var TopBar: UIView!
     
     @IBOutlet weak var AccountMenuLeading: NSLayoutConstraint!
@@ -18,6 +21,15 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     @IBOutlet weak var AccountMenuWidth: NSLayoutConstraint!
     
     @IBOutlet weak var ShopCollectionView: UICollectionView!
+    
+    static var imageCache = NSCache<AnyObject, AnyObject>()
+    
+    // Create request so we can cancel it when its not on screen
+    var request: Request?
+    
+    var image_urls = [String]()
+    
+    var store_names = [String]()
     
     var image = ["pinks", "TimHortons", "TimHortons", "Balilque", "TimHortons", "TimHortons", "Balilque", "Balilque", "Balilque", "TimHortons"]
     
@@ -47,13 +59,12 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         ShopCollectionView.collectionViewLayout = Layout
         AccountMenuWidth.constant = shopItemSize + 9
-        
+      
         AccountMenuLeading.constant = -1 * (shopItemSize + 50)
-        
+      
         SliderMenu.layer.shadowOpacity = 10
         SliderMenu.layer.shadowRadius = 20
-        
-        
+        loadImages()
         
     }
 
@@ -63,15 +74,70 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return image.count
+        return self.image_urls.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Shop_cell", for: indexPath) as! ShopCollectionViewCell
-        cell.Shop_image.image = UIImage(named: image[indexPath.row])
-        cell.Shop_name.text = name[indexPath.row]
-        cell.Shop_adress.text = location[indexPath.row]
-        return cell
+        
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Shop_cell", for: indexPath) as? ShopCollectionViewCell{
+            
+            var img: UIImage?
+            let url = URL(string: self.image_urls[indexPath.row])
+            
+//            TODO: Load up images and store it in cache
+            img = ViewController.imageCache.object(forKey: url as AnyObject) as? UIImage
+            
+            URLSession.shared.dataTask(with: url!) { (data, response, error) in
+                
+//              TODO: Load up images and dont store in cache
+                if error != nil {
+                    print("Failed fetching image:", error)
+                    return
+                }
+                guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+                    print("Not a proper HTTPURLResponse or statusCode")
+                    return
+                }
+                
+                DispatchQueue.main.async {
+                    cell.Shop_image.image = UIImage(data: data!)
+                }
+            }.resume()
+            
+//                if img != nil{
+//                    print("hehe")
+//                    cell.Shop_image.image = img
+//                    } else{
+//
+//                    if error != nil {
+//                        print("Failed fetching image:", error)
+//                        return
+//                    }
+//
+//                    guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+//                        print("Not a proper HTTPURLResponse or statusCode")
+//                        return
+//                    }
+//
+//                    DispatchQueue.main.async {
+//                        let img = UIImage(data: data!)
+//                        cell.Shop_image.image = img
+//                        ViewController.imageCache.setObject(img!, forKey: url! as AnyObject)
+//                    }
+//                }
+//            }.resume()
+
+            
+            
+//            cell.Shop_image.image = UIImage(named: image[indexPath.row])
+            
+            cell.Shop_name.text = self.store_names[indexPath.row]
+            cell.Shop_adress.text = location[indexPath.row]
+            return cell
+            
+        } else{
+            return ShopCollectionViewCell()
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -91,6 +157,36 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }
     }
     
+    func loadImages(){
+  // TODO: Get image urls from firebase
+        
+        var ref: DatabaseReference!
+        ref = Database.database().reference()
+        
+        ref.observe(.value, with: { (snapshot: DataSnapshot) in
+            
+
+            if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
+                
+//                print(snapshots)
+                self.image_urls = []
+                self.store_names = []
+                for snap in snapshots{
+                    //print("SNAP:\(snap)")
+//                    if let storeDict = snap.value as? Dictionary<String,AnyObject>{
+////                        print(snap.value)
+//                        self.store_names.append(snap.key)
+//                    }
+                    
+                    let temp = snap.childSnapshot(forPath: "StoreImage")
+                    self.image_urls.append(temp.value as! String)
+                    
+                }
+            }
+            self.ShopCollectionView.reloadData()
+        })
+
+    }
     
     @IBAction func OpenAccountMenu(_ sender: Any) {
         
@@ -104,7 +200,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             self.view.layoutIfNeeded()
         })
 
-        
     }
     @IBAction func CloseAccountMenu(_ sender: Any) {
     
