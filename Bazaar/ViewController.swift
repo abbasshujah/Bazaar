@@ -131,7 +131,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             
 //            cell.Shop_image.image = UIImage(named: image[indexPath.row])
             
-            cell.Shop_name.text = self.store_names[indexPath.row]
+            cell.Shop_name.text = self.name[indexPath.row]
             cell.Shop_adress.text = location[indexPath.row]
             return cell
             
