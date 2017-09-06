@@ -159,10 +159,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         ref = Database.database().reference()
         
         ref.observe(.value, with: { (snapshot: DataSnapshot) in
-            
-
             if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
-                
 //                print(snapshots)
                 self.image_urls = []
                 self.store_names = []
@@ -178,6 +175,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                     
                 }
             }
+            
             self.ShopCollectionView.reloadData()
         })
 
