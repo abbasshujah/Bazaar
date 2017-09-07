@@ -11,13 +11,25 @@ import UIKit
 class ShopItemViewController: UIViewController {
     
     @IBOutlet weak var TopBar: UIView!
+    
+    @IBOutlet weak var Name: UILabel!
+    
+    @IBOutlet weak var Address: UILabel!
 
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         TopBar.layer.shadowColor = UIColor(red:0/255.0, green:0/255.0, blue:0/255.0, alpha: 1.0).cgColor
         TopBar.layer.shadowOffset = CGSize(width: 0, height: 1.25)
         TopBar.layer.shadowRadius = 1.2
         TopBar.layer.shadowOpacity = 0.45
+        
+        Address.text = "ajhsghjdad hjagjdhash jbdasbjbashb dasdjsbjdbj hsdbjh sbdfjhbsd fhsdfbsdh"
+        Name.text = "skhf jksdnfknjksd jksjkfnjksbnbvbvnbvbnvbvbnvbvbnvvvvvvvvvvv ggggggggg ggghhhhhhhhhggg  ggggggggggggd kjnsjf kjnsd jknsjndfjk jsnjkfnjsdn jsnfnsk"
+        Address.numberOfLines = 0
+        Address.sizeToFit()
+        Name.numberOfLines = 0
+        Name.sizeToFit()
 
 
         // Do any additional setup after loading the view.
