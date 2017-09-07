@@ -173,20 +173,20 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                 self.store_name = []
                 self.store_location = []
                 
+//                    TODO: Get product data from firebase
+                
                 for snap in snapshots{
-
-                    if let products = snap.childSnapshot(forPath: "Supplies").children.allObjects as? [DataSnapshot]{
-                        for product in products{
-//                            print(product)
-                            if let productDict = product.value as? Dictionary<String,AnyObject> {
-                                print(productDict["name"] as! String)
-                            }
-                            
-                        }
-                    }
-                    
-                    //                    TODO: Get product data from firebase
-                    
+//
+//                    if let products = snap.childSnapshot(forPath: "Supplies").children.allObjects as? [DataSnapshot]{
+//                        for product in products{
+////                            print(product)
+//                            if let productDict = product.value as? Dictionary<String,AnyObject> {
+//                                print(productDict["name"] as! String)
+//                            }
+//                            
+//                        }
+//                    }
+                
                     self.image_url.append(snap.childSnapshot(forPath: "StoreImage").value as! String)
 //                    self.store_name.append(snap.childSnapshot(forPath: "StoreName").value as! String)
 //                    self.store_location.append(snap.childSnapshot(forPath: "StoreLocation").value as! String)

@@ -8,12 +8,13 @@
 
 import XLPagerTabStrip
 import UIKit
+import Firebase
 
 class ChildViewController1: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, IndicatorInfoProvider {
     
-    var product_image_urls = [String]()
+    var product_image_url = [String]()
     
-    var product_names = [String]()
+    var product_name = [String]()
     
     var image = ["pinks", "religion 5", "relgion 7", "religion 5", "relgion 7", "religion 5", "relgion 7", "rlgion 7", "relgion 7", "relgion 7"]
     
@@ -71,12 +72,49 @@ class ChildViewController1: UIViewController, UICollectionViewDelegate, UICollec
         return cell
     }
     
+    func loadImages(){
+        // TODO: Get image urls from firebase
+        
+        var ref: DatabaseReference!
+        ref = Database.database().reference()
+        
+        ref.observe(.value, with: { (snapshot: DataSnapshot) in
+            
+            if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
+                //                print(snapshots)
+                self.product_image_url = []
+                self.product_name = []
+                
+                //                    TODO: Get product data from firebase
+                
+                for snap in snapshots{
+                    //
+                    //                    if let products = snap.childSnapshot(forPath: "Supplies").children.allObjects as? [DataSnapshot]{
+                    //                        for product in products{
+                    ////                            print(product)
+                    //                            if let productDict = product.value as? Dictionary<String,AnyObject> {
+                    //                                print(productDict["name"] as! String)
+                    //                            }
+                    //
+                    //                        }
+                    //                    }
+                    
+                    self.product_image_url.append(snap.childSnapshot(forPath: "StoreImage").value as! String)
+                    //                    self.store_name.append(snap.childSnapshot(forPath: "StoreName").value as! String)
+                    //                    self.store_location.append(snap.childSnapshot(forPath: "StoreLocation").value as! String)
+                    
+                }
+            }
+            self.ShopItemCollectionView.reloadData()
+        })
+        
+    }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         performSegue(withIdentifier:"ShopItemDetails", sender: indexPath)
         
     }/*
-    
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
