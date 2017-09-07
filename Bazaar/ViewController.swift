@@ -27,9 +27,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     // Create request so we can cancel it when its not on screen
     var request: Request?
     
-    var image_urls = [String]()
+    var image_url = [String]()
+
+    var store_name = [String]()
     
-    var store_names = [String]()
+    var store_location = [String]()
     
     var image = ["pinks", "TimHortons", "TimHortons", "Balilque", "TimHortons", "TimHortons", "Balilque", "Balilque", "Balilque", "TimHortons"]
     
@@ -74,7 +76,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.image_urls.count
+        return self.image_url.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -82,7 +84,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Shop_cell", for: indexPath) as? ShopCollectionViewCell{
             
             var img: UIImage?
-            let url = URL(string: self.image_urls[indexPath.row])
+            let url = URL(string: self.image_url[indexPath.row])
             
 //            TODO: Load up images and store it in cache
             img = ViewController.imageCache.object(forKey: url as AnyObject) as? UIImage
@@ -131,8 +133,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             
 //            cell.Shop_image.image = UIImage(named: image[indexPath.row])
             
-            cell.Shop_name.text = self.name[indexPath.row]
-            cell.Shop_adress.text = location[indexPath.row]
+            cell.Shop_name.text = self.store_name[indexPath.row]
+            cell.Shop_adress.text = self.store_location[indexPath.row]
             return cell
             
         } else{
@@ -169,8 +171,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
                 
 //                print(snapshots)
-                self.image_urls = []
-                self.store_names = []
+                self.image_url = []
+                self.store_name = []
+                self.store_location = []
                 for snap in snapshots{
                     //print("SNAP:\(snap)")
 //                    if let storeDict = snap.value as? Dictionary<String,AnyObject>{
@@ -178,8 +181,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
 //                        self.store_names.append(snap.key)
 //                    }
                     
-                    let temp = snap.childSnapshot(forPath: "StoreImage")
-                    self.image_urls.append(temp.value as! String)
+                    self.image_url.append(snap.childSnapshot(forPath: "StoreImage").value as! String)
+                    self.store_name.append(snap.childSnapshot(forPath: "StoreName").value as! String)
+                    self.store_location.append(snap.childSnapshot(forPath: "StoreAddress").value as! String)
                     
                 }
             }
