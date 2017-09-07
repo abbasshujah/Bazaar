@@ -104,13 +104,5 @@ class ShopViewController: ButtonBarPagerTabStripViewController {
         }
     
     }
-    
-    
-    
-    
-    
-    
-
-    
 
 }
