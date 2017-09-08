@@ -100,7 +100,7 @@ class ShopViewController: ButtonBarPagerTabStripViewController {
             Pages_ChildController.append((pages[i] as? ChildViewController1)!)
         }
         for var i in (0..<pages_size){
-            Pages_ChildController[i].View_title(Title: "\(i)")
+            Pages_ChildController[i].View_title(Title: "\(i)", Shop: shop_name)
         }
     
     }

@@ -12,11 +12,17 @@ import Firebase
 
 class ChildViewController1: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, IndicatorInfoProvider {
     
+    var store_name = [String]()
+    
     var product_name = [String]()
     
     var product_price = [String]()
     
     var product_img_url = [String]()
+    
+    var shop_name = ""
+    
+    var product_category = [String]()
     
     var image = ["pinks", "religion 5", "relgion 7", "religion 5", "relgion 7", "religion 5", "relgion 7", "rlgion 7", "relgion 7", "relgion 7"]
     
@@ -44,6 +50,7 @@ class ChildViewController1: UIViewController, UICollectionViewDelegate, UICollec
         
         ShopItemCollectionView.collectionViewLayout = Layout
         loadImages()
+        print("we are in child view \(shop_name)")
     }
     
     override func didReceiveMemoryWarning() {
@@ -52,8 +59,9 @@ class ChildViewController1: UIViewController, UICollectionViewDelegate, UICollec
     }
     
     
-    func View_title(Title: String){
+    func View_title(Title: String, Shop: String){
         View_title = Title
+        shop_name = Shop
     }
     
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
@@ -87,39 +95,28 @@ class ChildViewController1: UIViewController, UICollectionViewDelegate, UICollec
         var ref: DatabaseReference!
         ref = Database.database().reference()
         
-        ref.observe(.value, with: { (snapshot: DataSnapshot) in
-            
-            
-            if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
-                
-                //                print(snapshots)
+        ref.child(shop_name).observe(.value, with: { (snapshot: DataSnapshot) in
+    
+            if let productCategories = snapshot.childSnapshot(forPath: "Products").children.allObjects as? [DataSnapshot]{
                 self.product_img_url = []
                 self.product_name = []
                 self.product_price = []
-                
-                for snap in snapshots{
-                    if let productCategories = snap.childSnapshot(forPath: "Products").children.allObjects as? [DataSnapshot]{
-//                        print("11111")
-                        for productCategory in productCategories{
-                            if let products = productCategory.children.allObjects as? [DataSnapshot]{
-                                for product in products{
-                                    if let productDict = product.value as? Dictionary<String,AnyObject> {
-                                        print(product.key)
-                                    }
-                                }
+                for productCategory in productCategories{
+//                     print("................")
+                    if let products = productCategory.children.allObjects as? [DataSnapshot]{
+                        for product in products{
+//                            print(product.key)
+                            if let productDict = product.value as? Dictionary<String,AnyObject> {
+//                                print(productDict["productName"] as! String)
+//                                print(".................................")
                             }
+                        }
+                    }
 //                            print(product.value)
 //                            if let productDict = product.value as? Dictionary<String,AnyObject> {
 //                                    print("1111")
 //                            }
                             
-                        }
-                    }
-                    
-                    self.product_img_url.append(snap.childSnapshot(forPath: "StoreImage").value as! String)
-                    self.product_name.append(snap.childSnapshot(forPath: "StoreName").value as! String)
-                    self.product_price.append(snap.childSnapshot(forPath: "StoreAddress").value as! String)
-                    
                 }
             }
             self.ShopItemCollectionView.reloadData()
@@ -127,8 +124,6 @@ class ChildViewController1: UIViewController, UICollectionViewDelegate, UICollec
         
     }
 
-    
-    
     /*
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "Test"{
