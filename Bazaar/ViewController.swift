@@ -34,6 +34,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     var store_location = [String]()
     
+    var store_clicked = ""
+    
     var image = ["pinks", "TimHortons", "TimHortons", "Balilque", "TimHortons", "TimHortons", "Balilque", "Balilque", "Balilque", "TimHortons"]
     
     var location = ["pinks", "religion 5", "relgion 7", "religion 5", "relgion 7", "religion 5", "relgion 7", "rlgion 7", "relgion 7", "relgion 7"]
@@ -156,7 +158,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
 //            cell.Shop_image.image = UIImage(named: image[indexPath.row])
             
             cell.Shop_name.text = self.store_name[indexPath.row]
-            cell.Shop_adress.text = self.store_location[indexPath.row]
+//            cell.Shop_adress.text = self.store_location[indexPath.row]
             return cell
             
         } else{
@@ -170,14 +172,14 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
     }
     
-    
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "Test"{
             let index = sender as! NSIndexPath
             let shopVC = segue.destination as! ShopViewController
-            shopVC.adress_variable = location[index.item]
-            shopVC.shop_name = name[index.item]
+//            shopVC.adress_variable = location[index.item]
+            shopVC.shop_name = store_name[index.item]
+            store_clicked = store_name[index.item]
+            
         }
         if segue.identifier == "ItemSearchedFromMain"{
             let shopVC = segue.destination as! ItemSearchedViewController
