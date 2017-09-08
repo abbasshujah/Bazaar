@@ -12,9 +12,10 @@ import XLPagerTabStrip
 class ShopViewController: ButtonBarPagerTabStripViewController {
     
     @IBOutlet weak var TopBar: UIView!
+    @IBOutlet weak var SearchField: UITextField!
     
 
-    let purpleInspireColor = UIColor(red:0.13, green:0.03, blue:0.25, alpha:1.0)
+    let purpleInspireColor = UIColor(red:1/255.0, green:142/255.0, blue:77/255.0, alpha:1.0)
 //
 //class ShopViewController: UIViewController {
     var Pages = [UIViewController]()
@@ -38,8 +39,8 @@ class ShopViewController: ButtonBarPagerTabStripViewController {
         
         // change selected bar color
         settings.style.buttonBarBackgroundColor = .white
-        settings.style.buttonBarItemBackgroundColor = .white
-        settings.style.selectedBarBackgroundColor = purpleInspireColor
+        settings.style.buttonBarItemBackgroundColor = purpleInspireColor
+        settings.style.selectedBarBackgroundColor = .white
         settings.style.buttonBarItemFont = .boldSystemFont(ofSize: 14)
         settings.style.selectedBarHeight = 5.0
         settings.style.buttonBarMinimumLineSpacing = 0
@@ -49,12 +50,32 @@ class ShopViewController: ButtonBarPagerTabStripViewController {
         settings.style.buttonBarRightContentInset = 0
         changeCurrentIndexProgressive = { [weak self] (oldCell: ButtonBarViewCell?, newCell: ButtonBarViewCell?, progressPercentage: CGFloat, changeCurrentIndex: Bool, animated: Bool) -> Void in
             guard changeCurrentIndex == true else { return }
-            oldCell?.label.textColor = .black
-            newCell?.label.textColor = self?.purpleInspireColor
+            oldCell?.label.textColor = .white
+            newCell?.label.textColor = .white
         
         }
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        
+        SearchField.addTarget(self, action: #selector(enterPressed), for: .editingDidEndOnExit)
+        //SearchField.clearsOnBeginEditing = true
+    }
+    
+    func enterPressed(){
+        //do something with typed text if needed
+        print(SearchField.text ?? "")
+        SearchInput(Input: SearchField.text!)
+        //SearchField.resignFirstResponder()
+        
+    }
+    
+    func SearchInput(Input: String){
+        if(Input == "test"){
+            performSegue(withIdentifier:"ItemSearchedFromShop", sender: self)
+            
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -75,6 +96,13 @@ class ShopViewController: ButtonBarPagerTabStripViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ItemSearchedFromShop"{
+            let shopVC = segue.destination as! ItemSearchedViewController
+            shopVC.Back_button_tag = "BackToShopFromItemSearch"
+        }
+    }
     
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
         
