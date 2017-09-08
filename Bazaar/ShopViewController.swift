@@ -12,6 +12,7 @@ import XLPagerTabStrip
 class ShopViewController: ButtonBarPagerTabStripViewController {
     
     @IBOutlet weak var TopBar: UIView!
+    @IBOutlet weak var SearchField: UITextField!
     
 
     let purpleInspireColor = UIColor(red:0.13, green:0.03, blue:0.25, alpha:1.0)
@@ -55,6 +56,26 @@ class ShopViewController: ButtonBarPagerTabStripViewController {
         }
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        
+        SearchField.addTarget(self, action: #selector(enterPressed), for: .editingDidEndOnExit)
+        //SearchField.clearsOnBeginEditing = true
+    }
+    
+    func enterPressed(){
+        //do something with typed text if needed
+        print(SearchField.text ?? "")
+        SearchInput(Input: SearchField.text!)
+        //SearchField.resignFirstResponder()
+        
+    }
+    
+    func SearchInput(Input: String){
+        if(Input == "test"){
+            performSegue(withIdentifier:"ItemSearchedFromShop", sender: self)
+            
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -75,6 +96,13 @@ class ShopViewController: ButtonBarPagerTabStripViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ItemSearchedFromShop"{
+            let shopVC = segue.destination as! ItemSearchedViewController
+            shopVC.Back_button_tag = "BackToShopFromItemSearch"
+        }
+    }
     
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
         
