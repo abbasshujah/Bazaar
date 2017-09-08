@@ -19,14 +19,13 @@ class ChildViewController1: UIViewController, UICollectionViewDelegate, UICollec
     
     @IBOutlet weak var ShopItemCollectionView: UICollectionView!
     
-    
     var View_title = "saklskdfskjd"
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.ShopItemCollectionView.delegate = self
         self.ShopItemCollectionView.dataSource = self
-    
+        
         let shopItemSize = UIScreen.main.bounds.width/2 - 9
         
         let Layout = UICollectionViewFlowLayout()
