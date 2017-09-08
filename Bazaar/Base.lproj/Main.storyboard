@@ -165,7 +165,7 @@
                                         <rect key="frame" x="0.0" y="40" width="259" height="607"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Syed shujah " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="ezg-wM-T8l">
-                                                <rect key="frame" x="20" y="10" width="219" height="40"/>
+                                                <rect key="frame" x="20" y="0.0" width="219" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="Eh1-J2-NPi"/>
                                                 </constraints>
@@ -173,20 +173,54 @@
                                                 <color key="textColor" red="0.25356259942054749" green="0.29156005382537842" blue="0.79270976781845093" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lpa-aE-uMS">
-                                                <rect key="frame" x="0.0" y="70" width="259" height="537"/>
-                                                <color key="backgroundColor" red="0.99989169836044312" green="1" blue="0.99988096952438354" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </scrollView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Iiu-fA-wjs">
+                                                <rect key="frame" x="0.0" y="40" width="259" height="567"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="O3a-ks-Kvr">
+                                                        <rect key="frame" x="20" y="20" width="219" height="119"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WbC-49-uCU">
+                                                                <rect key="frame" x="0.0" y="0.0" width="219" height="33"/>
+                                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                                                <state key="normal" title="Search History">
+                                                                    <color key="titleColor" red="0.002221212257" green="0.55727589129999999" blue="0.30048865079999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                </state>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QEY-f2-WfI">
+                                                                <rect key="frame" x="0.0" y="43" width="219" height="33"/>
+                                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                                                <state key="normal" title="Terms And Conditions">
+                                                                    <color key="titleColor" red="0.0022212122566998005" green="0.55727589130401611" blue="0.30048865079879761" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                </state>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IZl-yb-uCf">
+                                                                <rect key="frame" x="0.0" y="86" width="219" height="33"/>
+                                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                                                <state key="normal" title="Log Out">
+                                                                    <color key="titleColor" red="0.0022212122566998005" green="0.55727589130401611" blue="0.30048865079879761" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                </state>
+                                                            </button>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="O3a-ks-Kvr" secondAttribute="trailing" constant="20" id="CHe-9m-anX"/>
+                                                    <constraint firstItem="O3a-ks-Kvr" firstAttribute="top" secondItem="Iiu-fA-wjs" secondAttribute="top" constant="20" id="TaY-oT-VZb"/>
+                                                    <constraint firstItem="O3a-ks-Kvr" firstAttribute="leading" secondItem="Iiu-fA-wjs" secondAttribute="leading" constant="20" id="cJ3-cX-y6e"/>
+                                                    <constraint firstItem="O3a-ks-Kvr" firstAttribute="centerX" secondItem="Iiu-fA-wjs" secondAttribute="centerX" id="lRz-eh-CnY"/>
+                                                </constraints>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" red="0.67095649242401123" green="0.92977052927017212" blue="0.70239168405532837" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstItem="ezg-wM-T8l" firstAttribute="top" secondItem="OBa-XW-W0v" secondAttribute="top" constant="10" id="0e4-Mq-gwp"/>
+                                            <constraint firstItem="ezg-wM-T8l" firstAttribute="top" secondItem="OBa-XW-W0v" secondAttribute="top" id="0e4-Mq-gwp"/>
+                                            <constraint firstItem="Iiu-fA-wjs" firstAttribute="leading" secondItem="OBa-XW-W0v" secondAttribute="leading" id="3wt-49-x9N"/>
                                             <constraint firstItem="ezg-wM-T8l" firstAttribute="leading" secondItem="OBa-XW-W0v" secondAttribute="leading" constant="20" id="4yE-1U-tdq"/>
-                                            <constraint firstAttribute="bottom" secondItem="Lpa-aE-uMS" secondAttribute="bottom" id="9fv-lX-2Cp"/>
-                                            <constraint firstItem="Lpa-aE-uMS" firstAttribute="top" secondItem="ezg-wM-T8l" secondAttribute="bottom" constant="20" id="BwH-5u-t1d"/>
                                             <constraint firstAttribute="trailing" secondItem="ezg-wM-T8l" secondAttribute="trailing" constant="20" id="EgP-HH-2ln"/>
-                                            <constraint firstAttribute="trailing" secondItem="Lpa-aE-uMS" secondAttribute="trailing" id="Zq8-TY-wm8"/>
-                                            <constraint firstItem="Lpa-aE-uMS" firstAttribute="leading" secondItem="OBa-XW-W0v" secondAttribute="leading" id="wvE-1T-aWh"/>
+                                            <constraint firstItem="Iiu-fA-wjs" firstAttribute="top" secondItem="ezg-wM-T8l" secondAttribute="bottom" id="SM0-PX-DDZ"/>
+                                            <constraint firstAttribute="bottom" secondItem="Iiu-fA-wjs" secondAttribute="bottom" id="jcJ-gV-ITi"/>
+                                            <constraint firstAttribute="trailing" secondItem="Iiu-fA-wjs" secondAttribute="trailing" id="zPr-M1-KTL"/>
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0DT-c3-prZ">

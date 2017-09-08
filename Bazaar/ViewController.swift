@@ -59,9 +59,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         Layout.minimumLineSpacing = 6
         
         ShopCollectionView.collectionViewLayout = Layout
-        AccountMenuWidth.constant = shopItemSize + 9
+        AccountMenuWidth.constant = ((shopItemSize * 3) / 2) + 9
       
-        AccountMenuLeading.constant = -1 * (shopItemSize + 50)
+        AccountMenuLeading.constant = -1 * (((shopItemSize * 3) / 2) + 50)
       
         SliderMenu.layer.shadowOpacity = 10
         SliderMenu.layer.shadowRadius = 20
@@ -231,7 +231,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
         
         let shopItemSize = UIScreen.main.bounds.width/2
-        AccountMenuLeading.constant = -(shopItemSize + 50)
+        AccountMenuLeading.constant = -(((shopItemSize * 3) / 2) + 50)
         
         //AccountMenuWidth.constant = shopItemSize
         
