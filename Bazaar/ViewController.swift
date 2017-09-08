@@ -11,6 +11,7 @@ import Alamofire
 import Firebase
 
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+    @IBOutlet weak var SearchField: UITextField!
 
     @IBOutlet weak var SliderMenu: UIView!
   
@@ -62,14 +63,35 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         Layout.minimumLineSpacing = 6
         
         ShopCollectionView.collectionViewLayout = Layout
-        AccountMenuWidth.constant = shopItemSize + 9
+        AccountMenuWidth.constant = ((shopItemSize * 3) / 2) + 9
       
-        AccountMenuLeading.constant = -1 * (shopItemSize + 50)
+        AccountMenuLeading.constant = -1 * (((shopItemSize * 3) / 2) + 50)
       
         SliderMenu.layer.shadowOpacity = 10
         SliderMenu.layer.shadowRadius = 20
         loadImages()
         
+        SearchField.addTarget(self, action: #selector(enterPressed), for: .editingDidEndOnExit)
+        //SearchField.clearsOnBeginEditing = true
+        
+    }
+    
+    
+    
+    func enterPressed(){
+        //do something with typed text if needed
+        print(SearchField.text ?? "")
+        SearchInput(Input: SearchField.text!)
+        //SearchField.resignFirstResponder()
+        
+    }
+    
+    func SearchInput(Input: String){
+        if(Input == "test"){
+            performSegue(withIdentifier:"ItemSearchedFromMain", sender: self)
+            
+        }
+    
     }
 
     override func didReceiveMemoryWarning() {
@@ -159,6 +181,10 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             store_clicked = store_name[index.item]
             
         }
+        if segue.identifier == "ItemSearchedFromMain"{
+            let shopVC = segue.destination as! ItemSearchedViewController
+            shopVC.Back_button_tag = "BackToMainFromItemSearch"
+        }
     }
     
     func loadImages(){
@@ -211,7 +237,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
         
         let shopItemSize = UIScreen.main.bounds.width/2
-        AccountMenuLeading.constant = -(shopItemSize + 50)
+        AccountMenuLeading.constant = -(((shopItemSize * 3) / 2) + 50)
         
         //AccountMenuWidth.constant = shopItemSize
         
