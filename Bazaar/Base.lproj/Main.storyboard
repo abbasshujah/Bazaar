@@ -737,7 +737,7 @@
                             </scrollView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="JuM-hj-6nl" customClass="ButtonBarView" customModule="XLPagerTabStrip">
                                 <rect key="frame" x="-4" y="70" width="383" height="64"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.0022212122566998005" green="0.55727589130401611" blue="0.30048865079879761" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="64" id="dWa-4e-NZ0"/>
                                 </constraints>
@@ -797,7 +797,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="CoJ-OM-TJF"/>
-        <segue reference="f8M-ZM-2cb"/>
-        <segue reference="fwC-tw-w0Y"/>
+        <segue reference="zDT-ki-hsJ"/>
+        <segue reference="xHM-rI-YID"/>
     </inferredMetricsTieBreakers>
 </document>
