@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -781,6 +781,7 @@
                         <outlet property="TopBar" destination="BBw-DK-98g" id="xG3-AB-Olj"/>
                         <outlet property="buttonBarView" destination="JuM-hj-6nl" id="1Qc-uq-wRx"/>
                         <outlet property="containerView" destination="94x-Y6-i15" id="O7b-L0-BuI"/>
+                        <outlet property="tabviewBar" destination="JuM-hj-6nl" id="Xq6-rp-U6K"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="ToMainFromShop" id="zDT-ki-hsJ"/>
                         <segue destination="5xE-xg-3xF" kind="show" identifier="ItemSearchedFromShop" id="xHM-rI-YID"/>
                     </connections>
