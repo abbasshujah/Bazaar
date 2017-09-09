@@ -5,7 +5,6 @@
 //  Created by shazia akhtar on 2017-08-27.
 //  Copyright © 2017 Syed Abbas. All rights reserved.
 //
-
 import UIKit
 import XLPagerTabStrip
 
@@ -14,28 +13,28 @@ class ShopViewController: ButtonBarPagerTabStripViewController {
     @IBOutlet weak var TopBar: UIView!
     @IBOutlet weak var SearchField: UITextField!
     
-
+    
     let purpleInspireColor = UIColor(red:1/255.0, green:142/255.0, blue:77/255.0, alpha:1.0)
-//
-//class ShopViewController: UIViewController {
+    //
+    //class ShopViewController: UIViewController {
     var Pages = [UIViewController]()
-
+    
     var adress_variable = "test"
     var shop_name = "test"
-
+    
     override func viewDidLoad() {
         
         TopBar.layer.shadowColor = UIColor(red:0/255.0, green:0/255.0, blue:0/255.0, alpha: 1.0).cgColor
         TopBar.layer.shadowOffset = CGSize(width: 0, height: 1.25)
         TopBar.layer.shadowRadius = 1.2
         TopBar.layer.shadowOpacity = 0.45
-
+        
         //address.text = adress_variable
         
         //adress.text = adress_variable
         //Shop_name_outlet.text = shop_name
         
-//        TODO: Code for Tabviews
+        //        TODO: Code for Tabviews
         
         // change selected bar color
         settings.style.buttonBarBackgroundColor = .white
@@ -52,7 +51,7 @@ class ShopViewController: ButtonBarPagerTabStripViewController {
             guard changeCurrentIndex == true else { return }
             oldCell?.label.textColor = .white
             newCell?.label.textColor = .white
-        
+            
         }
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -77,7 +76,7 @@ class ShopViewController: ButtonBarPagerTabStripViewController {
         }
         
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -86,16 +85,15 @@ class ShopViewController: ButtonBarPagerTabStripViewController {
     @IBAction func GoBackToMain(_ sender: Any) {
         performSegue(withIdentifier: "ToMainFromShop", sender: self)
     }
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+     // MARK: - Navigation
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ItemSearchedFromShop"{
@@ -130,7 +128,7 @@ class ShopViewController: ButtonBarPagerTabStripViewController {
         for var i in (0..<pages_size){
             Pages_ChildController[i].View_title(Title: "\(i)", Shop: shop_name)
         }
-    
+        
     }
     
     
@@ -138,7 +136,7 @@ class ShopViewController: ButtonBarPagerTabStripViewController {
     
     
     
-
     
-
+    
+    
 }

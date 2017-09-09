@@ -5,7 +5,6 @@
 //  Created by Prasann Pandya on 2017-08-30.
 //  Copyright © 2017 Syed Abbas. All rights reserved.
 //
-
 import XLPagerTabStrip
 import UIKit
 import Firebase
@@ -65,7 +64,7 @@ class ChildViewController1: UIViewController, UICollectionViewDelegate, UICollec
     }
     
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-    
+        
         return IndicatorInfo(title: "\(View_title)")
         
     }
@@ -96,43 +95,43 @@ class ChildViewController1: UIViewController, UICollectionViewDelegate, UICollec
         ref = Database.database().reference()
         
         ref.child(shop_name).observe(.value, with: { (snapshot: DataSnapshot) in
-    
+            
             if let productCategories = snapshot.childSnapshot(forPath: "Products").children.allObjects as? [DataSnapshot]{
                 self.product_img_url = []
                 self.product_name = []
                 self.product_price = []
                 for productCategory in productCategories{
-//                     print("................")
+                    //                     print("................")
                     if let products = productCategory.children.allObjects as? [DataSnapshot]{
                         for product in products{
-//                            print(product.key)
+                            //                            print(product.key)
                             if let productDict = product.value as? Dictionary<String,AnyObject> {
-//                                print(productDict["productName"] as! String)
-//                                print(".................................")
+                                //                                print(productDict["productName"] as! String)
+                                //                                print(".................................")
                             }
                         }
                     }
-//                            print(product.value)
-//                            if let productDict = product.value as? Dictionary<String,AnyObject> {
-//                                    print("1111")
-//                            }
-                            
+                    //                            print(product.value)
+                    //                            if let productDict = product.value as? Dictionary<String,AnyObject> {
+                    //                                    print("1111")
+                    //                            }
+                    
                 }
             }
             self.ShopItemCollectionView.reloadData()
         })
         
     }
-
+    
     /*
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "Test"{
-            let index = sender as! NSIndexPath
-            let shopVC = segue.destination as! ShopViewController
-            shopVC.adress_variable = location[index.item]
-            shopVC.shop_name = name[index.item]
-        }
-    }*/
-
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     if segue.identifier == "Test"{
+     let index = sender as! NSIndexPath
+     let shopVC = segue.destination as! ShopViewController
+     shopVC.adress_variable = location[index.item]
+     shopVC.shop_name = name[index.item]
+     }
+     }*/
+    
     
 }
