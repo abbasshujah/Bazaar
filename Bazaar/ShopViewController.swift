@@ -153,6 +153,9 @@ class ShopViewController: ButtonBarPagerTabStripViewController {
         
         
         if(self.view_titles.count != 0){
+            
+            Pages = [] // making the array to start from 0 all the time
+            
             for var i in (0..<self.view_titles.count){
                 self.Pages.append(UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "child1"))
             }
@@ -161,7 +164,6 @@ class ShopViewController: ButtonBarPagerTabStripViewController {
             self.Pages.append(UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "child1"))
 
         }
-        
         
         Set_viewNames(pages: self.Pages)
         return self.Pages
@@ -175,7 +177,7 @@ class ShopViewController: ButtonBarPagerTabStripViewController {
             Pages_ChildController.append((pages[i] as? ChildViewController1)!)
         }
         for var i in (0..<self.view_titles.count){
-            Pages_ChildController[i].View_title(Title: "\(i)", Shop: shop_name)
+            Pages_ChildController[i].View_title(Title: "\(self.view_titles[i])", Shop: shop_name)
         }
         
     }
