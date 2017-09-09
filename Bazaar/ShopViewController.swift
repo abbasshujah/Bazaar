@@ -37,7 +37,7 @@ class ShopViewController: ButtonBarPagerTabStripViewController {
         //        TODO: Code for Tabviews
         
         // change selected bar color
-        settings.style.buttonBarBackgroundColor = .white
+        settings.style.buttonBarBackgroundColor = purpleInspireColor
         settings.style.buttonBarItemBackgroundColor = purpleInspireColor
         settings.style.selectedBarBackgroundColor = .white
         settings.style.buttonBarItemFont = .boldSystemFont(ofSize: 14)
