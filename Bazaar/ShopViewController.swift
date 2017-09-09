@@ -7,20 +7,22 @@
 //
 import UIKit
 import XLPagerTabStrip
+import Firebase
 
 class ShopViewController: ButtonBarPagerTabStripViewController {
     
     @IBOutlet weak var TopBar: UIView!
     @IBOutlet weak var SearchField: UITextField!
-    
-    
+
+    var view_titles = [String]()
+    @IBOutlet var tabviewBar: ButtonBarView!
     let purpleInspireColor = UIColor(red:1/255.0, green:142/255.0, blue:77/255.0, alpha:1.0)
     //
     //class ShopViewController: UIViewController {
     var Pages = [UIViewController]()
     
     var adress_variable = "test"
-    var shop_name = "test"
+    var shop_name = ""
     
     override func viewDidLoad() {
         
@@ -59,6 +61,9 @@ class ShopViewController: ButtonBarPagerTabStripViewController {
         
         SearchField.addTarget(self, action: #selector(enterPressed), for: .editingDidEndOnExit)
         //SearchField.clearsOnBeginEditing = true
+        getProductCategories()
+        print(self.view_titles)
+
     }
     
     func enterPressed(){
@@ -76,6 +81,7 @@ class ShopViewController: ButtonBarPagerTabStripViewController {
         }
         
     }
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -102,8 +108,23 @@ class ShopViewController: ButtonBarPagerTabStripViewController {
         }
     }
     
+    
+    func getProductCategories(){
+        var ref: DatabaseReference!
+        ref = Database.database().reference()
+        ref.child(shop_name).observe(.value, with: { (snapshot: DataSnapshot) in
+            if let productCategories = snapshot.childSnapshot(forPath: "Products").children.allObjects as? [DataSnapshot]{
+                for productCategory in productCategories{
+                    self.view_titles.append(productCategory.key)
+                }
+            }
+//            self.tabviewBar.reloadData()
+        })
+    }
+    
+    
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
-        
+   
         self.Pages.append(UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "child1"))
         
         self.Pages.append(UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "child1"))
@@ -127,8 +148,8 @@ class ShopViewController: ButtonBarPagerTabStripViewController {
         }
         for var i in (0..<pages_size){
             Pages_ChildController[i].View_title(Title: "\(i)", Shop: shop_name)
+
         }
-        
     }
     
     

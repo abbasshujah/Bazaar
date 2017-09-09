@@ -31,7 +31,7 @@ class ChildViewController1: UIViewController, UICollectionViewDelegate, UICollec
     
     @IBOutlet weak var ShopItemCollectionView: UICollectionView!
     
-    var View_title = "saklskdfskjd"
+    var View_title = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -49,7 +49,7 @@ class ChildViewController1: UIViewController, UICollectionViewDelegate, UICollec
         
         ShopItemCollectionView.collectionViewLayout = Layout
         loadImages()
-        print("we are in child view \(shop_name)")
+//        print("we are in child view \(shop_name)")
     }
     
     override func didReceiveMemoryWarning() {
@@ -95,19 +95,20 @@ class ChildViewController1: UIViewController, UICollectionViewDelegate, UICollec
         ref = Database.database().reference()
         
         ref.child(shop_name).observe(.value, with: { (snapshot: DataSnapshot) in
-            
+//            print(self.View_title)
             if let productCategories = snapshot.childSnapshot(forPath: "Products").children.allObjects as? [DataSnapshot]{
                 self.product_img_url = []
                 self.product_name = []
                 self.product_price = []
                 for productCategory in productCategories{
-                    //                     print("................")
+                    
+//                    print("................")
                     if let products = productCategory.children.allObjects as? [DataSnapshot]{
                         for product in products{
                             //                            print(product.key)
                             if let productDict = product.value as? Dictionary<String,AnyObject> {
-                                //                                print(productDict["productName"] as! String)
-                                //                                print(".................................")
+                                //print(productDict["productName"] as! String)
+                                //print(".................................")
                             }
                         }
                     }

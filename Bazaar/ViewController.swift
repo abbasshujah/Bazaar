@@ -10,6 +10,7 @@ import Alamofire
 import Firebase
 
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+    
     @IBOutlet weak var SearchField: UITextField!
     
     @IBOutlet weak var SliderMenu: UIView!
@@ -34,6 +35,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     var store_location = [String]()
     
     var store_clicked = ""
+    
+    var view_titles = [String]()
     
     var image = ["pinks", "TimHortons", "TimHortons", "Balilque", "TimHortons", "TimHortons", "Balilque", "Balilque", "Balilque", "TimHortons"]
     
@@ -174,16 +177,35 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         if segue.identifier == "Test"{
             let index = sender as! NSIndexPath
             let shopVC = segue.destination as! ShopViewController
-            //            shopVC.adress_variable = location[index.item]
+            //  shopVC.adress_variable = location[index.item]
             shopVC.shop_name = store_name[index.item]
-            store_clicked = store_name[index.item]
+//            store_clicked = store_name[index.item]
+//            shopVC.view_titles = self.view_titles
             
         }
         if segue.identifier == "ItemSearchedFromMain"{
+            
             let shopVC = segue.destination as! ItemSearchedViewController
             shopVC.Back_button_tag = "BackToMainFromItemSearch"
         }
     }
+    
+//    TODO: Get product categories
+//    func getProductCategories() {
+//        var ref: DatabaseReference!
+//        ref = Database.database().reference()
+//        
+//        ref.child(shop_name).observe(.value, with: { (snapshot: DataSnapshot) in
+//            if let productCategories = snapshot.childSnapshot(forPath: "Products").children.allObjects as? [DataSnapshot]{
+//                for productCategory in productCategories{
+//                    self.view_titles.append(productCategory.key)
+//                }
+//            }
+//            self.ShopItemCollectionView.reloadData()
+//        })
+//        
+//        
+//    }
     
     func loadImages(){
         // TODO: Get image urls from firebase
@@ -193,19 +215,13 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         ref.observe(.value, with: { (snapshot: DataSnapshot) in
             
-            
             if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
                 
-                //                print(snapshots)
+                // print(snapshots)
                 self.image_url = []
                 self.store_name = []
                 self.store_location = []
                 for snap in snapshots{
-                    //print("SNAP:\(snap)")
-                    //                    if let storeDict = snap.value as? Dictionary<String,AnyObject>{
-                    ////                        print(snap.value)
-                    //                        self.store_names.append(snap.key)
-                    //                    }
                     
                     self.image_url.append(snap.childSnapshot(forPath: "StoreImage").value as! String)
                     self.store_name.append(snap.childSnapshot(forPath: "StoreName").value as! String)
@@ -217,6 +233,22 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         })
         
     }
+//    
+//    func getProductCategories(Name: String) {
+//        var ref: DatabaseReference!
+//        ref = Database.database().reference()
+//        
+//        ref.child(Name).observe(.value, with: { (snapshot: DataSnapshot) in
+//            if let productCategories = snapshot.childSnapshot(forPath: "Products").children.allObjects as? [DataSnapshot]{
+//                for productCategory in productCategories{
+////                    print(productCategory.key)
+//                    self.view_titles.append(productCategory.key)
+//                }
+//            }
+//            
+//        })
+//        self.ShopCollectionView.reloadData()
+//    }
     
     @IBAction func OpenAccountMenu(_ sender: Any) {
         
