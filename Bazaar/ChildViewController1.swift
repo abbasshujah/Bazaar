@@ -49,7 +49,7 @@ class ChildViewController1: UIViewController, UICollectionViewDelegate, UICollec
         
         ShopItemCollectionView.collectionViewLayout = Layout
         loadImages()
-        print("we are in child view \(shop_name)")
+//        print("we are in child view \(shop_name)")
     }
     
     override func didReceiveMemoryWarning() {
