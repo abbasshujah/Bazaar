@@ -144,7 +144,7 @@ class ShopViewController: ButtonBarPagerTabStripViewController {
 //    
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
         
-        print(self.view_titles.count)
+//        print(self.view_titles.count)
         
         
 //        for var i in (0..<self.view_titles.count){

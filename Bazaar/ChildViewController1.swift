@@ -31,7 +31,8 @@ class ChildViewController1: UIViewController, UICollectionViewDelegate, UICollec
     
     @IBOutlet weak var ShopItemCollectionView: UICollectionView!
     
-    var View_title = "saklskdfskjd"
+    var View_title = "test"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -48,7 +49,10 @@ class ChildViewController1: UIViewController, UICollectionViewDelegate, UICollec
         Layout.minimumLineSpacing = 6
         
         ShopItemCollectionView.collectionViewLayout = Layout
-        loadImages()
+        loadProducts()
+        
+//        print(self.product_name)
+        
 //        print("we are in child view \(shop_name)")
     }
     
@@ -70,14 +74,38 @@ class ChildViewController1: UIViewController, UICollectionViewDelegate, UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return image.count
+//        print(self.product_img_url)
+        return self.product_name.count
+//        return image.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShopItemCell", for: indexPath) as? ShopItemCollectionViewCell{
-            cell.ShopProductImage.image = UIImage(named: image[indexPath.row])
-            cell.ShopProductPrice.text = name[indexPath.row]
-            cell.ShopProductDiscription.text = location[indexPath.row]
+            
+            let img_url = URL(string: self.product_img_url[indexPath.row])
+            URLSession.shared.dataTask(with: img_url!) { (data, response, error) in
+                
+                //              TODO: Load up images and dont store in cache
+                if error != nil {
+                    print("Failed fetching image:", error)
+                    return
+                }
+                guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+                    print("Not a proper HTTPURLResponse or statusCode")
+                    return
+                }
+                
+                DispatchQueue.main.async {
+                    cell.ShopProductImage.image = UIImage(data: data!)
+                }
+                }.resume()
+            
+            
+//            cell.ShopProductImage.image = UIImage(named: image[indexPath.row])
+            cell.ShopProductPrice.text = self.product_price[indexPath.row]
+            cell.ShopProductDiscription.text = self.product_name[indexPath.row]
+//            cell.ShopProductPrice.text = name[indexPath.row]
+//            cell.ShopProductDiscription.text = location[indexPath.row]
             return cell
         } else {
             return ShopItemCollectionViewCell()
@@ -88,38 +116,29 @@ class ChildViewController1: UIViewController, UICollectionViewDelegate, UICollec
         performSegue(withIdentifier:"ShopItemDetails", sender: indexPath)
     }
     
-    func loadImages(){
+    func loadProducts(){
         // TODO: Get image urls from firebase
         
         var ref: DatabaseReference!
         ref = Database.database().reference()
         
-        ref.child(shop_name).observe(.value, with: { (snapshot: DataSnapshot) in
+        ref.child(shop_name).child("Products").child(View_title).observe(.value, with: { (snapshot: DataSnapshot) in
+            self.product_name = []
+            self.product_price = []
+            self.product_img_url = []
             
-            if let productCategories = snapshot.childSnapshot(forPath: "Products").children.allObjects as? [DataSnapshot]{
-                self.product_img_url = []
-                self.product_name = []
-                self.product_price = []
-                for productCategory in productCategories{
-                    //                     print("................")
-                    if let products = productCategory.children.allObjects as? [DataSnapshot]{
-                        for product in products{
-                            //                            print(product.key)
-                            if let productDict = product.value as? Dictionary<String,AnyObject> {
-                                //                                print(productDict["productName"] as! String)
-                                //                                print(".................................")
-                            }
-                        }
-                    }
-                    //                            print(product.value)
-                    //                            if let productDict = product.value as? Dictionary<String,AnyObject> {
-                    //                                    print("1111")
-                    //                            }
-                    
+            if let products = snapshot.children.allObjects as? [DataSnapshot]{
+                
+                for product in products{
+                    self.product_name.append(product.childSnapshot(forPath: "productName").value as! String)
+                    self.product_price.append(product.childSnapshot(forPath: "price").value as! String)
+                    self.product_img_url.append(product.childSnapshot(forPath: "productImage").value as! String)
                 }
             }
+            
             self.ShopItemCollectionView.reloadData()
         })
+
         
     }
     
