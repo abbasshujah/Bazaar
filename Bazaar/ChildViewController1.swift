@@ -71,18 +71,17 @@ class ChildViewController1: UIViewController, UICollectionViewDelegate, UICollec
         
         performSegue(withIdentifier:"ShopItemDetails", sender: indexPath)
         
-    }/*
+    }
     
     
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "Test"{
-            let index = sender as! NSIndexPath
-            let shopVC = segue.destination as! ShopViewController
-            shopVC.adress_variable = location[index.item]
-            shopVC.shop_name = name[index.item]
-        }
-    }*/
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "ShopItemDetails"{
+//            let index = sender as! NSIndexPath
+//            let itemVC = segue.destination as! ShopItemViewController
+//            itemVC.product_name = location[index.item]
+//            shopVC.shop_name = name[index.item]
+//        }
+//    }
 
     
 }

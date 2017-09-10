@@ -16,6 +16,12 @@ class ShopItemViewController: UIViewController {
     
     @IBOutlet weak var Address: UILabel!
 
+    var shop_location = ""
+    var product_name = ""
+    var product_img_url = ""
+    var product_price = ""
+    var shop_name = ""
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
