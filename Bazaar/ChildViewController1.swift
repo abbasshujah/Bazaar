@@ -21,6 +21,8 @@ class ChildViewController1: UIViewController, UICollectionViewDelegate, UICollec
     
     var shop_name = ""
     
+    var shop_location = ""
+    
     var product_category = [String]()
     
     var image = ["pinks", "religion 5", "relgion 7", "religion 5", "relgion 7", "religion 5", "relgion 7", "rlgion 7", "relgion 7", "relgion 7"]
@@ -83,7 +85,7 @@ class ChildViewController1: UIViewController, UICollectionViewDelegate, UICollec
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShopItemCell", for: indexPath) as? ShopItemCollectionViewCell{
             
             let img_url = URL(string: self.product_img_url[indexPath.row])
-            URLSession.shared.dataTask(with: img_url!) { (data, response, error) in
+            URLSession.shared.dataTask(with: (img_url!)) { (data, response, error) in
                 
                 //              TODO: Load up images and dont store in cache
                 if error != nil {
@@ -142,15 +144,19 @@ class ChildViewController1: UIViewController, UICollectionViewDelegate, UICollec
         
     }
     
-    /*
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     if segue.identifier == "Test"{
-     let index = sender as! NSIndexPath
-     let shopVC = segue.destination as! ShopViewController
-     shopVC.adress_variable = location[index.item]
-     shopVC.shop_name = name[index.item]
-     }
-     }*/
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShopItemDetails"{
+            let index = sender as! NSIndexPath
+            let itemVC = segue.destination as! ShopItemViewController
+            itemVC.item_name = self.product_name[index.item]
+//            itemVC.item_price = self.product_price[index.item]
+            itemVC.item_img_url = self.product_img_url[index.item]
+//            print(shop_location)
+//            itemVC.shop_address = self.shop_location
+//            itemVC.shop_name = self.shop_name
+        }
+    }
+    
     
     
 }

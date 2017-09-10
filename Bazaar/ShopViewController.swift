@@ -24,6 +24,7 @@ class ShopViewController: ButtonBarPagerTabStripViewController {
     
     var adress_variable = "test"
     var shop_name = ""
+    var shop_location = ""
     var ref: DatabaseReference!
     var databaseHandle: DatabaseHandle?
     
@@ -144,19 +145,12 @@ class ShopViewController: ButtonBarPagerTabStripViewController {
 //    
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
         
-//        print(self.view_titles.count)
-        
-        
-//        for var i in (0..<self.view_titles.count){
-//            self.Pages.append(UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "child1"))
-//        }
-        
         
         if(self.view_titles.count != 0){
             
             Pages = [] // making the array to start from 0 all the time
             
-            for var i in (0..<self.view_titles.count){
+            for i in (0..<self.view_titles.count){
                 self.Pages.append(UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "child1"))
             }
             
@@ -171,12 +165,12 @@ class ShopViewController: ButtonBarPagerTabStripViewController {
     
     
     func Set_viewNames(pages: [UIViewController]){
-        let pages_size = pages.count
+
         var Pages_ChildController = [ChildViewController1]()
-        for var i in (0..<self.view_titles.count){
+        for i in (0..<self.view_titles.count){
             Pages_ChildController.append((pages[i] as? ChildViewController1)!)
         }
-        for var i in (0..<self.view_titles.count){
+        for i in (0..<self.view_titles.count){
             Pages_ChildController[i].View_title(Title: "\(self.view_titles[i])", Shop: shop_name)
         }
         

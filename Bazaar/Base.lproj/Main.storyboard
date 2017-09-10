@@ -478,7 +478,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="173" height="254"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uDN-Oo-QyX">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uDN-Oo-QyX">
                                                     <rect key="frame" x="0.0" y="0.0" width="173" height="173"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="uDN-Oo-QyX" secondAttribute="height" multiplier="1:1" id="cHk-i9-8Ke"/>
@@ -544,7 +544,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vf0-VP-Nie" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="893.60000000000002" y="930.58470764617698"/>
+            <point key="canvasLocation" x="874" y="931"/>
         </scene>
         <!--Shop Item View Controller-->
         <scene sceneID="cg7-wa-Eru">
@@ -594,7 +594,7 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cf2-NN-5xK">
                                 <rect key="frame" x="0.0" y="74" width="375" height="593"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5al-y5-bHh">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5al-y5-bHh">
                                         <rect key="frame" x="10" y="12" width="354" height="354"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="5al-y5-bHh" secondAttribute="height" multiplier="1:1" id="h0c-59-YoP"/>
@@ -670,9 +670,12 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="Address" destination="zEg-Fy-lDg" id="gdL-Ym-pgu"/>
-                        <outlet property="Name" destination="o1Q-jR-3nn" id="Hox-lh-LxS"/>
+                        <outlet property="Address" destination="zEg-Fy-lDg" id="8LN-K5-Q5m"/>
+                        <outlet property="Name" destination="o1Q-jR-3nn" id="f0O-FW-5bz"/>
                         <outlet property="TopBar" destination="XD5-O0-6oM" id="FCS-hK-sFa"/>
+                        <outlet property="item_price" destination="Wlp-nf-zCH" id="BlR-P9-hbS"/>
+                        <outlet property="price" destination="Wlp-nf-zCH" id="1v5-aQ-T0I"/>
+                        <outlet property="productImageView" destination="5al-y5-bHh" id="WIG-s2-lR2"/>
                         <segue destination="OQ3-NB-tj2" kind="show" identifier="GoBackToShop" id="bqO-Le-SNw"/>
                     </connections>
                 </viewController>
@@ -797,8 +800,8 @@
         <image name="search" width="16" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="CoJ-OM-TJF"/>
-        <segue reference="zDT-ki-hsJ"/>
         <segue reference="xHM-rI-YID"/>
+        <segue reference="bqO-Le-SNw"/>
+        <segue reference="zDT-ki-hsJ"/>
     </inferredMetricsTieBreakers>
 </document>
