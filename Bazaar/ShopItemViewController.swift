@@ -20,6 +20,7 @@ class ShopItemViewController: UIViewController {
 
     var product_img_url = ""
     var product_name = ""
+    @IBOutlet weak var Shop_Name: UILabel!
     var product_price = ""
     var shop_location = ""
     var shop_name = ""
@@ -33,13 +34,14 @@ class ShopItemViewController: UIViewController {
         TopBar.layer.shadowOpacity = 0.45
         
 //        Loading up the info on the view
-        Address.text = shop_name
+        Address.text = shop_location
         Address.numberOfLines = 0
         Address.sizeToFit()
         Name.text = product_name
         Name.numberOfLines = 0
         Name.sizeToFit()
         Price.text = product_price
+        Shop_Name.text = shop_name
         loadProductImage()
 
 
