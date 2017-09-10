@@ -176,7 +176,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             let shopVC = segue.destination as! ShopViewController
             //            shopVC.adress_variable = location[index.item]
             shopVC.shop_name = store_name[index.item]
-            store_clicked = store_name[index.item]
+            shopVC.shop_location = store_location[index.item]
             
         }
         if segue.identifier == "ItemSearchedFromMain"{

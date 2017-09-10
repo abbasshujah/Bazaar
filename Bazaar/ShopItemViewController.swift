@@ -13,9 +13,17 @@ class ShopItemViewController: UIViewController {
     @IBOutlet weak var TopBar: UIView!
     
     @IBOutlet weak var Name: UILabel!
+    @IBOutlet weak var productImageView: UIImageView!
     
     @IBOutlet weak var Address: UILabel!
+    @IBOutlet weak var Price: UILabel!
 
+    var product_img_url = ""
+    var product_name = ""
+    var product_price = ""
+    var shop_location = ""
+    var shop_name = ""
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -24,15 +32,38 @@ class ShopItemViewController: UIViewController {
         TopBar.layer.shadowRadius = 1.2
         TopBar.layer.shadowOpacity = 0.45
         
-        Address.text = "ajhsghjdad hjagjdhash jbdasbjbashb dasdjsbjdbj hsdbjh sbdfjhbsd fhsdfbsdh"
-        Name.text = "skhf jksdnfknjksd jksjkfnjksbnbvbvnbvbnvbvbnvbvbnvvvvvvvvvvv ggggggggg ggghhhhhhhhhggg  ggggggggggggd kjnsjf kjnsd jknsjndfjk jsnjkfnjsdn jsnfnsk"
+//        Loading up the info on the view
+        Address.text = shop_name
         Address.numberOfLines = 0
         Address.sizeToFit()
+        Name.text = product_name
         Name.numberOfLines = 0
         Name.sizeToFit()
+        Price.text = product_price
+        loadProductImage()
 
 
         // Do any additional setup after loading the view.
+    }
+    
+    func loadProductImage() {
+        let url = URL(string: self.product_img_url)
+        URLSession.shared.dataTask(with: url!) { (data, response, error) in
+    
+//              TODO: Load up images and dont store in cache
+            if error != nil {
+                print("Failed fetching image:", error)
+                return
+            }
+            guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+                print("Not a proper HTTPURLResponse or statusCode")
+                return
+            }
+    
+            DispatchQueue.main.async {
+                self.productImageView.image = UIImage(data: data!)
+            }
+        }.resume()
     }
 
     override func didReceiveMemoryWarning() {

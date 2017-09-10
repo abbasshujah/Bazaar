@@ -24,6 +24,7 @@ class ShopViewController: ButtonBarPagerTabStripViewController {
     
     var adress_variable = "test"
     var shop_name = ""
+    var shop_location = ""
     var ref: DatabaseReference!
     var databaseHandle: DatabaseHandle?
     
