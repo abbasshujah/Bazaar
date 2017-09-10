@@ -16,10 +16,10 @@ class ShopItemViewController: UIViewController {
     
     @IBOutlet weak var Address: UILabel!
 
-    var shop_location = ""
-    var product_name = ""
     var product_img_url = ""
+    var product_name = ""
     var product_price = ""
+    var shop_location = ""
     var shop_name = ""
     
     override func viewDidLoad() {
@@ -30,8 +30,8 @@ class ShopItemViewController: UIViewController {
         TopBar.layer.shadowRadius = 1.2
         TopBar.layer.shadowOpacity = 0.45
         
-        Address.text = "ajhsghjdad hjagjdhash jbdasbjbashb dasdjsbjdbj hsdbjh sbdfjhbsd fhsdfbsdh"
-        Name.text = "skhf jksdnfknjksd jksjkfnjksbnbvbvnbvbnvbvbnvbvbnvvvvvvvvvvv ggggggggg ggghhhhhhhhhggg  ggggggggggggd kjnsjf kjnsd jknsjndfjk jsnjkfnjsdn jsnfnsk"
+        Address.text = product_price
+        Name.text = product_name
         Address.numberOfLines = 0
         Address.sizeToFit()
         Name.numberOfLines = 0

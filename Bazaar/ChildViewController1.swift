@@ -21,6 +21,8 @@ class ChildViewController1: UIViewController, UICollectionViewDelegate, UICollec
     
     var shop_name = ""
     
+    var shop_location = ""
+    
     var product_category = [String]()
     
     var image = ["pinks", "religion 5", "relgion 7", "religion 5", "relgion 7", "religion 5", "relgion 7", "rlgion 7", "relgion 7", "relgion 7"]
@@ -144,16 +146,17 @@ class ChildViewController1: UIViewController, UICollectionViewDelegate, UICollec
         
     }
 
-    
-    /*
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     if segue.identifier == "Test"{
-     let index = sender as! NSIndexPath
-     let shopVC = segue.destination as! ShopViewController
-     shopVC.adress_variable = location[index.item]
-     shopVC.shop_name = name[index.item]
+        if segue.identifier == "ShopItemDetails"{
+            let index = sender as! NSIndexPath
+            let itemVC = segue.destination as! ShopItemViewController
+            itemVC.product_img_url = self.product_img_url[index.item]
+            itemVC.product_name = self.product_name[index.item]
+            itemVC.product_price = self.product_price[index.item]
+//            itemVC.shop_location = shop_location
+//            itemVC.shop_name = shop_name
+        }
      }
-     }*/
     
 
     
