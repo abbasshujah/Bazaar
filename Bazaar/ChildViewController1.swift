@@ -64,9 +64,10 @@ class ChildViewController1: UIViewController, UICollectionViewDelegate, UICollec
     }
     
     
-    func View_title(Title: String, Shop: String){
+    func View_title(Title: String, Shop: String, Shop_location: String){
         View_title = Title
         shop_name = Shop
+        shop_location = Shop_location
     }
     
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {

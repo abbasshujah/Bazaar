@@ -172,13 +172,13 @@ class ShopViewController: ButtonBarPagerTabStripViewController {
     
     
     func Set_viewNames(pages: [UIViewController]){
-        let pages_size = pages.count
+//        let pages_size = pages.count
         var Pages_ChildController = [ChildViewController1]()
         for var i in (0..<self.view_titles.count){
             Pages_ChildController.append((pages[i] as? ChildViewController1)!)
         }
         for var i in (0..<self.view_titles.count){
-            Pages_ChildController[i].View_title(Title: "\(self.view_titles[i])", Shop: shop_name)
+            Pages_ChildController[i].View_title(Title: "\(self.view_titles[i])", Shop: shop_name, Shop_location: shop_location)
         }
         
     }
