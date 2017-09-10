@@ -153,8 +153,8 @@ class ChildViewController1: UIViewController, UICollectionViewDelegate, UICollec
             itemVC.product_img_url = self.product_img_url[index.item]
             itemVC.product_name = self.product_name[index.item]
             itemVC.product_price = self.product_price[index.item]
-//            itemVC.shop_location = shop_location
-//            itemVC.shop_name = shop_name
+            itemVC.shop_location = shop_location
+            itemVC.shop_name = shop_name
         }
      }
     
