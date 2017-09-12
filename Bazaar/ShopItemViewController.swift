@@ -77,6 +77,14 @@ class ShopItemViewController: UIViewController {
         performSegue(withIdentifier: "GoBackToShop", sender: self)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "GoBackToShop"{
+            let itemVC = segue.destination as! ShopViewController
+            itemVC.shop_location = shop_location
+            itemVC.shop_name = shop_name
+        }
+    }
+    
 
     /*
     // MARK: - Navigation
