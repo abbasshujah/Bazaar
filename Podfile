@@ -12,4 +12,5 @@ target 'Bazaar' do
   pod 'Firebase/Database'
   pod 'Alamofire', '~> 4.4'
   pod 'Fuse'
+  pod 'StringScore_Swift', '~> 0.1'
 end
