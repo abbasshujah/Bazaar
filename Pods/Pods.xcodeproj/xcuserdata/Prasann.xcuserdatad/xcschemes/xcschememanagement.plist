@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Fuse.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>GoogleToolboxForMac.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -47,37 +52,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>107A9565F9DF88517DFD3E28C05B2B96</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>266AE1506DAD13D34C0725E909C0C476</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4363DA9F49516E4CD38147568AEF0680</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>65C5526D7D1D361FDFB5550E60D650AC</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>6B6D3C7D1A430A9DB5B4BADC83DAE8D1</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>72CBE4BB0C41F9590B51F02EC76DB200</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>85C3177FF089113B9C47EA26E609130E</key>
+		<key>6E578FA75506E04E73E643784A7D8718</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -87,12 +67,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B391C9D5D1415C6B642C080ECA239135</key>
+		<key>9BEE7F26F1B893DD3E609907FCD316B1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C052BEBFBD0AB5218CC64BA3450F6547</key>
+		<key>B8CD3B3EDB42EEABB2D487F8706AF6BB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C4A118B63BAE42BA411AA1D44F369D54</key>
 		<dict>
 			<key>primary</key>
 			<true/>
