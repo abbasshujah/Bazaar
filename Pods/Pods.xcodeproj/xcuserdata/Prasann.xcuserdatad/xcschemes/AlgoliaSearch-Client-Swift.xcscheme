@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '6AE5B9C2C15AF26D1C60F80295643986'
-               BlueprintName = 'StringScore_Swift'
+               BlueprintIdentifier = 'E46A1A8953FD354E7293E8870F4B06DB'
+               BlueprintName = 'AlgoliaSearch-Client-Swift'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'StringScore_Swift.framework'>
+               BuildableName = 'AlgoliaSearch-Client-Swift.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

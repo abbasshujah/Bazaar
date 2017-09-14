@@ -6,8 +6,9 @@
 //  Copyright © 2017 Syed Abbas. All rights reserved.
 //
 import UIKit
-import Alamofire
 import Firebase
+import Alamofire
+import Fuse
 
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     @IBOutlet weak var SearchField: UITextField!

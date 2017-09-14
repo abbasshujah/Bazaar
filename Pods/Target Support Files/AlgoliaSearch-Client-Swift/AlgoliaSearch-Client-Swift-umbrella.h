@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double StringScore_SwiftVersionNumber;
-FOUNDATION_EXPORT const unsigned char StringScore_SwiftVersionString[];
+FOUNDATION_EXPORT double AlgoliaSearchVersionNumber;
+FOUNDATION_EXPORT const unsigned char AlgoliaSearchVersionString[];
 
