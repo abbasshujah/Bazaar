@@ -7,8 +7,8 @@
 //
 import UIKit
 import Firebase
-import Alamofire
-import Fuse
+//import Alamofire
+//import Fuse
 
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     @IBOutlet weak var SearchField: UITextField!
@@ -26,7 +26,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     static var imageCache = NSCache<AnyObject, AnyObject>()
     
     // Create request so we can cancel it when its not on screen
-    var request: Request?
+//    var request: Request?
     
     var image_url = [String]()
     
@@ -41,6 +41,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     var location = ["pinks", "religion 5", "relgion 7", "religion 5", "relgion 7", "religion 5", "relgion 7", "rlgion 7", "relgion 7", "relgion 7"]
     
     var name = ["pinks", "religion 5", "relgion 7", "religion 5", "relgion 7", "religion 5", "relgion 7", "rlgion 7", "relgion 7", "relgion 7"]
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -107,11 +108,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Shop_cell", for: indexPath) as? ShopCollectionViewCell{
             
-            var img: UIImage?
+//            var img: UIImage?
             let url = URL(string: self.image_url[indexPath.row])
             
             //            TODO: Load up images and store it in cache
-            img = ViewController.imageCache.object(forKey: url as AnyObject) as? UIImage
+//            img = ViewController.imageCache.object(forKey: url as AnyObject) as? UIImage
             
             URLSession.shared.dataTask(with: url!) { (data, response, error) in
                 

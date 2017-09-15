@@ -13,4 +13,5 @@ target 'Bazaar' do
   pod 'Alamofire', '~> 4.4'
   pod 'Fuse', '~> 1.1'
   pod 'AlgoliaSearch-Client-Swift', '~> 4.0'
+  pod 'InstantSearch-iOS', '~> 1.0.0'
 end

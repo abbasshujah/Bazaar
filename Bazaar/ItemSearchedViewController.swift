@@ -7,11 +7,12 @@
 //
 
 import UIKit
+import Firebase
+import AlgoliaSearch
 
 class ItemSearchedViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
     var Back_button_tag: String = ""
-    
     
     @IBOutlet weak var SearchedItemsView: UICollectionView!
     
@@ -46,7 +47,8 @@ class ItemSearchedViewController: UIViewController, UICollectionViewDelegate, UI
         Layout.minimumLineSpacing = 6
         
         SearchedItemsView.collectionViewLayout = Layout
-
+     
+    
         // Do any additional setup after loading the view.
     }
 
@@ -55,6 +57,7 @@ class ItemSearchedViewController: UIViewController, UICollectionViewDelegate, UI
         // Dispose of any resources that can be recreated.
     }
     
+
     @IBAction func BackButton(_ sender: Any) {
         performSegue(withIdentifier: self.Back_button_tag, sender: self)
     }

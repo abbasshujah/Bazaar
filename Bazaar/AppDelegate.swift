@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import InstantSearch
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,6 +19,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
+        //Client(appID: "HGQJBEYFM1", apiKey: "2d8d1f6517b669bd4ea3931f8bed2ce1")
+        InstantSearch.shared.configure(appID: "HGQJBEYFM1", apiKey: "2d8d1f6517b669bd4ea3931f8bed2ce1", index: "Products")
+        InstantSearch.shared.params.attributesToRetrieve = ["name", "salePrice"]
+        InstantSearch.shared.params.attributesToHighlight = ["name"]
         return true
     }
 
