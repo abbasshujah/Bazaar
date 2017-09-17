@@ -7,6 +7,7 @@
 //
 import UIKit
 import Firebase
+import InstantSearch
 //import Alamofire
 //import Fuse
 
@@ -36,11 +37,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     var store_clicked = ""
     
-    var image = ["pinks", "TimHortons", "TimHortons", "Balilque", "TimHortons", "TimHortons", "Balilque", "Balilque", "Balilque", "TimHortons"]
-    
-    var location = ["pinks", "religion 5", "relgion 7", "religion 5", "relgion 7", "religion 5", "relgion 7", "rlgion 7", "relgion 7", "relgion 7"]
-    
-    var name = ["pinks", "religion 5", "relgion 7", "religion 5", "relgion 7", "religion 5", "relgion 7", "rlgion 7", "relgion 7", "relgion 7"]
+//    var image = ["pinks", "TimHortons", "TimHortons", "Balilque", "TimHortons", "TimHortons", "Balilque", "Balilque", "Balilque", "TimHortons"]
+//    
+//    var location = ["pinks", "religion 5", "relgion 7", "religion 5", "relgion 7", "religion 5", "relgion 7", "rlgion 7", "relgion 7", "relgion 7"]
+//    
+//    var name = ["pinks", "religion 5", "relgion 7", "religion 5", "relgion 7", "religion 5", "relgion 7", "rlgion 7", "relgion 7", "relgion 7"]
     
     
     override func viewDidLoad() {
@@ -70,6 +71,10 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         SliderMenu.layer.shadowOpacity = 10
         SliderMenu.layer.shadowRadius = 20
+        
+//       We’re telling InstantSearch to inspect all the subviews in the ViewController's view
+        InstantSearch.shared.registerAllWidgets(in: self.view)
+        
         loadImages()
         
         SearchField.addTarget(self, action: #selector(enterPressed), for: .editingDidEndOnExit)

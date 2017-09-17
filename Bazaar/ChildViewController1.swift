@@ -33,6 +33,8 @@ class ChildViewController1: UIViewController, UICollectionViewDelegate, UICollec
     
     @IBOutlet weak var ShopItemCollectionView: UICollectionView!
     
+    static let placeholder = UIImage(named: "placeholder")
+    
     var View_title = "test"
     
     override func viewDidLoad() {
@@ -86,6 +88,11 @@ class ChildViewController1: UIViewController, UICollectionViewDelegate, UICollec
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShopItemCell", for: indexPath) as? ShopItemCollectionViewCell{
             
             let img_url = URL(string: self.product_img_url[indexPath.row])
+//                cell.ShopProductImage.contentMode = .scaleAspectFit
+//            } else {
+//                    cell.ShopProductImage.image = ChildViewController1.placeholder
+//            }
+        
             URLSession.shared.dataTask(with: img_url!) { (data, response, error) in
                 
                 //              TODO: Load up images and dont store in cache
@@ -101,8 +108,9 @@ class ChildViewController1: UIViewController, UICollectionViewDelegate, UICollec
                 DispatchQueue.main.async {
                     cell.ShopProductImage.image = UIImage(data: data!)
                 }
-                }.resume()
+            }.resume()
             
+
             
 //            cell.ShopProductImage.image = UIImage(named: image[indexPath.row])
             cell.ShopProductPrice.text = self.product_price[indexPath.row]
