@@ -73,6 +73,9 @@ class ItemSearchedViewController: UIViewController, UICollectionViewDelegate, UI
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "fromSearchtoItemDetail", sender: self)
+    }
         
 
     /*

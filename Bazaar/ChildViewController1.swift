@@ -37,6 +37,7 @@ class ChildViewController1: UIViewController, UICollectionViewDelegate, UICollec
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // Do any additional setup after loading the view, typically from a nib.
         self.ShopItemCollectionView.delegate = self
         self.ShopItemCollectionView.dataSource = self
@@ -45,7 +46,7 @@ class ChildViewController1: UIViewController, UICollectionViewDelegate, UICollec
         
         let Layout = UICollectionViewFlowLayout()
         Layout.sectionInset = UIEdgeInsetsMake(6, 6, 6, 6)
-        Layout.itemSize = CGSize(width: shopItemSize, height: shopItemSize*125/100)
+        Layout.itemSize = CGSize(width: shopItemSize, height: shopItemSize*140/100)
         
         Layout.minimumInteritemSpacing = 4
         Layout.minimumLineSpacing = 6

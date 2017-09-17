@@ -8,8 +8,59 @@
 import UIKit
 import Alamofire
 import Firebase
+import CoreLocation
 
-class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, CLLocationManagerDelegate {
+    
+    //--------------------------------
+    
+    let Manage_location = CLLocationManager()
+    
+    var Current_Location: CLLocation = CLLocation(latitude: 100, longitude: 100)
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        Current_Location = locations[0]
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        locationAuthStatus()
+        Manage_location.delegate = self
+        Manage_location.startUpdatingLocation()
+        var adress_mcmaster = CLGeocoder().geocodeAddressString("16 Priscilla Lane, Hamilton, ON L8E 3K9") { (placemarks, error) in
+            guard
+                let placemarks = placemarks,
+                let location = placemarks.first?.location
+                else {
+                    // handle no location found
+                    return
+            }
+            
+            print("distance")
+            print("\(location.coordinate.latitude)")
+            print("\(location.coordinate.longitude)")
+            print("\(self.Current_Location.coordinate.latitude)")
+            print("\(self.Current_Location.coordinate.longitude)")
+            print("\(self.Current_Location.distance(from: location))")
+        }
+        if CLLocationManager.authorizationStatus() != .authorizedWhenInUse{
+            locationAuthStatus()
+        }
+    }
+    
+    func locationAuthStatus(){
+        if CLLocationManager.authorizationStatus() == .authorizedWhenInUse{
+            
+        }
+        else {
+            Manage_location.requestWhenInUseAuthorization()
+        }
+    }
+    
+    
+    
+    //-----------------------------------
+    
     @IBOutlet weak var SearchField: UITextField!
     
     @IBOutlet weak var SliderMenu: UIView!
@@ -43,6 +94,13 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //------------------------------------------------
+        //locationManager.delegate = self
+        //locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        //locationManager.startUpdatingLocation()
+        
+        //------------------------------------------------
+        
         TopBar.layer.shadowColor = UIColor(red:0/255.0, green:0/255.0, blue:0/255.0, alpha: 1.0).cgColor
         TopBar.layer.shadowOffset = CGSize(width: 0, height: 1.25)
         TopBar.layer.shadowRadius = 1.2
