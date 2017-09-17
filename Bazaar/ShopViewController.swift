@@ -30,6 +30,7 @@ class ShopViewController: ButtonBarPagerTabStripViewController {
     
     override func viewDidLoad() {
         
+        
         TopBar.layer.shadowColor = UIColor(red:0/255.0, green:0/255.0, blue:0/255.0, alpha: 1.0).cgColor
         TopBar.layer.shadowOffset = CGSize(width: 0, height: 1.25)
         TopBar.layer.shadowRadius = 1.2
