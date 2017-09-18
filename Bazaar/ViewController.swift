@@ -61,7 +61,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     //-----------------------------------
     
-    @IBOutlet weak var SearchField: UITextField!
+    //@IBOutlet weak var SearchField: UITextField!
     
     @IBOutlet weak var SliderMenu: UIView!
     
@@ -128,7 +128,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         SliderMenu.layer.shadowRadius = 20
         loadImages()
         
-        SearchField.addTarget(self, action: #selector(enterPressed), for: .editingDidEndOnExit)
+        //SearchField.addTarget(self, action: #selector(enterPressed), for: .editingDidEndOnExit)
         //SearchField.clearsOnBeginEditing = true
         
     }
@@ -137,8 +137,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     func enterPressed(){
         //do something with typed text if needed
-        print(SearchField.text ?? "")
-        SearchInput(Input: SearchField.text!)
+        //print(SearchField.text ?? "")
+        //SearchInput(Input: SearchField.text!)
         //SearchField.resignFirstResponder()
         
     }

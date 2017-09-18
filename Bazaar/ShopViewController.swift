@@ -69,7 +69,7 @@ class ShopViewController: ButtonBarPagerTabStripViewController {
         // Do any additional setup after loading the view.
         
         
-        SearchField.addTarget(self, action: #selector(enterPressed), for: .editingDidEndOnExit)
+        //SearchField.addTarget(self, action: #selector(enterPressed), for: .editingDidEndOnExit)
         //SearchField.clearsOnBeginEditing = true
         
         ref.child(shop_name).observeSingleEvent(of: .value, with: { (snapshot) in
@@ -92,8 +92,8 @@ class ShopViewController: ButtonBarPagerTabStripViewController {
     
     func enterPressed(){
         //do something with typed text if needed
-        print(SearchField.text ?? "")
-        SearchInput(Input: SearchField.text!)
+        //print(SearchField.text ?? "")
+        //SearchInput(Input: SearchField.text!)
         //SearchField.resignFirstResponder()
         
     }
