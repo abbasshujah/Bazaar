@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'C4A118B63BAE42BA411AA1D44F369D54'
-               BlueprintName = 'XLPagerTabStrip-XLPagerTabStrip'
+               BlueprintIdentifier = 'B8CD3B3EDB42EEABB2D487F8706AF6BB'
+               BlueprintName = 'Fuse'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'XLPagerTabStrip.bundle'>
+               BuildableName = 'Fuse.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

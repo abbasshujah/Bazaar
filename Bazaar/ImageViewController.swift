@@ -10,6 +10,8 @@ import UIKit
 import Firebase
 import Alamofire
 
+// This is a useless file and will remove it at the end before posting the app to the app store!!
+
 class ImageViewController: UIViewController {
     
     static var imageCache = NSCache<AnyObject, AnyObject>()
