@@ -23,6 +23,7 @@
 		7D4A0BCD1F5B67CE007E23FD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7D4A0BCC1F5B67CE007E23FD /* GoogleService-Info.plist */; };
 		7D6096E61F7491D0005A3701 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6096E51F7491D0005A3701 /* ItemCell.swift */; };
 		7D6096E81F749268005A3701 /* ItemTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6096E71F749268005A3701 /* ItemTableViewController.swift */; };
+		7D6096EA1F74C041005A3701 /* ItemCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6096E91F74C041005A3701 /* ItemCollectionViewController.swift */; };
 		7D7102C81F740D4E003922A4 /* ItemRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7102C71F740D4E003922A4 /* ItemRecord.swift */; };
 /* End PBXBuildFile section */
 
@@ -44,6 +45,7 @@
 		7D4A0BCC1F5B67CE007E23FD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7D6096E51F7491D0005A3701 /* ItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
 		7D6096E71F749268005A3701 /* ItemTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemTableViewController.swift; sourceTree = "<group>"; };
+		7D6096E91F74C041005A3701 /* ItemCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemCollectionViewController.swift; sourceTree = "<group>"; };
 		7D7102C71F740D4E003922A4 /* ItemRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemRecord.swift; sourceTree = "<group>"; };
 		B955C90BE439793E3FF6BBE8 /* Pods-Bazaar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bazaar.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bazaar/Pods-Bazaar.debug.xcconfig"; sourceTree = "<group>"; };
 		F933126B9CDE29727A9E5975 /* Pods-Bazaar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bazaar.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bazaar/Pods-Bazaar.release.xcconfig"; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 				7D7102C71F740D4E003922A4 /* ItemRecord.swift */,
 				7D6096E51F7491D0005A3701 /* ItemCell.swift */,
 				7D6096E71F749268005A3701 /* ItemTableViewController.swift */,
+				7D6096E91F74C041005A3701 /* ItemCollectionViewController.swift */,
 			);
 			path = Bazaar;
 			sourceTree = "<group>";
@@ -277,6 +280,7 @@
 				43945D981F44118E00BDE07E /* ViewController.swift in Sources */,
 				43945D961F44118E00BDE07E /* AppDelegate.swift in Sources */,
 				43945E7E1F5CE66700BDE07E /* ShopItemCollectionViewCell.swift in Sources */,
+				7D6096EA1F74C041005A3701 /* ItemCollectionViewController.swift in Sources */,
 				7D6096E81F749268005A3701 /* ItemTableViewController.swift in Sources */,
 				43945E801F5DE77900BDE07E /* ShopItemViewController.swift in Sources */,
 			);
