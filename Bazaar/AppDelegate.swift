@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     private let ALGOLIA_APP_ID = "HGQJBEYFM1"
-    private let ALGOLIA_INDEX_NAME = "Products"
+    private let ALGOLIA_INDEX_NAME = "products"
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
