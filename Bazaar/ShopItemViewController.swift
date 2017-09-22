@@ -49,23 +49,30 @@ class ShopItemViewController: UIViewController {
     }
     
     func loadProductImage() {
-        let url = URL(string: self.product_img_url)
-        URLSession.shared.dataTask(with: url!) { (data, response, error) in
-    
-//              TODO: Load up images and dont store in cache
-            if error != nil {
-                print("Failed fetching image:", error)
-                return
-            }
-            guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-                print("Not a proper HTTPURLResponse or statusCode")
-                return
-            }
-    
-            DispatchQueue.main.async {
-                self.productImageView.image = UIImage(data: data!)
-            }
-        }.resume()
+//        let url = URL(string: self.product_img_url)
+        
+        if let url = URL(string: self.product_img_url) {
+            self.productImageView.contentMode = .scaleAspectFit
+            self.productImageView.setImageWith(url, placeholderImage: ChildViewController1.placeholder)
+        } else {
+            self.productImageView.image = ChildViewController1.placeholder
+        }
+//        URLSession.shared.dataTask(with: url!) { (data, response, error) in
+//    
+////              TODO: Load up images and dont store in cache
+//            if error != nil {
+//                print("Failed fetching image:", error)
+//                return
+//            }
+//            guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+//                print("Not a proper HTTPURLResponse or statusCode")
+//                return
+//            }
+//    
+//            DispatchQueue.main.async {
+//                self.productImageView.image = UIImage(data: data!)
+//            }
+//        }.resume()
     }
 
     override func didReceiveMemoryWarning() {

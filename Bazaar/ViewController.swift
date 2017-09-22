@@ -86,11 +86,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     var store_clicked = ""
     
-    var image = ["pinks", "TimHortons", "TimHortons", "Balilque", "TimHortons", "TimHortons", "Balilque", "Balilque", "Balilque", "TimHortons"]
-    
-    var location = ["pinks", "religion 5", "relgion 7", "religion 5", "relgion 7", "religion 5", "relgion 7", "rlgion 7", "relgion 7", "relgion 7"]
-    
-    var name = ["pinks", "religion 5", "relgion 7", "religion 5", "relgion 7", "religion 5", "relgion 7", "rlgion 7", "relgion 7", "relgion 7"]
+//    var image = ["pinks", "TimHortons", "TimHortons", "Balilque", "TimHortons", "TimHortons", "Balilque", "Balilque", "Balilque", "TimHortons"]
+//    
+//    var location = ["pinks", "religion 5", "relgion 7", "religion 5", "relgion 7", "religion 5", "relgion 7", "rlgion 7", "relgion 7", "relgion 7"]
+//    
+//    var name = ["pinks", "religion 5", "relgion 7", "religion 5", "relgion 7", "religion 5", "relgion 7", "rlgion 7", "relgion 7", "relgion 7"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -126,6 +126,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         SliderMenu.layer.shadowOpacity = 10
         SliderMenu.layer.shadowRadius = 20
+        
+//        To load store data
         loadImages()
         
         SearchField.addTarget(self, action: #selector(enterPressed), for: .editingDidEndOnExit)
@@ -164,53 +166,36 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Shop_cell", for: indexPath) as? ShopCollectionViewCell{
             
-            var img: UIImage?
-            let url = URL(string: self.image_url[indexPath.row])
+//            var img: UIImage?
+//            let url = URL(string: self.image_url[indexPath.row])
             
             //            TODO: Load up images and store it in cache
-            img = ViewController.imageCache.object(forKey: url as AnyObject) as? UIImage
+//            img = ViewController.imageCache.object(forKey: url as AnyObject) as? UIImage
             
-            URLSession.shared.dataTask(with: url!) { (data, response, error) in
-                
-                //              TODO: Load up images and dont store in cache
-                if error != nil {
-                    print("Failed fetching image:", error)
-                    return
-                }
-                guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-                    print("Not a proper HTTPURLResponse or statusCode")
-                    return
-                }
-                
-                DispatchQueue.main.async {
-                    cell.Shop_image.image = UIImage(data: data!)
-                }
-                }.resume()
+            if let url = URL(string: self.image_url[indexPath.row]) {
+                cell.Shop_image.contentMode = .scaleAspectFit
+                cell.Shop_image.setImageWith(url, placeholderImage: ChildViewController1.placeholder)
+            } else {
+                cell.Shop_image.image = ChildViewController1.placeholder
+            }
             
-            //                if img != nil{
-            //                    print("hehe")
-            //                    cell.Shop_image.image = img
-            //                    } else{
-            //
-            //                    if error != nil {
-            //                        print("Failed fetching image:", error)
-            //                        return
-            //                    }
-            //
-            //                    guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-            //                        print("Not a proper HTTPURLResponse or statusCode")
-            //                        return
-            //                    }
-            //
-            //                    DispatchQueue.main.async {
-            //                        let img = UIImage(data: data!)
-            //                        cell.Shop_image.image = img
-            //                        ViewController.imageCache.setObject(img!, forKey: url! as AnyObject)
-            //                    }
-            //                }
-            //            }.resume()
-            
-            
+//            URLSession.shared.dataTask(with: url!) { (data, response, error) in
+//                
+//                //              TODO: Load up images and dont store in cache
+//                if error != nil {
+//                    print("Failed fetching image:", error)
+//                    return
+//                }
+//                guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+//                    print("Not a proper HTTPURLResponse or statusCode")
+//                    return
+//                }
+//                
+//                DispatchQueue.main.async {
+//                    cell.Shop_image.image = UIImage(data: data!)
+//                }
+//                }.resume()
+//            
             //            cell.Shop_image.image = UIImage(named: image[indexPath.row])
             
             cell.Shop_name.text = self.store_name[indexPath.row]
@@ -251,19 +236,16 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         ref.observe(.value, with: { (snapshot: DataSnapshot) in
             
-            
             if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
+//            print(snapshots)
                 
                 //                print(snapshots)
                 self.image_url = []
                 self.store_name = []
                 self.store_location = []
+                
                 for snap in snapshots{
                     //print("SNAP:\(snap)")
-                    //                    if let storeDict = snap.value as? Dictionary<String,AnyObject>{
-                    ////                        print(snap.value)
-                    //                        self.store_names.append(snap.key)
-                    //                    }
                     
                     self.image_url.append(snap.childSnapshot(forPath: "StoreImage").value as! String)
                     self.store_name.append(snap.childSnapshot(forPath: "StoreName").value as! String)

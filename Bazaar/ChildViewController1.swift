@@ -8,6 +8,8 @@
 import XLPagerTabStrip
 import UIKit
 import Firebase
+import AFNetworking
+
 
 class ChildViewController1: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, IndicatorInfoProvider {
     
@@ -30,6 +32,8 @@ class ChildViewController1: UIViewController, UICollectionViewDelegate, UICollec
     var location = ["pinks", "religion 5", "relgion 7", "religion 5", "relgion 7", "religion 5", "relgion 7", "rlgion 7", "relgion 7", "relgion 7"]
     
     var name = ["pinks", "religion 5", "relgion 7", "religion 5", "relgion 7", "religion 5", "relgion 7", "rlgion 7", "relgion 7", "relgion 7"]
+    
+    static let placeholder = UIImage(named: "placeholder")
     
     @IBOutlet weak var ShopItemCollectionView: UICollectionView!
     
@@ -87,22 +91,29 @@ class ChildViewController1: UIViewController, UICollectionViewDelegate, UICollec
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShopItemCell", for: indexPath) as? ShopItemCollectionViewCell{
             
             let img_url = URL(string: self.product_img_url[indexPath.row])
-            URLSession.shared.dataTask(with: img_url!) { (data, response, error) in
-                
-                //              TODO: Load up images and dont store in cache
-                if error != nil {
-                    print("Failed fetching image:", error)
-                    return
-                }
-                guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-                    print("Not a proper HTTPURLResponse or statusCode")
-                    return
-                }
-                
-                DispatchQueue.main.async {
-                    cell.ShopProductImage.image = UIImage(data: data!)
-                }
-                }.resume()
+            
+            if let url = img_url {
+                cell.ShopProductImage.contentMode = .scaleAspectFit
+                cell.ShopProductImage.setImageWith(url, placeholderImage: ChildViewController1.placeholder)
+            } else {
+                cell.ShopProductImage.image = ChildViewController1.placeholder
+            }
+//            URLSession.shared.dataTask(with: img_url!) { (data, response, error) in
+//                
+//                //              TODO: Load up images and dont store in cache
+//                if error != nil {
+//                    print("Failed fetching image:", error)
+//                    return
+//                }
+//                guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+//                    print("Not a proper HTTPURLResponse or statusCode")
+//                    return
+//                }
+//                
+//                DispatchQueue.main.async {
+//                    cell.ShopProductImage.image = UIImage(data: data!)
+//                }
+//                }.resume()
             
             
 //            cell.ShopProductImage.image = UIImage(named: image[indexPath.row])
