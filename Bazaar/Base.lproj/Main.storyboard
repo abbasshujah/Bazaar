@@ -738,7 +738,7 @@
         <!--AEKI-->
         <scene sceneID="5DP-Xd-PeY">
             <objects>
-                <viewController storyboardIdentifier="MainViewController" automaticallyAdjustsScrollViewInsets="NO" id="6FA-FZ-bSa" customClass="ItemCollectionViewController" customModule="Bazaar" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainViewController" automaticallyAdjustsScrollViewInsets="NO" id="6FA-FZ-bSa" customClass="ItemSearchedViewController" customModule="Bazaar" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="giN-lf-ZHA"/>
                         <viewControllerLayoutGuide type="bottom" id="xg4-ag-bmC"/>

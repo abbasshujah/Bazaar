@@ -125,10 +125,10 @@ class ShopViewController: ButtonBarPagerTabStripViewController {
      */
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ItemSearchedFromShop"{
-            let shopVC = segue.destination as! ItemSearchedViewController
-            shopVC.Back_button_tag = "BackToShopFromItemSearch"
-        }
+//        if segue.identifier == "ItemSearchedFromShop"{
+//            let shopVC = segue.destination as! ItemSearchedViewController
+//            shopVC.Back_button_tag = "BackToShopFromItemSearch"
+//        }
     }
     
 //    func getProductCategories(){

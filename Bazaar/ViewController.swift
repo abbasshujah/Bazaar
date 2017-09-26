@@ -23,11 +23,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        locationAuthStatus()
-        Manage_location.delegate = self
-        Manage_location.startUpdatingLocation()
-        var adress_mcmaster = CLGeocoder().geocodeAddressString("16 Priscilla Lane, Hamilton, ON L8E 3K9") { (placemarks, error) in
+    func GetLocation(location: String){
+        var adress_mcmaster = CLGeocoder().geocodeAddressString(location) { (placemarks, error) in
             guard
                 let placemarks = placemarks,
                 let location = placemarks.first?.location
@@ -43,6 +40,30 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             print("\(self.Current_Location.coordinate.longitude)")
             print("\(self.Current_Location.distance(from: location))")
         }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        locationAuthStatus()
+        Manage_location.delegate = self
+        Manage_location.startUpdatingLocation()
+        
+        GetLocation(location: "16 Priscilla Lane, Hamilton, ON L8E 3K9")
+        /*var adress_mcmaster = CLGeocoder().geocodeAddressString("16 Priscilla Lane, Hamilton, ON L8E 3K9") { (placemarks, error) in
+            guard
+                let placemarks = placemarks,
+                let location = placemarks.first?.location
+                else {
+                    // handle no location found
+                    return
+            }
+            
+            print("distance")
+            print("\(location.coordinate.latitude)")
+            print("\(location.coordinate.longitude)")
+            print("\(self.Current_Location.coordinate.latitude)")
+            print("\(self.Current_Location.coordinate.longitude)")
+            print("\(self.Current_Location.distance(from: location))")
+        }*/
         if CLLocationManager.authorizationStatus() != .authorizedWhenInUse{
             locationAuthStatus()
         }
@@ -208,10 +229,10 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             shopVC.shop_location = store_location[index.item]
             
         }
-        if segue.identifier == "ItemSearchedFromMain"{
-            let shopVC = segue.destination as! ItemSearchedViewController
-            shopVC.Back_button_tag = "BackToMainFromItemSearch"
-        }
+//        if segue.identifier == "ItemSearchedFromMain"{
+//            let shopVC = segue.destination as! ItemSearchedViewController
+//            shopVC.Back_button_tag = "BackToMainFromItemSearch"
+//        }
     }
     
     func loadImages(){
