@@ -7,12 +7,16 @@
 //
 
 import UIKit
+import InstantSearch
+import AlgoliaSearch
 
 class ItemSearchedViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
     var Back_button_tag: String = ""
     
     
+    @IBOutlet weak var SearchBar: SearchBarWidget!
+//    @IBOutlet weak var SearchBar: UISearchBar!
     @IBOutlet weak var SearchedItemsView: UICollectionView!
     
     
@@ -23,6 +27,13 @@ class ItemSearchedViewController: UIViewController, UICollectionViewDelegate, UI
     var location = ["pinks", "religion 5", "relgion 7", "religion 5", "relgion 7", "religion 5", "relgion 7", "rlgion 7", "relgion 7", "relgion 7"]
     
     var name = ["pinks", "religion 5", "relgion 7", "religion 5", "relgion 7", "religion 5", "relgion 7", "rlgion 7", "relgion 7", "relgion 7"]
+    
+//    Things for instant search
+    
+    var hitsController: HitsController!
+    var searchController: UISearchController!
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +42,8 @@ class ItemSearchedViewController: UIViewController, UICollectionViewDelegate, UI
         TopBar.layer.shadowRadius = 1.2
         TopBar.layer.shadowOpacity = 0.45
         
-        
+        configureInstantSearch()
+        configureSearchController()
         // Do any additional setup after loading the view, typically from a nib.
         self.SearchedItemsView.delegate = self
         self.SearchedItemsView.dataSource = self
@@ -48,6 +60,12 @@ class ItemSearchedViewController: UIViewController, UICollectionViewDelegate, UI
         SearchedItemsView.collectionViewLayout = Layout
 
         // Do any additional setup after loading the view.
+    }
+    
+//    For instant search
+    func configureInstantSearch() {
+        InstantSearch.shared.register(searchController: searchController)
+        InstantSearch.shared.registerAllWidgets(in: self.view)
     }
 
     override func didReceiveMemoryWarning() {
@@ -75,6 +93,23 @@ class ItemSearchedViewController: UIViewController, UICollectionViewDelegate, UI
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         performSegue(withIdentifier: "fromSearchtoItemDetail", sender: self)
+    }
+    
+    func configureSearchController() {
+        // Initialize and perform a minimum configuration to the search controller.
+        searchController = UISearchController(searchResultsController: nil)
+        
+        searchController.dimsBackgroundDuringPresentation = false
+        searchController.hidesNavigationBarDuringPresentation = false
+        
+        searchController.searchBar.placeholder = "Bazaar"
+        searchController.searchBar.sizeToFit()
+        
+//        searchController.searchBar.barTintColor = ColorConstants.barBackgroundColor
+        searchController.searchBar.isTranslucent = false
+        searchController.searchBar.layer.cornerRadius = 1.0
+        searchController.searchBar.clipsToBounds = true
+        TopBar.addSubview(searchController.searchBar)
     }
         
 

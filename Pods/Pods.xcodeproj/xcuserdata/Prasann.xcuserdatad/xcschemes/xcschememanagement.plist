@@ -4,17 +4,32 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>AFNetworking.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Alamofire.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Fuse.xcscheme</key>
+		<key>AlgoliaSearch-Client-Swift.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
 		<key>GoogleToolboxForMac.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>InstantSearch-Core-Swift.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>InstantSearch-iOS.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -52,12 +67,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>266AE1506DAD13D34C0725E909C0C476</key>
+		<key>04A3AF748D7EE7AFDFCD97B6B1C32AA8</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6E578FA75506E04E73E643784A7D8718</key>
+		<key>266AE1506DAD13D34C0725E909C0C476</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -67,22 +82,37 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9BEE7F26F1B893DD3E609907FCD316B1</key>
+		<key>A4BF13BE30961FF2ACB552B4B5F25FBB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B8CD3B3EDB42EEABB2D487F8706AF6BB</key>
+		<key>AB26F4EEF9F5990682FA58387C875CDE</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C4A118B63BAE42BA411AA1D44F369D54</key>
+		<key>AB6E42879BB2D0C5A7C49B8B5ABA7B1C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CF671F7E57B92905F1CC91D036D6B4A7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E46A1A8953FD354E7293E8870F4B06DB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>E4DD95323C54A78F879DAB0F1508B8E7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EA6DBFA946853C48A20E66681D36EA85</key>
 		<dict>
 			<key>primary</key>
 			<true/>

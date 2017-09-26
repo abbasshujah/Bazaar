@@ -8,15 +8,21 @@
 
 import UIKit
 import Firebase
+import InstantSearch
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    private let ALGOLIA_APP_ID = "HGQJBEYFM1"
+    private let ALGOLIA_INDEX_NAME = "products"
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        InstantSearch.shared.configure(appID: ALGOLIA_APP_ID, apiKey: "2d8d1f6517b669bd4ea3931f8bed2ce1", index: ALGOLIA_INDEX_NAME)
+        InstantSearch.shared.searcher.params.attributesToHighlight = ["productName"]
         FirebaseApp.configure()
         return true
     }
