@@ -14,7 +14,7 @@ class ItemCollectionViewController: UIViewController, UICollectionViewDelegate, 
     @IBOutlet weak var collectionView: HitsCollectionWidget!
     @IBOutlet weak var topBarView: UIView!
 //    @IBOutlet weak var tableView: HitsTableWidget!
-    @IBOutlet weak var searchBarNavigationItem: UINavigationItem!
+    
     @IBOutlet weak var searchBarView: UIView!
     @IBOutlet weak var nbHitsLabel: UILabel!
     

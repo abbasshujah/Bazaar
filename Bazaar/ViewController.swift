@@ -130,28 +130,14 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
 //        To load store data
         loadImages()
         
-        SearchField.addTarget(self, action: #selector(enterPressed), for: .editingDidEndOnExit)
-        //SearchField.clearsOnBeginEditing = true
+        
         
     }
     
     
     
-    func enterPressed(){
-        //do something with typed text if needed
-        print(SearchField.text ?? "")
-        SearchInput(Input: SearchField.text!)
-        //SearchField.resignFirstResponder()
-        
-    }
     
-    func SearchInput(Input: String){
-        if(Input == "test"){
-            performSegue(withIdentifier:"ItemSearchedFromMain", sender: self)
-            
-        }
-        
-    }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -209,12 +195,12 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        performSegue(withIdentifier:"Test", sender: indexPath)
+        performSegue(withIdentifier:"ToShopFromMain", sender: indexPath)
         
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "Test"{
+        if segue.identifier == "ToShopFromMain"{
             let index = sender as! NSIndexPath
             let shopVC = segue.destination as! ShopViewController
             //            shopVC.adress_variable = location[index.item]

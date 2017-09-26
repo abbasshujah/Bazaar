@@ -132,7 +132,7 @@
                                 </cells>
                             </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gmw-9e-Ch8" userLabel="AccountMenu">
-                                <rect key="frame" x="0.0" y="20" width="259" height="647"/>
+                                <rect key="frame" x="-259" y="20" width="259" height="647"/>
                                 <subviews>
                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="087-2T-QaT">
                                         <rect key="frame" x="0.0" y="40" width="259" height="607"/>
@@ -273,12 +273,12 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.55506639674230274" blue="0.30236679519823767" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.0022212122566998005" green="0.55727589130401611" blue="0.30048865079879761" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="eeu-X8-6NI" firstAttribute="top" secondItem="u6V-Nv-L5t" secondAttribute="bottom" constant="8" id="Cj1-6S-gYu"/>
                             <constraint firstItem="gmw-9e-Ch8" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="20" id="JXy-4Y-EJ1"/>
                             <constraint firstItem="u6V-Nv-L5t" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-10" id="M3o-Ys-i6j"/>
-                            <constraint firstItem="gmw-9e-Ch8" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="VBH-VR-YQM"/>
+                            <constraint firstItem="gmw-9e-Ch8" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="-259" id="VBH-VR-YQM"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="eeu-X8-6NI" secondAttribute="bottom" id="Y5r-LK-Vro"/>
                             <constraint firstItem="u6V-Nv-L5t" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" constant="10" id="aZX-aA-opj"/>
                             <constraint firstItem="eeu-X8-6NI" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="lg1-qA-enh"/>
@@ -294,7 +294,7 @@
                         <outlet property="ShopCollectionView" destination="eeu-X8-6NI" id="WJ8-Hv-OWC"/>
                         <outlet property="SliderMenu" destination="gmw-9e-Ch8" id="R3U-jN-oxO"/>
                         <outlet property="TopBar" destination="u6V-Nv-L5t" id="A5a-Bn-Mco"/>
-                        <segue destination="OQ3-NB-tj2" kind="show" identifier="Test" id="CoJ-OM-TJF"/>
+                        <segue destination="OQ3-NB-tj2" kind="show" identifier="ToShopFromMain" id="CoJ-OM-TJF"/>
                         <segue destination="5xE-xg-3xF" kind="show" identifier="ItemSearchedFromMain" id="fwC-tw-w0Y"/>
                     </connections>
                 </viewController>
@@ -872,30 +872,50 @@
                                     <constraint firstItem="njN-MB-LtD" firstAttribute="centerY" secondItem="BPk-0d-KZY" secondAttribute="centerY" id="ylS-FA-7qo"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ifu-c6-ilO">
-                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OYd-Fw-8qQ">
+                                <rect key="frame" x="10" y="24" width="355" height="42"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FJr-gh-qSJ">
+                                        <rect key="frame" x="8" y="4" width="34" height="34"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="FJr-gh-qSJ" secondAttribute="height" multiplier="1:1" id="NjG-XK-0NB"/>
+                                            <constraint firstAttribute="height" constant="34" id="VUf-pG-8I3"/>
+                                        </constraints>
+                                        <state key="normal" image="back_btn"/>
+                                        <connections>
+                                            <action selector="BackButton:" destination="5xE-xg-3xF" eventType="touchUpInside" id="9yj-F6-ViG"/>
+                                            <action selector="OpenAccountMenu:" destination="BYZ-38-t0r" eventType="touchUpInside" id="L6g-N0-pFO"/>
+                                        </connections>
+                                    </button>
+                                    <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QOt-gQ-knm" customClass="SearchBarWidget" customModule="InstantSearch">
+                                        <rect key="frame" x="48" y="-2" width="307" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </searchBar>
+                                </subviews>
+                                <color key="backgroundColor" red="0.99989169840000003" green="1" blue="0.99988096950000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="haE-Kx-g8m"/>
+                                    <constraint firstItem="FJr-gh-qSJ" firstAttribute="leading" secondItem="OYd-Fw-8qQ" secondAttribute="leading" constant="8" id="Bo1-nn-oU0"/>
+                                    <constraint firstAttribute="height" constant="42" id="E3t-FN-HIE"/>
+                                    <constraint firstItem="FJr-gh-qSJ" firstAttribute="top" secondItem="OYd-Fw-8qQ" secondAttribute="top" constant="4" id="oAG-95-KJw"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="BPk-0d-KZY" firstAttribute="top" secondItem="ifu-c6-ilO" secondAttribute="bottom" id="Gy9-6p-iM6"/>
-                            <constraint firstAttribute="trailing" secondItem="ifu-c6-ilO" secondAttribute="trailing" id="Igd-44-8Dt"/>
+                            <constraint firstItem="OYd-Fw-8qQ" firstAttribute="leading" secondItem="5ZG-z8-zMG" secondAttribute="leading" constant="10" id="34Y-IV-TLr"/>
                             <constraint firstItem="BPk-0d-KZY" firstAttribute="leading" secondItem="5ZG-z8-zMG" secondAttribute="leading" id="QxH-as-OcL"/>
-                            <constraint firstItem="ifu-c6-ilO" firstAttribute="leading" secondItem="5ZG-z8-zMG" secondAttribute="leading" id="cW9-4y-F70"/>
                             <constraint firstAttribute="trailing" secondItem="BPk-0d-KZY" secondAttribute="trailing" id="n2t-zD-1d7"/>
-                            <constraint firstItem="ifu-c6-ilO" firstAttribute="top" secondItem="giN-lf-ZHA" secondAttribute="bottom" id="vvf-nH-u1n"/>
+                            <constraint firstItem="OYd-Fw-8qQ" firstAttribute="top" secondItem="giN-lf-ZHA" secondAttribute="bottom" constant="4" id="qB4-7f-u2U"/>
+                            <constraint firstAttribute="trailing" secondItem="OYd-Fw-8qQ" secondAttribute="trailing" constant="10" id="qdC-8N-r1F"/>
+                            <constraint firstItem="BPk-0d-KZY" firstAttribute="top" secondItem="OYd-Fw-8qQ" secondAttribute="bottom" constant="-2" id="wXi-YP-Y5i"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="AEKI" id="e43-ZS-HNx"/>
                     <connections>
                         <outlet property="collectionView" destination="bma-Lt-kqJ" id="l7A-Dh-WU1"/>
                         <outlet property="nbHitsLabel" destination="nbD-WN-CiL" id="ejN-9j-DOL"/>
-                        <outlet property="searchBarNavigationItem" destination="e43-ZS-HNx" id="gtq-VI-boc"/>
-                        <outlet property="searchBarView" destination="ifu-c6-ilO" id="5oR-mi-392"/>
+                        <outlet property="searchBarView" destination="QOt-gQ-knm" id="awo-oz-7Xg"/>
                         <outlet property="topBarView" destination="BPk-0d-KZY" id="TSW-86-lSV"/>
                     </connections>
                 </viewController>
@@ -910,9 +930,9 @@
         <image name="search" width="16" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="cj7-Oi-pFh"/>
-        <segue reference="fwC-tw-w0Y"/>
         <segue reference="f8M-ZM-2cb"/>
+        <segue reference="xHM-rI-YID"/>
+        <segue reference="CoJ-OM-TJF"/>
         <segue reference="91l-o9-adE"/>
     </inferredMetricsTieBreakers>
 </document>
