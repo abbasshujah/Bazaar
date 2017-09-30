@@ -118,7 +118,7 @@ class ItemSearchedViewController: UIViewController, UICollectionViewDelegate, Hi
             let cell = collectionView.cellForItem(at: indexPath!) as? SearchedItemCollectionViewCell
             
             itemVC.product_name = cell?.item?.name as! String
-//            itemVC.product_price = cell?.item?.price 
+            itemVC.product_price = cell?.item?.price as! Double
             
             
 //            let itemVC = segue.destination as! ShopItemViewController

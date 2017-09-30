@@ -21,7 +21,7 @@ class ShopItemViewController: UIViewController {
     var product_img_url = ""
     var product_name = ""
     @IBOutlet weak var Shop_Name: UILabel!
-    var product_price = ""
+    var product_price: Double = 0
     var shop_location = ""
     var shop_name = ""
     
@@ -40,7 +40,8 @@ class ShopItemViewController: UIViewController {
         Name.text = product_name
         Name.numberOfLines = 0
         Name.sizeToFit()
-        Price.text = product_price
+//        Price.text = product_price
+        Price.text = "$\(String(describing: product_price))"
         Shop_Name.text = shop_name
         loadProductImage()
 

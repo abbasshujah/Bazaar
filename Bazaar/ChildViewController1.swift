@@ -163,7 +163,15 @@ class ChildViewController1: UIViewController, UICollectionViewDelegate, UICollec
             let itemVC = segue.destination as! ShopItemViewController
             itemVC.product_img_url = self.product_img_url[index.item]
             itemVC.product_name = self.product_name[index.item]
-            itemVC.product_price = self.product_price[index.item]
+            
+//            Changing price values from string to Double
+            let str = self.product_price[index.item]
+            let formatter = NumberFormatter()
+            formatter.numberStyle = .currency
+            let number = formatter.number(from: str as! String)
+            let amount = number?.doubleValue
+            
+            itemVC.product_price = amount as! Double
             itemVC.shop_location = shop_location
             itemVC.shop_name = shop_name
         }
