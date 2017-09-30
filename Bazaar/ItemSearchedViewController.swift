@@ -20,6 +20,11 @@ class ItemSearchedViewController: UIViewController, UICollectionViewDelegate, Hi
     
     var hitsController: HitsController!
     var searchController: UISearchController!
+    var jsonHits: JSONObject!
+    
+    var selected_item = "abcd"
+    
+    var product_name = [String]()
     //    var hitsCollectionView: HitsCollectionWidget!
     
     override func viewDidLoad() {
@@ -38,19 +43,34 @@ class ItemSearchedViewController: UIViewController, UICollectionViewDelegate, Hi
         hitsController.collectionDataSource = self
     }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
-    }
+//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        return 10
+//    }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath, containing hit: [String : Any]) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SearchedItem", for: indexPath) as! SearchedItemCollectionViewCell
         
         cell.item = ItemRecord(json: hit)
+        self.product_name.append(hit["productName"] as! String)
+//        print(hit["productName"] as! String)
         cell.backgroundColor = UIColor.white
         
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath, containing hit: [String : Any]) {
+        
+//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SearchedItem", for: indexPath) as! SearchedItemCollectionViewCell
+//        
+//        cell.item = ItemRecord(json: hit)
+//        print("................................")
+//        print(cell.item)
+//        print("................................")
+        performSegue(withIdentifier:"ItemClickedFromSearch", sender: indexPath)
+        
+    }
+
     
     // MARK: Helper methods for configuring each component of the table
     
@@ -89,5 +109,23 @@ class ItemSearchedViewController: UIViewController, UICollectionViewDelegate, Hi
         searchController.searchBar.layer.cornerRadius = 1.0
         searchController.searchBar.clipsToBounds = true
         searchBarView.addSubview(searchController.searchBar)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ItemClickedFromSearch"{
+            let indexPath = collectionView.indexPathsForSelectedItems?.first
+            let itemVC = segue.destination as! ShopItemViewController
+            let cell = collectionView.cellForItem(at: indexPath!) as? SearchedItemCollectionViewCell
+            
+            itemVC.product_name = cell?.item?.name as! String
+//            itemVC.product_price = cell?.item?.price 
+            
+            
+//            let itemVC = segue.destination as! ShopItemViewController
+//            itemVC.product_name = self.product_name[index.item]
+//            print("............................................")
+//            print(selected_item)
+//            print("............................................")
+        }
     }
 }

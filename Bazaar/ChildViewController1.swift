@@ -27,11 +27,11 @@ class ChildViewController1: UIViewController, UICollectionViewDelegate, UICollec
     
     var product_category = [String]()
     
-    var image = ["pinks", "religion 5", "relgion 7", "religion 5", "relgion 7", "religion 5", "relgion 7", "rlgion 7", "relgion 7", "relgion 7"]
-    
-    var location = ["pinks", "religion 5", "relgion 7", "religion 5", "relgion 7", "religion 5", "relgion 7", "rlgion 7", "relgion 7", "relgion 7"]
-    
-    var name = ["pinks", "religion 5", "relgion 7", "religion 5", "relgion 7", "religion 5", "relgion 7", "rlgion 7", "relgion 7", "relgion 7"]
+//    var image = ["pinks", "religion 5", "relgion 7", "religion 5", "relgion 7", "religion 5", "relgion 7", "rlgion 7", "relgion 7", "relgion 7"]
+//    
+//    var location = ["pinks", "religion 5", "relgion 7", "religion 5", "relgion 7", "religion 5", "relgion 7", "rlgion 7", "relgion 7", "relgion 7"]
+//    
+//    var name = ["pinks", "religion 5", "relgion 7", "religion 5", "relgion 7", "religion 5", "relgion 7", "rlgion 7", "relgion 7", "relgion 7"]
     
     static let placeholder = UIImage(named: "placeholder")
     
@@ -155,8 +155,6 @@ class ChildViewController1: UIViewController, UICollectionViewDelegate, UICollec
             
             self.ShopItemCollectionView.reloadData()
         })
-
-        
     }
 
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -170,7 +168,5 @@ class ChildViewController1: UIViewController, UICollectionViewDelegate, UICollec
             itemVC.shop_name = shop_name
         }
      }
-    
-
     
 }

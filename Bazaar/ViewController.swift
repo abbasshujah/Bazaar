@@ -149,16 +149,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         SliderMenu.layer.shadowRadius = 20
         
 //        To load store data
-        loadImages()
+        loadStoreData()
         
         
         
     }
-    
-    
-    
-    
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -235,7 +230,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
 //        }
     }
     
-    func loadImages(){
+    func loadStoreData(){
         // TODO: Get image urls from firebase
         
         var ref: DatabaseReference!
