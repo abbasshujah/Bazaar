@@ -25,6 +25,8 @@ class ItemSearchedViewController: UIViewController, UICollectionViewDelegate, Hi
     var selected_item = "abcd"
     
     var product_name = [String]()
+    
+    var item_searched = ""
     //    var hitsCollectionView: HitsCollectionWidget!
     
     override func viewDidLoad() {
@@ -41,6 +43,9 @@ class ItemSearchedViewController: UIViewController, UICollectionViewDelegate, Hi
         collectionView.dataSource = hitsController
         collectionView.delegate = hitsController
         hitsController.collectionDataSource = self
+        
+        print(item_searched)
+
     }
     
 //    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
