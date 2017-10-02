@@ -25,6 +25,8 @@ class ItemSearchedViewController: UIViewController, UICollectionViewDelegate, Hi
     var selected_item = "abcd"
     
     var product_name = [String]()
+    
+    var item_searched = ""
     //    var hitsCollectionView: HitsCollectionWidget!
     
     override func viewDidLoad() {
@@ -41,6 +43,9 @@ class ItemSearchedViewController: UIViewController, UICollectionViewDelegate, Hi
         collectionView.dataSource = hitsController
         collectionView.delegate = hitsController
         hitsController.collectionDataSource = self
+        
+        print(item_searched)
+
     }
     
 //    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -61,12 +66,6 @@ class ItemSearchedViewController: UIViewController, UICollectionViewDelegate, Hi
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath, containing hit: [String : Any]) {
         
-//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SearchedItem", for: indexPath) as! SearchedItemCollectionViewCell
-//        
-//        cell.item = ItemRecord(json: hit)
-//        print("................................")
-//        print(cell.item)
-//        print("................................")
         performSegue(withIdentifier:"ItemClickedFromSearch", sender: indexPath)
         
     }
@@ -77,6 +76,7 @@ class ItemSearchedViewController: UIViewController, UICollectionViewDelegate, Hi
     func configureInstantSearch() {
         InstantSearch.shared.register(searchController: searchController)
         InstantSearch.shared.registerAllWidgets(in: self.view)
+        InstantSearch.shared.updateSearchResults(for: searchController)
     }
     
     func configureTable() {
@@ -101,6 +101,7 @@ class ItemSearchedViewController: UIViewController, UICollectionViewDelegate, Hi
         searchController.dimsBackgroundDuringPresentation = false
         searchController.hidesNavigationBarDuringPresentation = false
         
+        searchController.searchBar.text = item_searched
         searchController.searchBar.placeholder = "Bazaar"
         searchController.searchBar.sizeToFit()
         

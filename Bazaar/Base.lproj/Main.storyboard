@@ -43,27 +43,16 @@
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3ly-Zq-7ix">
-                                        <rect key="frame" x="308" y="4" width="48" height="30"/>
-                                        <state key="normal" title="Search"/>
-                                        <connections>
-                                            <segue destination="6FA-FZ-bSa" kind="show" id="Tyx-16-eKG"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.99989169836044312" green="1" blue="0.99988096952438354" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="yH9-hg-tmw" firstAttribute="leading" secondItem="u6V-Nv-L5t" secondAttribute="leading" constant="8" id="7Bt-EA-cej"/>
-                                    <constraint firstAttribute="bottom" secondItem="3ly-Zq-7ix" secondAttribute="bottom" constant="8" id="ATh-b3-ANf"/>
-                                    <constraint firstItem="3ly-Zq-7ix" firstAttribute="top" secondItem="u6V-Nv-L5t" secondAttribute="top" constant="4" id="Kjo-jh-Ob6"/>
                                     <constraint firstItem="kq2-Tk-PgD" firstAttribute="leading" secondItem="yH9-hg-tmw" secondAttribute="trailing" constant="6" id="LPc-nR-14B"/>
-                                    <constraint firstItem="3ly-Zq-7ix" firstAttribute="leading" secondItem="yH9-hg-tmw" secondAttribute="trailing" constant="266" id="MC3-zh-ucT"/>
                                     <constraint firstItem="kq2-Tk-PgD" firstAttribute="top" secondItem="u6V-Nv-L5t" secondAttribute="top" constant="4" id="UdV-4l-TGH"/>
                                     <constraint firstAttribute="trailing" secondItem="kq2-Tk-PgD" secondAttribute="trailing" constant="8" id="aw3-dc-6Ar"/>
                                     <constraint firstAttribute="height" constant="42" id="cxo-tl-yri"/>
                                     <constraint firstItem="yH9-hg-tmw" firstAttribute="top" secondItem="u6V-Nv-L5t" secondAttribute="top" constant="4" id="phP-iW-ZgH"/>
                                     <constraint firstAttribute="bottom" secondItem="kq2-Tk-PgD" secondAttribute="bottom" constant="4" id="suu-8Y-LGb"/>
-                                    <constraint firstAttribute="trailing" secondItem="3ly-Zq-7ix" secondAttribute="trailing" constant="7" id="uUl-5u-m56"/>
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="eeu-X8-6NI">
@@ -295,12 +284,12 @@
                         <outlet property="SliderMenu" destination="gmw-9e-Ch8" id="R3U-jN-oxO"/>
                         <outlet property="TopBar" destination="u6V-Nv-L5t" id="A5a-Bn-Mco"/>
                         <segue destination="OQ3-NB-tj2" kind="show" identifier="ToShopFromMain" id="CoJ-OM-TJF"/>
-                        <segue destination="5xE-xg-3xF" kind="show" identifier="ItemSearchedFromMain" id="fwC-tw-w0Y"/>
+                        <segue destination="6FA-FZ-bSa" kind="show" identifier="ItemSearchedFromMain" id="mAb-uh-dg4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53.600000000000001" y="53.523238380809602"/>
+            <point key="canvasLocation" x="25" y="-391"/>
         </scene>
         <!--Item Searched View Controller-->
         <scene sceneID="bAw-rc-6bC">
@@ -329,11 +318,6 @@
                                             <action selector="OpenAccountMenu:" destination="BYZ-38-t0r" eventType="touchUpInside" id="neJ-BV-Wzd"/>
                                         </connections>
                                     </button>
-                                    <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ayc-le-3e3" customClass="SearchBarWidget" customModule="InstantSearch">
-                                        <rect key="frame" x="48" y="-2" width="307" height="44"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </searchBar>
                                 </subviews>
                                 <color key="backgroundColor" red="0.99989169840000003" green="1" blue="0.99988096950000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -351,11 +335,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="SearchBar" destination="Ayc-le-3e3" id="fdN-j7-DpV"/>
                         <outlet property="TopBar" destination="tMj-Yg-oAH" id="qAz-k0-Mne"/>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="BackToMainFromItemSearch" id="f8M-ZM-2cb"/>
-                        <segue destination="OQ3-NB-tj2" kind="show" identifier="BackToShopFromItemSearch" id="cj7-Oi-pFh"/>
-                        <segue destination="IZf-Ai-LUY" kind="show" identifier="fromSearchtoItemDetail" id="91l-o9-adE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xq7-pZ-YX7" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -739,7 +719,7 @@
                         <outlet property="containerView" destination="94x-Y6-i15" id="O7b-L0-BuI"/>
                         <outlet property="tabviewBar" destination="JuM-hj-6nl" id="Xq6-rp-U6K"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="ToMainFromShop" id="zDT-ki-hsJ"/>
-                        <segue destination="5xE-xg-3xF" kind="show" identifier="ItemSearchedFromShop" id="xHM-rI-YID"/>
+                        <segue destination="6FA-FZ-bSa" kind="show" identifier="ItemSearchedFromShop" id="UHn-A4-d1Z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PFo-33-Whv" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -958,10 +938,9 @@
         <image name="search" width="16" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="fwC-tw-w0Y"/>
-        <segue reference="zDT-ki-hsJ"/>
-        <segue reference="bqO-Le-SNw"/>
         <segue reference="H28-Jf-fQH"/>
-        <segue reference="hKa-YN-TPN"/>
+        <segue reference="zDT-ki-hsJ"/>
+        <segue reference="CoJ-OM-TJF"/>
+        <segue reference="mAb-uh-dg4"/>
     </inferredMetricsTieBreakers>
 </document>

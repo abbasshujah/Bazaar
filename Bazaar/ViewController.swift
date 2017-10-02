@@ -109,6 +109,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     var city = "Hamilton"
     
+    var item_searched = ""
+    
     var ref: DatabaseReference!
     
     
@@ -153,6 +155,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         SliderMenu.layer.shadowOpacity = 10
         SliderMenu.layer.shadowRadius = 20
         
+        SearchField.addTarget(self, action: #selector(enterPressed), for: .editingDidEndOnExit)
+        
 //        To load store data
         loadStoreData()
         
@@ -163,6 +167,24 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+// TODO: Functions for search field
+    func enterPressed(){
+        //do something with typed text if needed
+        print(SearchField.text ?? "")
+        SearchInput(Input: SearchField.text!)
+        //SearchField.resignFirstResponder()
+        
+    }
+    
+    func SearchInput(Input: String){
+        performSegue(withIdentifier:"ItemSearchedFromMain", sender: self)
+        //if(Input == "test"){
+        //  performSegue(withIdentifier:"ItemSearchedFromShop", sender: self)
+        
+        //}
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -230,10 +252,10 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             shopVC.shop_location = store_location[index.item]
             
         }
-//        if segue.identifier == "ItemSearchedFromMain"{
-//            let shopVC = segue.destination as! ItemSearchedViewController
-//            shopVC.Back_button_tag = "BackToMainFromItemSearch"
-//        }
+        if segue.identifier == "ItemSearchedFromMain"{
+            let shopVC = segue.destination as! ItemSearchedViewController
+            shopVC.item_searched = SearchField.text!
+        }
     }
     
     func loadStoreData(){

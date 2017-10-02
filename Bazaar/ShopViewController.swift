@@ -93,17 +93,18 @@ class ShopViewController: ButtonBarPagerTabStripViewController {
     
     func enterPressed(){
         //do something with typed text if needed
-        print(SearchField.text ?? "")
+//        print(SearchField.text ?? "")
         SearchInput(Input: SearchField.text!)
         //SearchField.resignFirstResponder()
         
     }
     
     func SearchInput(Input: String){
-        if(Input == "test"){
-            performSegue(withIdentifier:"ItemSearchedFromShop", sender: self)
+        performSegue(withIdentifier:"ItemSearchedFromShop", sender: self)
+        //if(Input == "test"){
+          //  performSegue(withIdentifier:"ItemSearchedFromShop", sender: self)
             
-        }
+        //}
         
     }
     
@@ -126,10 +127,10 @@ class ShopViewController: ButtonBarPagerTabStripViewController {
      */
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "ItemSearchedFromShop"{
-//            let shopVC = segue.destination as! ItemSearchedViewController
-//            shopVC.Back_button_tag = "BackToShopFromItemSearch"
-//        }
+        if segue.identifier == "ItemSearchedFromShop"{
+            let shopVC = segue.destination as! ItemSearchedViewController
+            shopVC.item_searched = SearchField.text!
+        }
     }
     
 //    func getProductCategories(){

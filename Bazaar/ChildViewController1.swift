@@ -26,7 +26,11 @@ class ChildViewController1: UIViewController, UICollectionViewDelegate, UICollec
     var shop_location = ""
     
     var product_category = [String]()
+    
     var city = "Hamilton"
+    
+    var ref: DatabaseReference!
+
     
 //    var image = ["pinks", "religion 5", "relgion 7", "religion 5", "relgion 7", "religion 5", "relgion 7", "rlgion 7", "relgion 7", "relgion 7"]
 //    
@@ -137,14 +141,13 @@ class ChildViewController1: UIViewController, UICollectionViewDelegate, UICollec
     func loadProducts(){
         // TODO: Get image urls from firebase
         
-        var ref: DatabaseReference!
-        ref = Database.database().reference()
+        self.ref = Database.database().reference()
         
         let cityDB = ref.child(city)
 
         
         cityDB.child(shop_name).child("Products").child(View_title).observe(.value, with: { (snapshot: DataSnapshot) in
-            print(snapshot)
+//            print(snapshot)
             self.product_name = []
             self.product_price = []
             self.product_img_url = []
@@ -152,6 +155,7 @@ class ChildViewController1: UIViewController, UICollectionViewDelegate, UICollec
             if let products = snapshot.children.allObjects as? [DataSnapshot]{
                 
                 for product in products{
+//                    print(product)
                     self.product_name.append(product.childSnapshot(forPath: "productName").value as! String)
                     self.product_price.append(product.childSnapshot(forPath: "price").value as! String)
                     self.product_img_url.append(product.childSnapshot(forPath: "productImage").value as! String)
