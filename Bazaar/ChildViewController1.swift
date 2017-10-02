@@ -26,6 +26,7 @@ class ChildViewController1: UIViewController, UICollectionViewDelegate, UICollec
     var shop_location = ""
     
     var product_category = [String]()
+    var city = "Hamilton"
     
 //    var image = ["pinks", "religion 5", "relgion 7", "religion 5", "relgion 7", "religion 5", "relgion 7", "rlgion 7", "relgion 7", "relgion 7"]
 //    
@@ -139,7 +140,11 @@ class ChildViewController1: UIViewController, UICollectionViewDelegate, UICollec
         var ref: DatabaseReference!
         ref = Database.database().reference()
         
-        ref.child(shop_name).child("Products").child(View_title).observe(.value, with: { (snapshot: DataSnapshot) in
+        let cityDB = ref.child(city)
+
+        
+        cityDB.child(shop_name).child("Products").child(View_title).observe(.value, with: { (snapshot: DataSnapshot) in
+            print(snapshot)
             self.product_name = []
             self.product_price = []
             self.product_img_url = []

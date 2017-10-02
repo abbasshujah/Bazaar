@@ -33,12 +33,12 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                     return
             }
             
-            print("distance")
-            print("\(location.coordinate.latitude)")
-            print("\(location.coordinate.longitude)")
-            print("\(self.Current_Location.coordinate.latitude)")
-            print("\(self.Current_Location.coordinate.longitude)")
-            print("\(self.Current_Location.distance(from: location))")
+//            print("distance")
+//            print("\(location.coordinate.latitude)")
+//            print("\(location.coordinate.longitude)")
+//            print("\(self.Current_Location.coordinate.latitude)")
+//            print("\(self.Current_Location.coordinate.longitude)")
+//            print("\(self.Current_Location.distance(from: location))")
         }
     }
     
@@ -106,6 +106,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     var store_location = [String]()
     
     var store_clicked = ""
+    
+    var city = "Hamilton"
+    
+    var ref: DatabaseReference!
+    
     
 //    var image = ["pinks", "TimHortons", "TimHortons", "Balilque", "TimHortons", "TimHortons", "Balilque", "Balilque", "Balilque", "TimHortons"]
 //    
@@ -180,6 +185,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             } else {
                 cell.Shop_image.image = ChildViewController1.placeholder
             }
+//            TODO: Another way to load up an image
             
 //            URLSession.shared.dataTask(with: url!) { (data, response, error) in
 //                
@@ -232,11 +238,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     func loadStoreData(){
         // TODO: Get image urls from firebase
+        self.ref = Database.database().reference()
         
-        var ref: DatabaseReference!
-        ref = Database.database().reference()
-        
-        ref.observe(.value, with: { (snapshot: DataSnapshot) in
+        self.ref.child(city).observe(.value, with: { (snapshot: DataSnapshot) in
             
             if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
 //            print(snapshots)
@@ -247,7 +251,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                 self.store_location = []
                 
                 for snap in snapshots{
-                    //print("SNAP:\(snap)")
+//                    print("SNAP:\(snap)")
                     
                     self.image_url.append(snap.childSnapshot(forPath: "StoreImage").value as! String)
                     self.store_name.append(snap.childSnapshot(forPath: "StoreName").value as! String)

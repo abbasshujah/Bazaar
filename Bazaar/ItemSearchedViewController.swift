@@ -117,8 +117,12 @@ class ItemSearchedViewController: UIViewController, UICollectionViewDelegate, Hi
             let itemVC = segue.destination as! ShopItemViewController
             let cell = collectionView.cellForItem(at: indexPath!) as? SearchedItemCollectionViewCell
             
-            itemVC.product_name = cell?.item?.name as! String
-            itemVC.product_price = cell?.item?.price as! Double
+            itemVC.product_name = (cell?.item?.name!)!
+            itemVC.product_price = (cell?.item?.price!)!
+            
+//            Converting URL to string to pass it to next view
+            let imageURL_str = cell?.item?.imageUrl?.absoluteString
+            itemVC.product_img_url = imageURL_str!
             
             
 //            let itemVC = segue.destination as! ShopItemViewController
