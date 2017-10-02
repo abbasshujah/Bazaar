@@ -31,6 +31,18 @@ struct ItemRecord {
     //        return json["category"] as? String
     //    }
     
+    
+//    TODO: Getting price as a String
+
+//    var price: String? {
+//        
+//        let str = json["price"]
+//        return str as! String
+//        
+//    }
+    
+//    TODO: Getting price as a double
+    
     var price: Double? {
         
         let str = json["price"]
@@ -44,6 +56,7 @@ struct ItemRecord {
         return amount as? Double
         
     }
+
     
     
     //    var rating: Int? {

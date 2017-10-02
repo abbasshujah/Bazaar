@@ -23,11 +23,32 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
     }
     
+    func GetLocation(location: String){
+        var adress_mcmaster = CLGeocoder().geocodeAddressString(location) { (placemarks, error) in
+            guard
+                let placemarks = placemarks,
+                let location = placemarks.first?.location
+                else {
+                    // handle no location found
+                    return
+            }
+            
+//            print("distance")
+//            print("\(location.coordinate.latitude)")
+//            print("\(location.coordinate.longitude)")
+//            print("\(self.Current_Location.coordinate.latitude)")
+//            print("\(self.Current_Location.coordinate.longitude)")
+//            print("\(self.Current_Location.distance(from: location))")
+        }
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         locationAuthStatus()
         Manage_location.delegate = self
         Manage_location.startUpdatingLocation()
-        var adress_mcmaster = CLGeocoder().geocodeAddressString("16 Priscilla Lane, Hamilton, ON L8E 3K9") { (placemarks, error) in
+        
+        GetLocation(location: "16 Priscilla Lane, Hamilton, ON L8E 3K9")
+        /*var adress_mcmaster = CLGeocoder().geocodeAddressString("16 Priscilla Lane, Hamilton, ON L8E 3K9") { (placemarks, error) in
             guard
                 let placemarks = placemarks,
                 let location = placemarks.first?.location
@@ -42,7 +63,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             print("\(self.Current_Location.coordinate.latitude)")
             print("\(self.Current_Location.coordinate.longitude)")
             print("\(self.Current_Location.distance(from: location))")
-        }
+        }*/
         if CLLocationManager.authorizationStatus() != .authorizedWhenInUse{
             locationAuthStatus()
         }
@@ -86,6 +107,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     var store_clicked = ""
     
+    var city = "Hamilton"
+    
+    var ref: DatabaseReference!
+    
+    
 //    var image = ["pinks", "TimHortons", "TimHortons", "Balilque", "TimHortons", "TimHortons", "Balilque", "Balilque", "Balilque", "TimHortons"]
 //    
 //    var location = ["pinks", "religion 5", "relgion 7", "religion 5", "relgion 7", "religion 5", "relgion 7", "rlgion 7", "relgion 7", "relgion 7"]
@@ -128,16 +154,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         SliderMenu.layer.shadowRadius = 20
         
 //        To load store data
-        loadImages()
+        loadStoreData()
         
         
         
     }
-    
-    
-    
-    
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -164,6 +185,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             } else {
                 cell.Shop_image.image = ChildViewController1.placeholder
             }
+//            TODO: Another way to load up an image
             
 //            URLSession.shared.dataTask(with: url!) { (data, response, error) in
 //                
@@ -208,19 +230,17 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             shopVC.shop_location = store_location[index.item]
             
         }
-        if segue.identifier == "ItemSearchedFromMain"{
-            let shopVC = segue.destination as! ItemSearchedViewController
-            shopVC.Back_button_tag = "BackToMainFromItemSearch"
-        }
+//        if segue.identifier == "ItemSearchedFromMain"{
+//            let shopVC = segue.destination as! ItemSearchedViewController
+//            shopVC.Back_button_tag = "BackToMainFromItemSearch"
+//        }
     }
     
-    func loadImages(){
+    func loadStoreData(){
         // TODO: Get image urls from firebase
+        self.ref = Database.database().reference()
         
-        var ref: DatabaseReference!
-        ref = Database.database().reference()
-        
-        ref.observe(.value, with: { (snapshot: DataSnapshot) in
+        self.ref.child(city).observe(.value, with: { (snapshot: DataSnapshot) in
             
             if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
 //            print(snapshots)
@@ -231,7 +251,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                 self.store_location = []
                 
                 for snap in snapshots{
-                    //print("SNAP:\(snap)")
+//                    print("SNAP:\(snap)")
                     
                     self.image_url.append(snap.childSnapshot(forPath: "StoreImage").value as! String)
                     self.store_name.append(snap.childSnapshot(forPath: "StoreName").value as! String)

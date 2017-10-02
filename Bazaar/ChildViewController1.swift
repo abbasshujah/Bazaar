@@ -26,12 +26,13 @@ class ChildViewController1: UIViewController, UICollectionViewDelegate, UICollec
     var shop_location = ""
     
     var product_category = [String]()
+    var city = "Hamilton"
     
-    var image = ["pinks", "religion 5", "relgion 7", "religion 5", "relgion 7", "religion 5", "relgion 7", "rlgion 7", "relgion 7", "relgion 7"]
-    
-    var location = ["pinks", "religion 5", "relgion 7", "religion 5", "relgion 7", "religion 5", "relgion 7", "rlgion 7", "relgion 7", "relgion 7"]
-    
-    var name = ["pinks", "religion 5", "relgion 7", "religion 5", "relgion 7", "religion 5", "relgion 7", "rlgion 7", "relgion 7", "relgion 7"]
+//    var image = ["pinks", "religion 5", "relgion 7", "religion 5", "relgion 7", "religion 5", "relgion 7", "rlgion 7", "relgion 7", "relgion 7"]
+//    
+//    var location = ["pinks", "religion 5", "relgion 7", "religion 5", "relgion 7", "religion 5", "relgion 7", "rlgion 7", "relgion 7", "relgion 7"]
+//    
+//    var name = ["pinks", "religion 5", "relgion 7", "religion 5", "relgion 7", "religion 5", "relgion 7", "rlgion 7", "relgion 7", "relgion 7"]
     
     static let placeholder = UIImage(named: "placeholder")
     
@@ -139,7 +140,11 @@ class ChildViewController1: UIViewController, UICollectionViewDelegate, UICollec
         var ref: DatabaseReference!
         ref = Database.database().reference()
         
-        ref.child(shop_name).child("Products").child(View_title).observe(.value, with: { (snapshot: DataSnapshot) in
+        let cityDB = ref.child(city)
+
+        
+        cityDB.child(shop_name).child("Products").child(View_title).observe(.value, with: { (snapshot: DataSnapshot) in
+            print(snapshot)
             self.product_name = []
             self.product_price = []
             self.product_img_url = []
@@ -155,8 +160,6 @@ class ChildViewController1: UIViewController, UICollectionViewDelegate, UICollec
             
             self.ShopItemCollectionView.reloadData()
         })
-
-        
     }
 
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -165,12 +168,18 @@ class ChildViewController1: UIViewController, UICollectionViewDelegate, UICollec
             let itemVC = segue.destination as! ShopItemViewController
             itemVC.product_img_url = self.product_img_url[index.item]
             itemVC.product_name = self.product_name[index.item]
-            itemVC.product_price = self.product_price[index.item]
+            
+//            Changing price values from string to Double
+            let str = self.product_price[index.item]
+            let formatter = NumberFormatter()
+            formatter.numberStyle = .currency
+            let number = formatter.number(from: str as! String)
+            let amount = number?.doubleValue
+            
+            itemVC.product_price = amount as! Double
             itemVC.shop_location = shop_location
             itemVC.shop_name = shop_name
         }
      }
-    
-
     
 }

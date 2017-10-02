@@ -1,98 +1,97 @@
 //
-//  ItemSearchedViewController.swift
+//  ItemCollectionViewController.swift
 //  Bazaar
 //
-//  Created by shazia akhtar on 2017-09-07.
+//  Created by Prasann Pandya on 2017-09-21.
 //  Copyright © 2017 Syed Abbas. All rights reserved.
 //
-
 import UIKit
 import InstantSearch
 import AlgoliaSearch
 
-class ItemSearchedViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class ItemSearchedViewController: UIViewController, UICollectionViewDelegate, HitsCollectionViewDataSource {
     
-    var Back_button_tag: String = ""
+    @IBOutlet weak var collectionView: HitsCollectionWidget!
+    @IBOutlet weak var topBarView: UIView!
+    //    @IBOutlet weak var tableView: HitsTableWidget!
     
-    
-    @IBOutlet weak var SearchBar: SearchBarWidget!
-//    @IBOutlet weak var SearchBar: UISearchBar!
-    @IBOutlet weak var SearchedItemsView: UICollectionView!
-    
-    
-    @IBOutlet weak var TopBar: UIView!
-    
-    var image = ["pinks", "TimHortons", "TimHortons", "Balilque", "TimHortons", "TimHortons", "Balilque", "Balilque", "Balilque", "TimHortons"]
-    
-    var location = ["pinks", "religion 5", "relgion 7", "religion 5", "relgion 7", "religion 5", "relgion 7", "rlgion 7", "relgion 7", "relgion 7"]
-    
-    var name = ["pinks", "religion 5", "relgion 7", "religion 5", "relgion 7", "religion 5", "relgion 7", "rlgion 7", "relgion 7", "relgion 7"]
-    
-//    Things for instant search
+    @IBOutlet weak var searchBarView: UIView!
+    @IBOutlet weak var nbHitsLabel: UILabel!
     
     var hitsController: HitsController!
     var searchController: UISearchController!
+    var jsonHits: JSONObject!
     
+    var selected_item = "abcd"
     
-
+    var product_name = [String]()
+    //    var hitsCollectionView: HitsCollectionWidget!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        TopBar.layer.shadowColor = UIColor(red:0/255.0, green:0/255.0, blue:0/255.0, alpha: 1.0).cgColor
-        TopBar.layer.shadowOffset = CGSize(width: 0, height: 1.25)
-        TopBar.layer.shadowRadius = 1.2
-        TopBar.layer.shadowOpacity = 0.45
-        
-        configureInstantSearch()
+        self.definesPresentationContext = true
+        self.extendedLayoutIncludesOpaqueBars = true
+        configureNavBar()
+        configureToolBar()
         configureSearchController()
-        // Do any additional setup after loading the view, typically from a nib.
-        self.SearchedItemsView.delegate = self
-        self.SearchedItemsView.dataSource = self
+        configureTable()
+        configureInstantSearch()
         
-        let shopItemSize = UIScreen.main.bounds.width/2 - 9
-        
-        let Layout = UICollectionViewFlowLayout()
-        Layout.sectionInset = UIEdgeInsetsMake(6, 6, 6, 6)
-        Layout.itemSize = CGSize(width: shopItemSize, height: shopItemSize*160/100)
-        
-        Layout.minimumInteritemSpacing = 4
-        Layout.minimumLineSpacing = 6
-        
-        SearchedItemsView.collectionViewLayout = Layout
-
-        // Do any additional setup after loading the view.
+        hitsController = HitsController(collection: collectionView)
+        collectionView.dataSource = hitsController
+        collectionView.delegate = hitsController
+        hitsController.collectionDataSource = self
     }
     
-//    For instant search
+//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        return 10
+//    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath, containing hit: [String : Any]) -> UICollectionViewCell {
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SearchedItem", for: indexPath) as! SearchedItemCollectionViewCell
+        
+        cell.item = ItemRecord(json: hit)
+        self.product_name.append(hit["productName"] as! String)
+//        print(hit["productName"] as! String)
+        cell.backgroundColor = UIColor.white
+        
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath, containing hit: [String : Any]) {
+        
+//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SearchedItem", for: indexPath) as! SearchedItemCollectionViewCell
+//        
+//        cell.item = ItemRecord(json: hit)
+//        print("................................")
+//        print(cell.item)
+//        print("................................")
+        performSegue(withIdentifier:"ItemClickedFromSearch", sender: indexPath)
+        
+    }
+
+    
+    // MARK: Helper methods for configuring each component of the table
+    
     func configureInstantSearch() {
         InstantSearch.shared.register(searchController: searchController)
         InstantSearch.shared.registerAllWidgets(in: self.view)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    func configureTable() {
+        collectionView.delegate = self
+        collectionView.backgroundColor = UIColor.clear
     }
     
-    @IBAction func BackButton(_ sender: Any) {
-        performSegue(withIdentifier: self.Back_button_tag, sender: self)
+    func configureNavBar() {
+        navigationController?.navigationBar.barTintColor = UIColor.purple
+        navigationController?.navigationBar.isTranslucent = false
+        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.blue]
     }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return image.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SearchedItem", for: indexPath) as! SearchedItemCollectionViewCell
-        cell.SearchedItemImage.image = UIImage(named: image[indexPath.row])
-        cell.Name.text = name[indexPath.row]
-        cell.Price.text = location[indexPath.row]
-        cell.Shop.text = name[indexPath.row]
-        cell.Distance.text = name[indexPath.row]
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "fromSearchtoItemDetail", sender: self)
+    func configureToolBar() {
+        topBarView.backgroundColor = UIColor.white
     }
     
     func configureSearchController() {
@@ -105,22 +104,32 @@ class ItemSearchedViewController: UIViewController, UICollectionViewDelegate, UI
         searchController.searchBar.placeholder = "Bazaar"
         searchController.searchBar.sizeToFit()
         
-//        searchController.searchBar.barTintColor = ColorConstants.barBackgroundColor
+        searchController.searchBar.barTintColor = UIColor.clear
         searchController.searchBar.isTranslucent = false
         searchController.searchBar.layer.cornerRadius = 1.0
         searchController.searchBar.clipsToBounds = true
-        TopBar.addSubview(searchController.searchBar)
+        searchBarView.addSubview(searchController.searchBar)
     }
-        
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "ItemClickedFromSearch"{
+            let indexPath = collectionView.indexPathsForSelectedItems?.first
+            let itemVC = segue.destination as! ShopItemViewController
+            let cell = collectionView.cellForItem(at: indexPath!) as? SearchedItemCollectionViewCell
+            
+            itemVC.product_name = (cell?.item?.name!)!
+            itemVC.product_price = (cell?.item?.price!)!
+            
+//            Converting URL to string to pass it to next view
+            let imageURL_str = cell?.item?.imageUrl?.absoluteString
+            itemVC.product_img_url = imageURL_str!
+            
+            
+//            let itemVC = segue.destination as! ShopItemViewController
+//            itemVC.product_name = self.product_name[index.item]
+//            print("............................................")
+//            print(selected_item)
+//            print("............................................")
+        }
     }
-    */
-
 }

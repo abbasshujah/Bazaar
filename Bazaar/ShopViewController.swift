@@ -27,6 +27,7 @@ class ShopViewController: ButtonBarPagerTabStripViewController {
     var shop_location = ""
     var ref: DatabaseReference!
     var databaseHandle: DatabaseHandle?
+    var city = "Hamilton"
     
     override func viewDidLoad() {
         
@@ -72,7 +73,7 @@ class ShopViewController: ButtonBarPagerTabStripViewController {
         SearchField.addTarget(self, action: #selector(enterPressed), for: .editingDidEndOnExit)
         //SearchField.clearsOnBeginEditing = true
         
-        ref.child(shop_name).observeSingleEvent(of: .value, with: { (snapshot) in
+        ref.child(city).child(shop_name).observeSingleEvent(of: .value, with: { (snapshot) in
             if let productCategories = snapshot.childSnapshot(forPath: "Products").children.allObjects as? [DataSnapshot]{
                 for productCategory in productCategories{
                     self.view_titles.append(productCategory.key)
@@ -125,10 +126,10 @@ class ShopViewController: ButtonBarPagerTabStripViewController {
      */
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ItemSearchedFromShop"{
-            let shopVC = segue.destination as! ItemSearchedViewController
-            shopVC.Back_button_tag = "BackToShopFromItemSearch"
-        }
+//        if segue.identifier == "ItemSearchedFromShop"{
+//            let shopVC = segue.destination as! ItemSearchedViewController
+//            shopVC.Back_button_tag = "BackToShopFromItemSearch"
+//        }
     }
     
 //    func getProductCategories(){
