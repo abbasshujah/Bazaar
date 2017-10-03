@@ -1,26 +1,27 @@
 //
-//  ItemCollectionViewController.swift
+//  ItemTextfieldSearchedViewController.swift
 //  Bazaar
 //
-//  Created by Prasann Pandya on 2017-09-21.
+//  Created by Prasann Pandya on 2017-10-02.
 //  Copyright © 2017 Syed Abbas. All rights reserved.
 //
+
+import Foundation
+
 import UIKit
 import InstantSearch
 import AlgoliaSearch
 
-class ItemSearchedViewController: UIViewController, UICollectionViewDelegate, HitsCollectionViewDataSource {
+
+
+class ItemTextfieldSearchedViewController: UIViewController, UICollectionViewDelegate, HitsCollectionViewDataSource {
+    @IBOutlet weak var searchField: UIView!
     
-    @IBOutlet weak var collectionView: HitsCollectionWidget!
-    @IBOutlet weak var topBarView: UIView!
-    //    @IBOutlet weak var tableView: HitsTableWidget!
-    
-//    @IBOutlet weak var searchBarView: UIView!
     @IBOutlet weak var nbHitsLabel: UILabel!
+//    @IBOutlet weak var searchBarView: UIView!
+    @IBOutlet weak var topBarView: UIView!
     @IBOutlet weak var TopBar: UIView!
-    @IBOutlet weak var searchTextField: UIView!
-    @IBOutlet weak var searchText: UITextField!
-    
+    @IBOutlet weak var collectionView: HitsCollectionWidget!
     
     var hitsController: HitsController!
     var searchController: UISearchController!
@@ -38,6 +39,10 @@ class ItemSearchedViewController: UIViewController, UICollectionViewDelegate, Hi
         super.viewDidLoad()
         self.definesPresentationContext = true
 //        self.extendedLayoutIncludesOpaqueBars = true
+//        TopBar.layer.shadowColor = UIColor(red:0/255.0, green:0/255.0, blue:0/255.0, alpha: 1.0).cgColor
+//        TopBar.layer.shadowOffset = CGSize(width: 0, height: 1.25)
+//        TopBar.layer.shadowRadius = 1.2
+//        TopBar.layer.shadowOpacity = 0.45
 //        configureNavBar()
 //        configureToolBar()
         configureSearchController()
@@ -48,14 +53,14 @@ class ItemSearchedViewController: UIViewController, UICollectionViewDelegate, Hi
         collectionView.dataSource = hitsController
         collectionView.delegate = hitsController
         hitsController.collectionDataSource = self
-        searchText.text = item_searched
+        
         print(item_searched)
-
+        
     }
     
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return 10
-//    }
+    //    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    //        return 10
+    //    }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath, containing hit: [String : Any]) -> UICollectionViewCell {
         
@@ -63,7 +68,7 @@ class ItemSearchedViewController: UIViewController, UICollectionViewDelegate, Hi
         
         cell.item = ItemRecord(json: hit)
         self.product_name.append(hit["productName"] as! String)
-//        print(hit["productName"] as! String)
+        //        print(hit["productName"] as! String)
         cell.backgroundColor = UIColor.white
         
         return cell
@@ -74,7 +79,7 @@ class ItemSearchedViewController: UIViewController, UICollectionViewDelegate, Hi
         performSegue(withIdentifier:"ItemClickedFromSearch", sender: indexPath)
         
     }
-
+    
     
     // MARK: Helper methods for configuring each component of the table
     
@@ -102,21 +107,20 @@ class ItemSearchedViewController: UIViewController, UICollectionViewDelegate, Hi
     func configureSearchController() {
         // Initialize and perform a minimum configuration to the search controller.
         searchController = UISearchController(searchResultsController: nil)
-
+        
         searchController.dimsBackgroundDuringPresentation = false
-//        searchController.hidesNavigationBarDuringPresentation = false
+        searchController.hidesNavigationBarDuringPresentation = false
         
         searchController.searchBar.text = item_searched
-        
+//        searchController.searchBar.placeholder = "Bazaar"
 //        searchController.searchBar.sizeToFit()
 //        
 //        searchController.searchBar.barTintColor = UIColor.clear
 //        searchController.searchBar.isTranslucent = false
 //        searchController.searchBar.layer.cornerRadius = 1.0
 //        searchController.searchBar.clipsToBounds = true
-////        searchBarView.addSubview(searchController.searchBar)
-//        textFieldView.addSubview(searchController.searchBar)
-
+//        searchBarView.addSubview(searchController.searchBar)
+//        TopBar.addSubview(searchController.searchBar)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -128,16 +132,16 @@ class ItemSearchedViewController: UIViewController, UICollectionViewDelegate, Hi
             itemVC.product_name = (cell?.item?.name!)!
             itemVC.product_price = (cell?.item?.price!)!
             
-//            Converting URL to string to pass it to next view
+            //            Converting URL to string to pass it to next view
             let imageURL_str = cell?.item?.imageUrl?.absoluteString
             itemVC.product_img_url = imageURL_str!
             
             
-//            let itemVC = segue.destination as! ShopItemViewController
-//            itemVC.product_name = self.product_name[index.item]
-//            print("............................................")
-//            print(selected_item)
-//            print("............................................")
+            //            let itemVC = segue.destination as! ShopItemViewController
+            //            itemVC.product_name = self.product_name[index.item]
+            //            print("............................................")
+            //            print(selected_item)
+            //            print("............................................")
         }
     }
 }
