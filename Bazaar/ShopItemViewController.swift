@@ -18,6 +18,10 @@ class ShopItemViewController: UIViewController {
     @IBOutlet weak var Address: UILabel!
     @IBOutlet weak var Price: UILabel!
 
+    
+    var ItemCameFromSearch = false
+    var ItemSearchedBeforeSelect = ""
+    
     var product_img_url = ""
     var product_name = ""
     @IBOutlet weak var Shop_Name: UILabel!
@@ -82,7 +86,12 @@ class ShopItemViewController: UIViewController {
     }
     
     @IBAction func GoBackToShop(_ sender: Any) {
-        performSegue(withIdentifier: "GoBackToShop", sender: self)
+        if ItemCameFromSearch == true{
+            performSegue(withIdentifier: "BackToSearchFromItem", sender: self)
+        }
+        else{
+            performSegue(withIdentifier: "GoBackToShop", sender: self)
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -91,6 +100,10 @@ class ShopItemViewController: UIViewController {
             itemVC.shop_location = shop_location
             itemVC.shop_name = shop_name
         }
+        if segue.identifier == "BackToSearchFromItem"{
+            // do stuff here
+        }
+
     }
     
     
