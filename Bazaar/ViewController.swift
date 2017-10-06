@@ -253,8 +253,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             
         }
         if segue.identifier == "ItemSearchedFromMain"{
-            let shopVC = segue.destination as! ItemSearchedViewController
-            shopVC.item_searched = SearchField.text!
+            let itemVC = segue.destination as! ItemSearchedViewController
+            itemVC.item_searched = SearchField.text!
         }
     }
     

@@ -36,6 +36,17 @@ class ItemSearchedViewController: UIViewController, UICollectionViewDelegate, Hi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let shopItemSize = UIScreen.main.bounds.width/2 - 9
+        
+        let Layout = UICollectionViewFlowLayout()
+        Layout.sectionInset = UIEdgeInsetsMake(6, 6, 6, 6)
+        Layout.itemSize = CGSize(width: shopItemSize, height: shopItemSize*140/100)
+        
+        Layout.minimumInteritemSpacing = 4
+        Layout.minimumLineSpacing = 6
+        
+        collectionView.collectionViewLayout = Layout
         self.definesPresentationContext = true
 //        self.extendedLayoutIncludesOpaqueBars = true
 //        configureNavBar()
@@ -131,6 +142,8 @@ class ItemSearchedViewController: UIViewController, UICollectionViewDelegate, Hi
 //            Converting URL to string to pass it to next view
             let imageURL_str = cell?.item?.imageUrl?.absoluteString
             itemVC.product_img_url = imageURL_str!
+            itemVC.ItemCameFromSearch = true
+            itemVC.ItemSearchedBeforeSelect = item_searched
             
             
 //            let itemVC = segue.destination as! ShopItemViewController
