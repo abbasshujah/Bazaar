@@ -12,76 +12,6 @@ import CoreLocation
 
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, CLLocationManagerDelegate {
     
-    //--------------------------------
-    
-    let Manage_location = CLLocationManager()
-    
-    var Current_Location: CLLocation = CLLocation(latitude: 100, longitude: 100)
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        Current_Location = locations[0]
-        
-    }
-    
-    func GetLocation(location: String){
-        var adress_mcmaster = CLGeocoder().geocodeAddressString(location) { (placemarks, error) in
-            guard
-                let placemarks = placemarks,
-                let location = placemarks.first?.location
-                else {
-                    // handle no location found
-                    return
-            }
-            
-//            print("distance")
-//            print("\(location.coordinate.latitude)")
-//            print("\(location.coordinate.longitude)")
-//            print("\(self.Current_Location.coordinate.latitude)")
-//            print("\(self.Current_Location.coordinate.longitude)")
-//            print("\(self.Current_Location.distance(from: location))")
-        }
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        locationAuthStatus()
-        Manage_location.delegate = self
-        Manage_location.startUpdatingLocation()
-        
-        GetLocation(location: "16 Priscilla Lane, Hamilton, ON L8E 3K9")
-        /*var adress_mcmaster = CLGeocoder().geocodeAddressString("16 Priscilla Lane, Hamilton, ON L8E 3K9") { (placemarks, error) in
-            guard
-                let placemarks = placemarks,
-                let location = placemarks.first?.location
-                else {
-                    // handle no location found
-                    return
-            }
-            
-            print("distance")
-            print("\(location.coordinate.latitude)")
-            print("\(location.coordinate.longitude)")
-            print("\(self.Current_Location.coordinate.latitude)")
-            print("\(self.Current_Location.coordinate.longitude)")
-            print("\(self.Current_Location.distance(from: location))")
-        }*/
-        if CLLocationManager.authorizationStatus() != .authorizedWhenInUse{
-            locationAuthStatus()
-        }
-    }
-    
-    func locationAuthStatus(){
-        if CLLocationManager.authorizationStatus() == .authorizedWhenInUse{
-            
-        }
-        else {
-            Manage_location.requestWhenInUseAuthorization()
-        }
-    }
-    
-    
-    
-    //-----------------------------------
-    
     @IBOutlet weak var SearchField: UITextField!
     
     @IBOutlet weak var SliderMenu: UIView!
@@ -111,14 +41,61 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     var item_searched = ""
     
+    var temp_string = ""
+    
     var ref: DatabaseReference!
     
+    let Manage_location = CLLocationManager()
+    var Current_Location: CLLocation = CLLocation(latitude: 43.261199, longitude: -79.919054)
     
-//    var image = ["pinks", "TimHortons", "TimHortons", "Balilque", "TimHortons", "TimHortons", "Balilque", "Balilque", "Balilque", "TimHortons"]
-//    
-//    var location = ["pinks", "religion 5", "relgion 7", "religion 5", "relgion 7", "religion 5", "relgion 7", "rlgion 7", "relgion 7", "relgion 7"]
-//    
-//    var name = ["pinks", "religion 5", "relgion 7", "religion 5", "relgion 7", "religion 5", "relgion 7", "rlgion 7", "relgion 7", "relgion 7"]
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+//        Uncomment this before uploading the app on any phone.
+        //        TODO: Get current location
+//        Current_Location = locations[0]
+    }
+    
+    func GetLocation(location: String) {
+        var adress_mcmaster = CLGeocoder().geocodeAddressString(location) { (placemarks, error) in
+            guard
+                let placemarks = placemarks,
+                let location = placemarks.first?.location
+                else {
+                    // handle no location found
+                    return
+            }
+            //            print("distance")
+            
+//            print("Store Location: \(location.coordinate.latitude),\(location.coordinate.longitude)")
+//            print("Current Location: \(self.Current_Location.coordinate.latitude),\(self.Current_Location.coordinate.longitude)")
+//            return
+            //            print("\(self.Current_Location.coordinate.longitude)")
+//            Getting store distance from current location in a format with two decimal places
+//            print("\(round(self.Current_Location.distance(from: location)/10)/100)")
+            
+            self.temp_string = "\(round(self.Current_Location.distance(from: location)/10)/100)"
+//            return self.temp_string
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        locationAuthStatus()
+        Manage_location.delegate = self
+        Manage_location.startUpdatingLocation()
+        
+//        GetLocation(location: "16 Priscilla Lane, Hamilton, ON L8E 3K9")
+        if CLLocationManager.authorizationStatus() != .authorizedWhenInUse{
+            locationAuthStatus()
+        }
+    }
+    
+    func locationAuthStatus(){
+        if CLLocationManager.authorizationStatus() == .authorizedWhenInUse{
+            
+        }
+        else {
+            Manage_location.requestWhenInUseAuthorization()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -172,7 +149,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
 // TODO: Functions for search field
     func enterPressed(){
         //do something with typed text if needed
-        print(SearchField.text ?? "")
+//        print(SearchField.text ?? "")
         SearchInput(Input: SearchField.text!)
         //SearchField.resignFirstResponder()
         
@@ -194,7 +171,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Shop_cell", for: indexPath) as? ShopCollectionViewCell{
-            
 //            var img: UIImage?
 //            let url = URL(string: self.image_url[indexPath.row])
             
@@ -229,6 +205,19 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             //            cell.Shop_image.image = UIImage(named: image[indexPath.row])
             
             cell.Shop_name.text = self.store_name[indexPath.row]
+            
+            var adress_mcmaster = CLGeocoder().geocodeAddressString(self.store_location[indexPath.row]) { (placemarks, error) in
+                guard
+                    let placemarks = placemarks,
+                    let location = placemarks.first?.location
+                    else {
+                        return
+                        
+                }
+                cell.Shop_adress.text = "\(round(self.Current_Location.distance(from: location)/10)/100)"
+            }
+            
+//            cell.Shop_adress.text = ""
             //            cell.Shop_adress.text = self.store_location[indexPath.row]
             return cell
             
@@ -238,9 +227,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
         performSegue(withIdentifier:"ToShopFromMain", sender: indexPath)
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
