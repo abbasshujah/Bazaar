@@ -8,11 +8,15 @@ target 'Bazaar' do
   # Pods for tabs_test
   pod 'XLPagerTabStrip', :git => 'https://github.com/KelvinJin/XLPagerTabStrip', :branch => 'swift3'
   pod 'Firebase'
-  pod 'Firebase/Core'
-  pod 'Firebase/Database'
   pod 'Alamofire', '~> 4.4'
   pod 'AFNetworking', '~> 3.0'
   pod 'InstantSearch-iOS', '~> 1.0.0'
+  pod 'Firebase/Core'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Database'
+  pod 'Firebase/Storage'
+  pod 'GoogleSignIn'
+  pod 'SwiftKeychainWrapper', :git => 'https://github.com/jrendel/SwiftKeychainWrapper.git', :branch => 'master'
 
 #  pod 'Fuse'
 end

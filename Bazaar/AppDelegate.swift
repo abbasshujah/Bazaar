@@ -9,10 +9,10 @@
 import UIKit
 import Firebase
 import InstantSearch
-
+import GoogleSignIn
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 
     var window: UIWindow?
     private let ALGOLIA_APP_ID = "HGQJBEYFM1"
@@ -23,9 +23,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         InstantSearch.shared.configure(appID: ALGOLIA_APP_ID, apiKey: "2d8d1f6517b669bd4ea3931f8bed2ce1", index: ALGOLIA_INDEX_NAME)
         InstantSearch.shared.searcher.params.attributesToHighlight = ["productName"]
+        
         FirebaseApp.configure()
+        GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
+        GIDSignIn.sharedInstance().delegate = self
+       /*
+         
+        <-----------For mandatory login anytime in the app, use the following code!--------->
+        if Auth.auth().currentUser == nil {
+            let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+            let authVC = storyboard.instantiateViewController(withIdentifier: "LoginVC")
+            window?.makeKeyAndVisible()
+            window?.rootViewController?.present(authVC, animated: true, completion: nil)
+        }
+ 
+         */
+        
         return true
     }
+    
+
+       
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -48,7 +66,54 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+    
+    @available(iOS 9.0, *)
+    func application(_ application: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any])
+        -> Bool {
+            return GIDSignIn.sharedInstance().handle(url,
+                                                     sourceApplication:options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String,
+                                                     annotation: [:])
+    }
 
-
+    
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
+        // ...
+        if let error = error {
+            print(error.localizedDescription)
+            return
+        }
+        
+        print("User signined In to Google")
+        
+        guard let authentication = user.authentication else { return }
+        let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
+                                                       accessToken: authentication.accessToken)
+        Auth.auth().signIn(with: credential) { (user, error) in
+            if let error = error {
+                print(error.localizedDescription)
+                return
+            }
+            
+            print("User signin into Firebase!")
+            
+            let userData = ["User Name": user?.displayName, "email": user?.email]
+            DataService.instance.createDBUser(uid: (user?.uid)!, userData: userData)
+            
+            /*
+                let storyboard: UIStoryboard = UIStoryboard(name: "main", bundle: nil)
+             self.window?.rootviewController?.performSegue(withIdentifier: "HomeViewSegue", sender: nil)
+             
+            */
+        }
+    }
+    
+    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
+        // Perform any operations when the user disconnects from app here.
+        // ...
+    }
+    
+    
 }
+
+
 
