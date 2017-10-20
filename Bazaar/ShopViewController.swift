@@ -114,7 +114,8 @@ class ShopViewController: ButtonBarPagerTabStripViewController {
     }
     
     @IBAction func GoBackToMain(_ sender: Any) {
-        performSegue(withIdentifier: "ToMainFromShop", sender: self)
+        dismiss(animated: true, completion: nil)
+//        performSegue(withIdentifier: "ToMainFromShop", sender: self)
     }
     
     /*

@@ -69,6 +69,7 @@ class ItemSearchedViewController: UIViewController, UICollectionViewDelegate, Hi
 //        return 10
 //    }
     
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath, containing hit: [String : Any]) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SearchedItem", for: indexPath) as! SearchedItemCollectionViewCell
@@ -147,6 +148,9 @@ class ItemSearchedViewController: UIViewController, UICollectionViewDelegate, Hi
 
     }
     
+    @IBAction func GoBack(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ItemClickedFromSearch"{
             let indexPath = collectionView.indexPathsForSelectedItems?.first

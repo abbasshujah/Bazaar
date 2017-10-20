@@ -86,12 +86,13 @@ class ShopItemViewController: UIViewController {
     }
     
     @IBAction func GoBackToShop(_ sender: Any) {
-        if ItemCameFromSearch == true{
-            performSegue(withIdentifier: "BackToSearchFromItem", sender: self)
-        }
-        else{
-            performSegue(withIdentifier: "GoBackToShop", sender: self)
-        }
+        dismiss(animated: true, completion: nil)
+//        if ItemCameFromSearch == true{
+//            performSegue(withIdentifier: "BackToSearchFromItem", sender: self)
+//        }
+//        else{
+//            performSegue(withIdentifier: "GoBackToShop", sender: self)
+//        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
