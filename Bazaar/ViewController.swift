@@ -51,7 +51,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
 //        Uncomment this before uploading the app on any phone.
         //        TODO: Get current location
-//        Current_Location = locations[0]
+        Current_Location = locations[0]
     }
     
     func GetLocation(location: String) {
@@ -64,7 +64,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                     return
             }
             //            print("distance")
-            
 //            print("Store Location: \(location.coordinate.latitude),\(location.coordinate.longitude)")
 //            print("Current Location: \(self.Current_Location.coordinate.latitude),\(self.Current_Location.coordinate.longitude)")
 //            return
@@ -76,6 +75,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
 //            return self.temp_string
         }
     }
+    
     
     override func viewDidAppear(_ animated: Bool) {
         locationAuthStatus()

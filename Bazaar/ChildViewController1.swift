@@ -30,13 +30,6 @@ class ChildViewController1: UIViewController, UICollectionViewDelegate, UICollec
     var city = "Hamilton"
     
     var ref: DatabaseReference!
-
-    
-//    var image = ["pinks", "religion 5", "relgion 7", "religion 5", "relgion 7", "religion 5", "relgion 7", "rlgion 7", "relgion 7", "relgion 7"]
-//    
-//    var location = ["pinks", "religion 5", "relgion 7", "religion 5", "relgion 7", "religion 5", "relgion 7", "rlgion 7", "relgion 7", "relgion 7"]
-//    
-//    var name = ["pinks", "religion 5", "relgion 7", "religion 5", "relgion 7", "religion 5", "relgion 7", "rlgion 7", "relgion 7", "relgion 7"]
     
     static let placeholder = UIImage(named: "placeholder")
     

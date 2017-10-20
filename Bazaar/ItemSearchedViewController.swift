@@ -24,9 +24,9 @@ class ItemSearchedViewController: UIViewController, UICollectionViewDelegate, Hi
     
     var hitsController: HitsController!
     var searchController: UISearchController!
-    var jsonHits: JSONObject!
+//    var jsonHits: JSONObject!
     
-    
+    var index: Index!
     var selected_item = "abcd"
     
     var product_name = [String]()
@@ -60,7 +60,8 @@ class ItemSearchedViewController: UIViewController, UICollectionViewDelegate, Hi
         collectionView.delegate = hitsController
         hitsController.collectionDataSource = self
         searchText.text = item_searched
-        print(item_searched)
+//        print(item_searched)
+//        testAlgolia()
 
     }
     
@@ -81,10 +82,24 @@ class ItemSearchedViewController: UIViewController, UICollectionViewDelegate, Hi
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath, containing hit: [String : Any]) {
-        
+    
         performSegue(withIdentifier:"ItemClickedFromSearch", sender: indexPath)
         
     }
+    
+//    func testAlgolia(){
+//
+//        let query = Query(query: "pizza")
+//        query.aroundLatLng = LatLng(lat: 43.261199, lng: -79.919054)
+//        let apiClient = Client(appID: "HGQJBEYFM1", apiKey: "2d8d1f6517b669bd4ea3931f8bed2ce1")
+//        index = apiClient.index(withName: "products")
+//        index.search(query, completionHandler: { (res,error) in
+//            print(res)
+//
+//        })
+//        //           (43.261199, -79.919054)
+//
+//    }
 
     
     // MARK: Helper methods for configuring each component of the table
@@ -93,6 +108,8 @@ class ItemSearchedViewController: UIViewController, UICollectionViewDelegate, Hi
         InstantSearch.shared.register(searchController: searchController)
         InstantSearch.shared.registerAllWidgets(in: self.view)
         InstantSearch.shared.updateSearchResults(for: searchController)
+        InstantSearch.shared.searcher.params.aroundLatLng = LatLng(lat: 43.261199, lng: -79.919054)
+        InstantSearch.shared.searcher.search()
     }
     
     func configureTable() {
