@@ -17,7 +17,7 @@ class ChildViewController1: UIViewController, UICollectionViewDelegate, UICollec
     
     var product_name = [String]()
     
-    var product_price = [String]()
+    var product_price = [Double]()
     
     var product_img_url = [String]()
     
@@ -115,7 +115,7 @@ class ChildViewController1: UIViewController, UICollectionViewDelegate, UICollec
             
             
 //            cell.ShopProductImage.image = UIImage(named: image[indexPath.row])
-            cell.ShopProductPrice.text = self.product_price[indexPath.row]
+            cell.ShopProductPrice.text = "$\(String(describing: self.product_price[indexPath.row]))"
             cell.ShopProductDiscription.text = self.product_name[indexPath.row]
 //            cell.ShopProductPrice.text = name[indexPath.row]
 //            cell.ShopProductDiscription.text = location[indexPath.row]
@@ -150,7 +150,7 @@ class ChildViewController1: UIViewController, UICollectionViewDelegate, UICollec
                 for product in products{
 //                    print(product)
                     self.product_name.append(product.childSnapshot(forPath: "productName").value as! String)
-                    self.product_price.append(product.childSnapshot(forPath: "price").value as! String)
+                    self.product_price.append(product.childSnapshot(forPath: "price").value as! Double)
                     self.product_img_url.append(product.childSnapshot(forPath: "productImage").value as! String)
                 }
             }

@@ -137,8 +137,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
 //        To load store data
         loadStoreData()
         
-        
-        
     }
     
     override func didReceiveMemoryWarning() {
