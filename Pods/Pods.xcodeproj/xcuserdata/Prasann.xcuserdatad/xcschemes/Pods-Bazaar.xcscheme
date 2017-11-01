@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "EA6DBFA946853C48A20E66681D36EA85"
+               BlueprintIdentifier = "F6BDA2B1FAE0ABC04F360654EF20D126"
                BuildableName = "Pods_Bazaar.framework"
                BlueprintName = "Pods-Bazaar"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -26,6 +26,7 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      language = ""
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
       </Testables>
@@ -36,6 +37,7 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      language = ""
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
       ignoresPersistentStateOnLaunch = "NO"
@@ -45,7 +47,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "EA6DBFA946853C48A20E66681D36EA85"
+            BlueprintIdentifier = "F6BDA2B1FAE0ABC04F360654EF20D126"
             BuildableName = "Pods_Bazaar.framework"
             BlueprintName = "Pods-Bazaar"
             ReferencedContainer = "container:Pods.xcodeproj">
