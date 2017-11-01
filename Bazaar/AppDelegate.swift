@@ -98,10 +98,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             
             let userData = ["User Name": user?.displayName, "email": user?.email]
             DataService.instance.createDBUser(uid: (user?.uid)!, userData: userData)
-            
+        
             /*
                 let storyboard: UIStoryboard = UIStoryboard(name: "main", bundle: nil)
              self.window?.rootviewController?.performSegue(withIdentifier: "HomeViewSegue", sender: nil)
+             
+             or 
+             
+             dismiss()
              
             */
         }

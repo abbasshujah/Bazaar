@@ -79,6 +79,25 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
+		04B714061F9680D00098F0A1 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				43945D951F44118E00BDE07E /* AppDelegate.swift */,
+				43945DA11F44118E00BDE07E /* Info.plist */,
+				7D4A0BCC1F5B67CE007E23FD /* GoogleService-Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		04B714071F9680FF0098F0A1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				43945D991F44118E00BDE07E /* Main.storyboard */,
+				43945D9E1F44118E00BDE07E /* LaunchScreen.storyboard */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 		04F621871F7AD1F100E2D464 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -119,15 +138,12 @@
 		43945D941F44118E00BDE07E /* Bazaar */ = {
 			isa = PBXGroup;
 			children = (
+				04B714071F9680FF0098F0A1 /* View */,
+				04B714061F9680D00098F0A1 /* Supporting Files */,
 				048857841F8D4F3000D4FE02 /* Services */,
 				0483DFE71F7D4C6D0015ED71 /* Bazaar.entitlements */,
 				04F621871F7AD1F100E2D464 /* Controller */,
-				43945D951F44118E00BDE07E /* AppDelegate.swift */,
-				43945D991F44118E00BDE07E /* Main.storyboard */,
 				43945D9C1F44118E00BDE07E /* Assets.xcassets */,
-				43945D9E1F44118E00BDE07E /* LaunchScreen.storyboard */,
-				43945DA11F44118E00BDE07E /* Info.plist */,
-				7D4A0BCC1F5B67CE007E23FD /* GoogleService-Info.plist */,
 			);
 			path = Bazaar;
 			sourceTree = "<group>";
