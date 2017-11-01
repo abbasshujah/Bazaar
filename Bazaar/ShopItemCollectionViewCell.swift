@@ -12,7 +12,4 @@ class ShopItemCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var ShopProductDiscription: UILabel!
     @IBOutlet weak var ShopProductPrice: UILabel!
     @IBOutlet weak var ShopProductImage: UIImageView!
-    
-    
-    
 }

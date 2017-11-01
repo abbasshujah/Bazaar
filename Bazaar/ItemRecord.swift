@@ -23,6 +23,9 @@ struct ItemRecord {
         return json["productName"] as? String
     }
     
+    var store_name: String? {
+        return json["StoreName"] as? String
+    }
     //    var type: String? {
     //        return json["type"] as? String
     //    }
@@ -30,7 +33,6 @@ struct ItemRecord {
     //    var category: String? {
     //        return json["category"] as? String
     //    }
-    
     
 //    TODO: Getting price as a String
 
@@ -45,19 +47,17 @@ struct ItemRecord {
     
     var price: Double? {
         
-        let str = json["price"]
-        
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .currency
-        
-        let number = formatter.number(from: str as! String)
-        let amount = number?.doubleValue
-        //        print(amount as! Double)
-        return amount as? Double
+//        let str = json["price"]
+//
+//        let formatter = NumberFormatter()
+//        formatter.numberStyle = .currency
+//
+//        let number = formatter.number(from: str as! String)
+//        let amount = number?.doubleValue
+//        //        print(amount as! Double)
+        return json["price"] as? Double
         
     }
-
-    
     
     //    var rating: Int? {
     //        return json["rating"] as? Int
