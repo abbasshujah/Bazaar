@@ -22,6 +22,9 @@
 		7D3E39FB1F579C2900627D9F /* ChildViewController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D3E39FA1F579C2900627D9F /* ChildViewController1.swift */; };
 		7D4A0BCD1F5B67CE007E23FD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7D4A0BCC1F5B67CE007E23FD /* GoogleService-Info.plist */; };
 		7D7102C81F740D4E003922A4 /* ItemRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7102C71F740D4E003922A4 /* ItemRecord.swift */; };
+		7DC73A8A1FAA782100B19114 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DC73A891FAA782100B19114 /* AuthService.swift */; };
+		7DC73A8C1FAA786A00B19114 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DC73A8B1FAA786A00B19114 /* DataService.swift */; };
+		7DC73A8E1FAA78B500B19114 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DC73A8D1FAA78B500B19114 /* LoginVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +44,9 @@
 		7D3E39FA1F579C2900627D9F /* ChildViewController1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChildViewController1.swift; sourceTree = "<group>"; };
 		7D4A0BCC1F5B67CE007E23FD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7D7102C71F740D4E003922A4 /* ItemRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemRecord.swift; sourceTree = "<group>"; };
+		7DC73A891FAA782100B19114 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		7DC73A8B1FAA786A00B19114 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
+		7DC73A8D1FAA78B500B19114 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		B955C90BE439793E3FF6BBE8 /* Pods-Bazaar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bazaar.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bazaar/Pods-Bazaar.debug.xcconfig"; sourceTree = "<group>"; };
 		F933126B9CDE29727A9E5975 /* Pods-Bazaar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bazaar.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bazaar/Pods-Bazaar.release.xcconfig"; sourceTree = "<group>"; };
 		FC295DA87E1E15574C9D22C0 /* Pods_Bazaar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bazaar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -79,23 +85,58 @@
 		43945D941F44118E00BDE07E /* Bazaar */ = {
 			isa = PBXGroup;
 			children = (
-				43945D951F44118E00BDE07E /* AppDelegate.swift */,
-				43945D971F44118E00BDE07E /* ViewController.swift */,
-				435E04681F61A57D00711254 /* ItemSearchedViewController.swift */,
-				43945D991F44118E00BDE07E /* Main.storyboard */,
-				43945E7F1F5DE77900BDE07E /* ShopItemViewController.swift */,
-				43945E5D1F53515800BDE07E /* ShopViewController.swift */,
-				43945DB11F466DFA00BDE07E /* ShopCollectionViewCell.swift */,
-				43945E7D1F5CE66700BDE07E /* ShopItemCollectionViewCell.swift */,
-				435E046A1F61B8C100711254 /* SearchedItemCollectionViewCell.swift */,
+				7DEF2BFF1FAA7B3F00D063CB /* Controller */,
+				7DEF2BFE1FAA7B1C00D063CB /* Services */,
+				7DEF2BFD1FAA7AFB00D063CB /* Supporting Files */,
+				7DEF2BFC1FAA7ADB00D063CB /* View */,
 				43945D9C1F44118E00BDE07E /* Assets.xcassets */,
-				43945D9E1F44118E00BDE07E /* LaunchScreen.storyboard */,
-				43945DA11F44118E00BDE07E /* Info.plist */,
-				7D4A0BCC1F5B67CE007E23FD /* GoogleService-Info.plist */,
-				7D3E39FA1F579C2900627D9F /* ChildViewController1.swift */,
-				7D7102C71F740D4E003922A4 /* ItemRecord.swift */,
 			);
 			path = Bazaar;
+			sourceTree = "<group>";
+		};
+		7DEF2BFC1FAA7ADB00D063CB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				43945D9E1F44118E00BDE07E /* LaunchScreen.storyboard */,
+				43945D991F44118E00BDE07E /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7DEF2BFD1FAA7AFB00D063CB /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				43945D951F44118E00BDE07E /* AppDelegate.swift */,
+				43945DA11F44118E00BDE07E /* Info.plist */,
+				7D4A0BCC1F5B67CE007E23FD /* GoogleService-Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7DEF2BFE1FAA7B1C00D063CB /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				7DC73A891FAA782100B19114 /* AuthService.swift */,
+				7DC73A8B1FAA786A00B19114 /* DataService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		7DEF2BFF1FAA7B3F00D063CB /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7DC73A8D1FAA78B500B19114 /* LoginVC.swift */,
+				7D7102C71F740D4E003922A4 /* ItemRecord.swift */,
+				435E046A1F61B8C100711254 /* SearchedItemCollectionViewCell.swift */,
+				43945E7D1F5CE66700BDE07E /* ShopItemCollectionViewCell.swift */,
+				43945DB11F466DFA00BDE07E /* ShopCollectionViewCell.swift */,
+				43945D971F44118E00BDE07E /* ViewController.swift */,
+				435E04681F61A57D00711254 /* ItemSearchedViewController.swift */,
+				43945E7F1F5DE77900BDE07E /* ShopItemViewController.swift */,
+				43945E5D1F53515800BDE07E /* ShopViewController.swift */,
+				7D3E39FA1F579C2900627D9F /* ChildViewController1.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		90AF71E557ED1548CF2C99C6 /* Pods */ = {
@@ -273,10 +314,13 @@
 				435E046B1F61B8C100711254 /* SearchedItemCollectionViewCell.swift in Sources */,
 				7D7102C81F740D4E003922A4 /* ItemRecord.swift in Sources */,
 				43945E5E1F53515800BDE07E /* ShopViewController.swift in Sources */,
+				7DC73A8C1FAA786A00B19114 /* DataService.swift in Sources */,
 				7D3E39FB1F579C2900627D9F /* ChildViewController1.swift in Sources */,
 				435E04691F61A57D00711254 /* ItemSearchedViewController.swift in Sources */,
+				7DC73A8A1FAA782100B19114 /* AuthService.swift in Sources */,
 				43945DB21F466DFA00BDE07E /* ShopCollectionViewCell.swift in Sources */,
 				43945D981F44118E00BDE07E /* ViewController.swift in Sources */,
+				7DC73A8E1FAA78B500B19114 /* LoginVC.swift in Sources */,
 				43945D961F44118E00BDE07E /* AppDelegate.swift in Sources */,
 				43945E7E1F5CE66700BDE07E /* ShopItemCollectionViewCell.swift in Sources */,
 				43945E801F5DE77900BDE07E /* ShopItemViewController.swift in Sources */,

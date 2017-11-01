@@ -9,6 +9,7 @@ target 'Bazaar' do
   pod 'XLPagerTabStrip', :git => 'https://github.com/KelvinJin/XLPagerTabStrip', :branch => 'swift3'
   pod 'Firebase'
   pod 'Firebase/Core'
+  pod 'Firebase/Auth'
   pod 'Firebase/Database'
   pod 'Alamofire', '~> 4.4'
   pod 'AFNetworking', '~> 3.0'
