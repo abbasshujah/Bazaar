@@ -90,6 +90,8 @@
 				7DEF2BFD1FAA7AFB00D063CB /* Supporting Files */,
 				7DEF2BFC1FAA7ADB00D063CB /* View */,
 				43945D9C1F44118E00BDE07E /* Assets.xcassets */,
+				43945DA11F44118E00BDE07E /* Info.plist */,
+				7D4A0BCC1F5B67CE007E23FD /* GoogleService-Info.plist */,
 			);
 			path = Bazaar;
 			sourceTree = "<group>";
@@ -107,8 +109,6 @@
 			isa = PBXGroup;
 			children = (
 				43945D951F44118E00BDE07E /* AppDelegate.swift */,
-				43945DA11F44118E00BDE07E /* Info.plist */,
-				7D4A0BCC1F5B67CE007E23FD /* GoogleService-Info.plist */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
