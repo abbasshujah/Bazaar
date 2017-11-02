@@ -10,7 +10,6 @@ import Foundation
 import Firebase
 import FirebaseAuth
 
-
 class AuthService{
     static let instance = AuthService()
     

@@ -8,6 +8,11 @@
 
 import UIKit
 
+/*
+    UICollectionView for shops
+ 
+*/
+
 class ShopCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var Shop_image: UIImageView!
     @IBOutlet weak var Shop_name: UILabel!
