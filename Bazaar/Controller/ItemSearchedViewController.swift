@@ -24,7 +24,7 @@ class ItemSearchedViewController: UIViewController, UICollectionViewDelegate, Hi
     
     var hitsController: HitsController!
     var searchController: UISearchController!
-//    var jsonHits: JSONObject!
+//    var jsonHits: JSONObject!  
     
     var index: Index!
     var selected_item = "abcd"
@@ -72,9 +72,9 @@ class ItemSearchedViewController: UIViewController, UICollectionViewDelegate, Hi
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath, containing hit: [String : Any]) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SearchedItem", for: indexPath) as! SearchedItemCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SearchedItem", for: indexPath) as! SearchItemCollectionViewCell
         
-        cell.item = ItemRecord(json: hit)
+        cell.item = AlgoliaUnwrapJSON(json: hit)
         self.product_name.append(hit["productName"] as! String)
 //        print(hit["productName"] as! String)
         cell.backgroundColor = UIColor.white
@@ -155,7 +155,7 @@ class ItemSearchedViewController: UIViewController, UICollectionViewDelegate, Hi
         if segue.identifier == "ItemClickedFromSearch"{
             let indexPath = collectionView.indexPathsForSelectedItems?.first
             let itemVC = segue.destination as! ShopItemViewController
-            let cell = collectionView.cellForItem(at: indexPath!) as? SearchedItemCollectionViewCell
+            let cell = collectionView.cellForItem(at: indexPath!) as? SearchItemCollectionViewCell
             
             itemVC.product_name = (cell?.item?.name!)!
             itemVC.product_price = (cell?.item?.price!)!
