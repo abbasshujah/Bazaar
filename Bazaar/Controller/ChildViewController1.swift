@@ -167,13 +167,13 @@ class ChildViewController1: UIViewController, UICollectionViewDelegate, UICollec
             itemVC.product_name = self.product_name[index.item]
             
 //            Changing price values from string to Double
-            let str = self.product_price[index.item]
-            let formatter = NumberFormatter()
-            formatter.numberStyle = .currency
-            let number = formatter.number(from: str as! String)
-            let amount = number?.doubleValue
+//            let str = self.product_price[index.item]
+//            let formatter = NumberFormatter()
+//            formatter.numberStyle = .currency
+//            let number = formatter.number(from: str as! String)
+//            let amount = number?.doubleValue
             
-            itemVC.product_price = amount as! Double
+            itemVC.product_price = self.product_price[index.item]
             itemVC.shop_location = shop_location
             itemVC.shop_name = shop_name
         }
