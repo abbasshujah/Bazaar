@@ -24,7 +24,7 @@ class ItemSearchedViewController: UIViewController, UICollectionViewDelegate, Hi
     
     var hitsController: HitsController!
     var searchController: UISearchController!
-//    var jsonHits: JSONObject!
+//    var jsonHits: JSONObject!  
     
     var index: Index!
     var selected_item = "abcd"
