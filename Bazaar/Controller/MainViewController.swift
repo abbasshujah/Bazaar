@@ -204,7 +204,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
             
             cell.Shop_name.text = self.store_name[indexPath.row]
             
-            var adress_mcmaster = CLGeocoder().geocodeAddressString(self.store_location[indexPath.row]) { (placemarks, error) in
+            CLGeocoder().geocodeAddressString(self.store_location[indexPath.row]) { (placemarks, error) in
                 guard
                     let placemarks = placemarks,
                     let location = placemarks.first?.location
@@ -212,6 +212,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
                         return
                         
                 }
+//                print(location)
                 cell.Shop_adress.text = "\(round(self.Current_Location.distance(from: location)/10)/100)"
             }
             
