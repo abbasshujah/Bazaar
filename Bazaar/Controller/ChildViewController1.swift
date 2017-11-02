@@ -74,9 +74,7 @@ class ChildViewController1: UIViewController, UICollectionViewDelegate, UICollec
     }
     
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        
         return IndicatorInfo(title: "\(View_title)")
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -96,25 +94,6 @@ class ChildViewController1: UIViewController, UICollectionViewDelegate, UICollec
             } else {
                 cell.ShopProductImage.image = ChildViewController1.placeholder
             }
-//            URLSession.shared.dataTask(with: img_url!) { (data, response, error) in
-//                
-//                //              TODO: Load up images and dont store in cache
-//                if error != nil {
-//                    print("Failed fetching image:", error)
-//                    return
-//                }
-//                guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-//                    print("Not a proper HTTPURLResponse or statusCode")
-//                    return
-//                }
-//                
-//                DispatchQueue.main.async {
-//                    cell.ShopProductImage.image = UIImage(data: data!)
-//                }
-//                }.resume()
-            
-            
-//            cell.ShopProductImage.image = UIImage(named: image[indexPath.row])
             cell.ShopProductPrice.text = "$\(String(describing: self.product_price[indexPath.row]))"
             cell.ShopProductDiscription.text = self.product_name[indexPath.row]
 //            cell.ShopProductPrice.text = name[indexPath.row]
@@ -165,14 +144,6 @@ class ChildViewController1: UIViewController, UICollectionViewDelegate, UICollec
             let itemVC = segue.destination as! ShopItemViewController
             itemVC.product_img_url = self.product_img_url[index.item]
             itemVC.product_name = self.product_name[index.item]
-            
-//            Changing price values from string to Double
-//            let str = self.product_price[index.item]
-//            let formatter = NumberFormatter()
-//            formatter.numberStyle = .currency
-//            let number = formatter.number(from: str as! String)
-//            let amount = number?.doubleValue
-            
             itemVC.product_price = self.product_price[index.item]
             itemVC.shop_location = shop_location
             itemVC.shop_name = shop_name

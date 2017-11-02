@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 
 /*
@@ -21,6 +22,14 @@ class SearchItemCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var Price: UILabel!
     
     static let placeholder = UIImage(named: "placeholder")
+    
+    var Current_Location: CLLocation = CLLocation(latitude: 43.261199, longitude: -79.919054)
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        //        Uncomment this before uploading the app on any phone.
+        //        TODO: Get current location
+        Current_Location = locations[0]
+    }
     
     var item: AlgoliaUnwrapJSON? {
         didSet {
@@ -44,20 +53,13 @@ class SearchItemCollectionViewCell: UICollectionViewCell {
             } else {
                 SearchedItemImage.image = SearchItemCollectionViewCell.placeholder
             }
+            
+/*............Showing Location for each product............. */
+            
+            let product_location: CLLocation = CLLocation(latitude: item.lat!, longitude: item.lng!)
+            
+            Distance.text = "\(round(self.Current_Location.distance(from: product_location)/10)/100)"
+            
         }
     }
 }
-
-/* Future Implementation
- var temp = CLGeocoder().geocodeAddressString(self.store_location[indexPath.row]) { (placemarks, error) in
- guard
- let placemarks = placemarks,
- let location = placemarks.first?.location
- else {
- return
- 
- }
- cell.Shop_adress.text = "\(round(self.Current_Location.distance(from: location)/10)/100)"
- }
- 
- */

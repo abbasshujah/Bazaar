@@ -85,6 +85,8 @@
 		43945D941F44118E00BDE07E /* Bazaar */ = {
 			isa = PBXGroup;
 			children = (
+				7DEF2C011FABCA0300D063CB /* Model */,
+				7DEF2C001FABC03E00D063CB /* CollectionViewCells */,
 				7DEF2BFF1FAA7B3F00D063CB /* Controller */,
 				7DEF2BFE1FAA7B1C00D063CB /* Services */,
 				7DEF2BFD1FAA7AFB00D063CB /* Supporting Files */,
@@ -126,10 +128,6 @@
 			isa = PBXGroup;
 			children = (
 				7DC73A8D1FAA78B500B19114 /* LoginVC.swift */,
-				7D7102C71F740D4E003922A4 /* AlgoliaUnwrapJSON.swift */,
-				435E046A1F61B8C100711254 /* SearchItemCollectionViewCell.swift */,
-				43945E7D1F5CE66700BDE07E /* ShopItemCollectionViewCell.swift */,
-				43945DB11F466DFA00BDE07E /* ShopCollectionViewCell.swift */,
 				43945D971F44118E00BDE07E /* MainViewController.swift */,
 				435E04681F61A57D00711254 /* ItemSearchedViewController.swift */,
 				43945E7F1F5DE77900BDE07E /* ShopItemViewController.swift */,
@@ -137,6 +135,24 @@
 				7D3E39FA1F579C2900627D9F /* ChildViewController1.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		7DEF2C001FABC03E00D063CB /* CollectionViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				435E046A1F61B8C100711254 /* SearchItemCollectionViewCell.swift */,
+				43945E7D1F5CE66700BDE07E /* ShopItemCollectionViewCell.swift */,
+				43945DB11F466DFA00BDE07E /* ShopCollectionViewCell.swift */,
+			);
+			path = CollectionViewCells;
+			sourceTree = "<group>";
+		};
+		7DEF2C011FABCA0300D063CB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7D7102C71F740D4E003922A4 /* AlgoliaUnwrapJSON.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		90AF71E557ED1548CF2C99C6 /* Pods */ = {

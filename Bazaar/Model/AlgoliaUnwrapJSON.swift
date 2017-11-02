@@ -41,10 +41,21 @@ struct AlgoliaUnwrapJSON {
         return URL(string: urlString)
     }
     
-    var name_highlighted: String? {
-        return SearchResults.highlightResult(hit: json, path: "productName")?.value
+//    var name_highlighted: String? {
+//        return SearchResults.highlightResult(hit: json, path: "productName")?.value
+//    }
+    
+    var lat: Double? {
+        var locationJSON: JSONObject
+        locationJSON = json["_geoloc"] as! JSONObject
+        return locationJSON["lat"] as? Double
     }
     
+    var lng: Double? {
+        var locationJSON: JSONObject
+        locationJSON = json["_geoloc"] as! JSONObject
+        return locationJSON["lng"] as? Double
+    }
     
 }
 
