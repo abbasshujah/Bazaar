@@ -13,26 +13,21 @@ class ItemSearchedViewController: UIViewController, UICollectionViewDelegate, Hi
     
     @IBOutlet weak var collectionView: HitsCollectionWidget!
     @IBOutlet weak var topBarView: UIView!
-    //    @IBOutlet weak var tableView: HitsTableWidget!
     
-//    @IBOutlet weak var searchBarView: UIView!
     @IBOutlet weak var nbHitsLabel: UILabel!
     @IBOutlet weak var TopBar: UIView!
     @IBOutlet weak var searchTextField: UIView!
     @IBOutlet weak var searchText: UITextField!
-    
+
     
     var hitsController: HitsController!
     var searchController: UISearchController!
-//    var jsonHits: JSONObject!  
     
     var index: Index!
-    var selected_item = "abcd"
     
     var product_name = [String]()
     
     var item_searched = ""
-    //    var hitsCollectionView: HitsCollectionWidget!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,9 +43,7 @@ class ItemSearchedViewController: UIViewController, UICollectionViewDelegate, Hi
         
         collectionView.collectionViewLayout = Layout
         self.definesPresentationContext = true
-//        self.extendedLayoutIncludesOpaqueBars = true
-//        configureNavBar()
-//        configureToolBar()
+
         configureSearchController()
         configureTable()
         configureInstantSearch()
@@ -60,15 +53,11 @@ class ItemSearchedViewController: UIViewController, UICollectionViewDelegate, Hi
         collectionView.delegate = hitsController
         hitsController.collectionDataSource = self
         searchText.text = item_searched
-//        print(item_searched)
-//        testAlgolia()
+
 
     }
     
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return 10
-//    }
-    
+
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath, containing hit: [String : Any]) -> UICollectionViewCell {
         
@@ -76,7 +65,6 @@ class ItemSearchedViewController: UIViewController, UICollectionViewDelegate, Hi
         
         cell.item = AlgoliaUnwrapJSON(json: hit)
         self.product_name.append(hit["productName"] as! String)
-//        print(hit["productName"] as! String)
         cell.backgroundColor = UIColor.white
         
         return cell
@@ -87,24 +75,14 @@ class ItemSearchedViewController: UIViewController, UICollectionViewDelegate, Hi
         performSegue(withIdentifier:"ItemClickedFromSearch", sender: indexPath)
         
     }
+ 
     
-//    func testAlgolia(){
-//
-//        let query = Query(query: "pizza")
-//        query.aroundLatLng = LatLng(lat: 43.261199, lng: -79.919054)
-//        let apiClient = Client(appID: "HGQJBEYFM1", apiKey: "2d8d1f6517b669bd4ea3931f8bed2ce1")
-//        index = apiClient.index(withName: "products")
-//        index.search(query, completionHandler: { (res,error) in
-//            print(res)
-//
-//        })
-//        //           (43.261199, -79.919054)
-//
-//    }
+
 
     
-    // MARK: Helper methods for configuring each component of the table
-    
+    /*
+        --Function for Algolia search
+     */
     func configureInstantSearch() {
         InstantSearch.shared.register(searchController: searchController)
         InstantSearch.shared.registerAllWidgets(in: self.view)
@@ -115,7 +93,7 @@ class ItemSearchedViewController: UIViewController, UICollectionViewDelegate, Hi
     
     func configureTable() {
         collectionView.delegate = self
-//        collectionView.backgroundColor = UIColor.clear
+        //collectionView.backgroundColor = UIColor.clear
     }
     
     func configureNavBar() {
@@ -131,26 +109,16 @@ class ItemSearchedViewController: UIViewController, UICollectionViewDelegate, Hi
     func configureSearchController() {
         // Initialize and perform a minimum configuration to the search controller.
         searchController = UISearchController(searchResultsController: nil)
-
         searchController.dimsBackgroundDuringPresentation = false
-//        searchController.hidesNavigationBarDuringPresentation = false
-        
         searchController.searchBar.text = item_searched
-        
-//        searchController.searchBar.sizeToFit()
-//        
-//        searchController.searchBar.barTintColor = UIColor.clear
-//        searchController.searchBar.isTranslucent = false
-//        searchController.searchBar.layer.cornerRadius = 1.0
-//        searchController.searchBar.clipsToBounds = true
-////        searchBarView.addSubview(searchController.searchBar)
-//        textFieldView.addSubview(searchController.searchBar)
 
     }
     
     @IBAction func GoBack(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
+    
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ItemClickedFromSearch"{
             let indexPath = collectionView.indexPathsForSelectedItems?.first
@@ -161,18 +129,31 @@ class ItemSearchedViewController: UIViewController, UICollectionViewDelegate, Hi
             itemVC.product_price = (cell?.item?.price!)!
             itemVC.shop_name = (cell?.item?.store_name!)!
             
-//            Converting URL to string to pass it to next view
+            //Converting URL to string to pass it to next view
             let imageURL_str = cell?.item?.imageUrl?.absoluteString
             itemVC.product_img_url = imageURL_str!
             itemVC.ItemCameFromSearch = true
             itemVC.ItemSearchedBeforeSelect = item_searched
             
             
-//            let itemVC = segue.destination as! ShopItemViewController
-//            itemVC.product_name = self.product_name[index.item]
-//            print("............................................")
-//            print(selected_item)
-//            print("............................................")
+
         }
     }
 }
+
+/*
+ func testAlgolia(){
+ 
+ let query = Query(query: "pizza")
+ query.aroundLatLng = LatLng(lat: 43.261199, lng: -79.919054)
+ let apiClient = Client(appID: "HGQJBEYFM1", apiKey: "2d8d1f6517b669bd4ea3931f8bed2ce1")
+ index = apiClient.index(withName: "products")
+ index.search(query, completionHandler: { (res,error) in
+ print(res)
+ 
+ })
+ //           (43.261199, -79.919054)
+ 
+ }
+ 
+ */

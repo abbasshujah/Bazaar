@@ -56,28 +56,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
         Current_Location = locations[0]
     }
     
-    func GetLocation(location: String) {
-        var adress_mcmaster = CLGeocoder().geocodeAddressString(location) { (placemarks, error) in
-            guard
-                let placemarks = placemarks,
-                let location = placemarks.first?.location
-                else {
-                    // handle no location found
-                    return
-            }
-            //            print("distance")
-//            print("Store Location: \(location.coordinate.latitude),\(location.coordinate.longitude)")
-//            print("Current Location: \(self.Current_Location.coordinate.latitude),\(self.Current_Location.coordinate.longitude)")
-//            return
-            //            print("\(self.Current_Location.coordinate.longitude)")
-//            Getting store distance from current location in a format with two decimal places
-//            print("\(round(self.Current_Location.distance(from: location)/10)/100)")
-            
-            self.temp_string = "\(round(self.Current_Location.distance(from: location)/10)/100)"
-//            return self.temp_string
-        }
-    }
-    
+
     
     override func viewDidAppear(_ animated: Bool) {
         locationAuthStatus()
@@ -101,12 +80,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //------------------------------------------------
-        //locationManager.delegate = self
-        //locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        //locationManager.startUpdatingLocation()
-        
-        //------------------------------------------------
+    
         
         TopBar.layer.shadowColor = UIColor(red:0/255.0, green:0/255.0, blue:0/255.0, alpha: 1.0).cgColor
         TopBar.layer.shadowOffset = CGSize(width: 0, height: 1.25)
@@ -145,22 +119,16 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+
     
-// TODO: Functions for search field
+    //When a user enters a item in a search box and presses enter
     func enterPressed(){
-        //do something with typed text if needed
-//        print(SearchField.text ?? "")
         SearchInput(Input: SearchField.text!)
-        //SearchField.resignFirstResponder()
         
     }
     
     func SearchInput(Input: String){
         performSegue(withIdentifier:"ItemSearchedFromMain", sender: self)
-        //if(Input == "test"){
-        //  performSegue(withIdentifier:"ItemSearchedFromShop", sender: self)
-        
-        //}
         
     }
     
@@ -171,11 +139,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Shop_cell", for: indexPath) as? ShopCollectionViewCell{
-//            var img: UIImage?
-//            let url = URL(string: self.image_url[indexPath.row])
-            
-            //            TODO: Load up images and store it in cache
-//            img = ViewController.imageCache.object(forKey: url as AnyObject) as? UIImage
+
             
             if let url = URL(string: self.image_url[indexPath.row]) {
                 cell.Shop_image.contentMode = .scaleAspectFit
@@ -183,26 +147,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
             } else {
                 cell.Shop_image.image = ChildViewController1.placeholder
             }
-//            TODO: Another way to load up an image
-            
-//            URLSession.shared.dataTask(with: url!) { (data, response, error) in
-//                
-//                //              TODO: Load up images and dont store in cache
-//                if error != nil {
-//                    print("Failed fetching image:", error)
-//                    return
-//                }
-//                guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-//                    print("Not a proper HTTPURLResponse or statusCode")
-//                    return
-//                }
-//                
-//                DispatchQueue.main.async {
-//                    cell.Shop_image.image = UIImage(data: data!)
-//                }
-//                }.resume()
-//            
-            //            cell.Shop_image.image = UIImage(named: image[indexPath.row])
+
             
             cell.Shop_name.text = self.store_name[indexPath.row]
             
@@ -214,13 +159,10 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
                         return
                         
                 }
-//                print(location)
                 cell.Shop_adress.text = "\(round(self.Current_Location.distance(from: location)/10)/100)"
                 self.shop_distance = "\(round(self.Current_Location.distance(from: location)/10)/100)"
             }
-            
-//            cell.Shop_adress.text = ""
-            //            cell.Shop_adress.text = self.store_location[indexPath.row]
+
             return cell
             
         } else{
@@ -253,7 +195,6 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
         self.ref.child(city).observe(.value, with: { (snapshot: DataSnapshot) in
             
             if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
-//            print(snapshots)
                 
                 //                print(snapshots)
                 self.image_url = []
