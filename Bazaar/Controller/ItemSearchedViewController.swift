@@ -159,6 +159,7 @@ class ItemSearchedViewController: UIViewController, UICollectionViewDelegate, Hi
             
             itemVC.product_name = (cell?.item?.name!)!
             itemVC.product_price = (cell?.item?.price!)!
+            itemVC.shop_name = (cell?.item?.store_name!)!
             
 //            Converting URL to string to pass it to next view
             let imageURL_str = cell?.item?.imageUrl?.absoluteString

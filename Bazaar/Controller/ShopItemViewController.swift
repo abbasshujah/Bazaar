@@ -104,9 +104,17 @@ class ShopItemViewController: UIViewController {
         if segue.identifier == "BackToSearchFromItem"{
             // do stuff here
         }
+        if segue.identifier == "ToShopFromItemInfo"{
+            let itemVC = segue.destination as! ShopViewController
+            itemVC.shop_location = shop_location
+            itemVC.shop_name = shop_name
+        }
 
     }
     
+    @IBAction func visitStore(_ sender: Any) {
+        
+    }
     /*
     // MARK: - Navigation
 
