@@ -29,6 +29,8 @@ class ChildViewController1: UIViewController, UICollectionViewDelegate, UICollec
     
     var city = "Hamilton"
     
+    var shop_distance = ""
+    
     var ref: DatabaseReference!
     
     static let placeholder = UIImage(named: "placeholder")
@@ -147,6 +149,7 @@ class ChildViewController1: UIViewController, UICollectionViewDelegate, UICollec
             itemVC.product_price = self.product_price[index.item]
             itemVC.shop_location = shop_location
             itemVC.shop_name = shop_name
+//            itemVC.shop_distance = shop_distance
         }
      }
     
