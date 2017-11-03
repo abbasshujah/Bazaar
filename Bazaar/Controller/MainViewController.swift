@@ -43,6 +43,8 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     var temp_string = ""
     
+    var shop_distance = ""
+    
     var ref: DatabaseReference!
     
     let Manage_location = CLLocationManager()
@@ -214,6 +216,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 }
 //                print(location)
                 cell.Shop_adress.text = "\(round(self.Current_Location.distance(from: location)/10)/100)"
+                self.shop_distance = "\(round(self.Current_Location.distance(from: location)/10)/100)"
             }
             
 //            cell.Shop_adress.text = ""
@@ -235,8 +238,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
             let shopVC = segue.destination as! ShopViewController
             //            shopVC.adress_variable = location[index.item]
             shopVC.shop_name = store_name[index.item]
-            shopVC.shop_location = store_location[index.item]
-            
+            shopVC.shop_location = store_location[index.item]            
         }
         if segue.identifier == "ItemSearchedFromMain"{
             let itemVC = segue.destination as! ItemSearchedViewController

@@ -28,6 +28,7 @@ class ShopViewController: ButtonBarPagerTabStripViewController {
     var ref: DatabaseReference!
     var databaseHandle: DatabaseHandle?
     var city = "Hamilton"
+    var shop_distance = ""
     
     override func viewDidLoad() {
         
@@ -101,11 +102,6 @@ class ShopViewController: ButtonBarPagerTabStripViewController {
     
     func SearchInput(Input: String){
         performSegue(withIdentifier:"ItemSearchedFromShop", sender: self)
-        //if(Input == "test"){
-          //  performSegue(withIdentifier:"ItemSearchedFromShop", sender: self)
-            
-        //}
-        
     }
     
     override func didReceiveMemoryWarning() {

@@ -28,6 +28,7 @@ class ShopItemViewController: UIViewController {
     var product_price: Double = 0
     var shop_location = ""
     var shop_name = ""
+    var shop_distance = ""
     
     override func viewDidLoad() {
         
