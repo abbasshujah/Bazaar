@@ -501,9 +501,13 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J8D-f8-q7c">
                                                 <rect key="frame" x="0.0" y="0.0" width="334" height="40"/>
                                                 <color key="backgroundColor" red="0.0022212122566998005" green="0.55727589130401611" blue="0.30048865079879761" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <state key="normal" title="Button">
+                                                <state key="normal" title="Visit Store">
                                                     <color key="titleColor" red="0.98716236412185843" green="1" blue="0.99016488911789324" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="visitStore:" destination="IZf-Ai-LUY" eventType="touchUpInside" id="G8V-zz-YlP"/>
+                                                    <segue destination="OQ3-NB-tj2" kind="show" identifier="ToShopFromItemInfo" id="wp4-kj-Ic6"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -998,7 +1002,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="mAb-uh-dg4"/>
-        <segue reference="CoJ-OM-TJF"/>
+        <segue reference="wp4-kj-Ic6"/>
         <segue reference="NfC-bA-Vow"/>
     </inferredMetricsTieBreakers>
 </document>
