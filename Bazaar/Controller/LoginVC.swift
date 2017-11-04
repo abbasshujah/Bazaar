@@ -11,13 +11,16 @@ import Firebase
 import GoogleSignIn
 
 class LoginVC: UIViewController, GIDSignInUIDelegate {
-    
+    let tracking = LocationService()
+
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var signInButton: GIDSignInButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tracking.initLocationManager()
         //emailField.delegate = self
         //passwordField.delegate = self
         GIDSignIn.sharedInstance().uiDelegate = self
@@ -26,6 +29,7 @@ class LoginVC: UIViewController, GIDSignInUIDelegate {
         
     }
     
+  
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
