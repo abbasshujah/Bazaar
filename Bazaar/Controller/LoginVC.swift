@@ -29,9 +29,9 @@ class LoginVC: UIViewController, GIDSignInUIDelegate {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        
+        LocationService.init()
         //Call LocationService(), to initialize LocationManager
-        let tracking = LocationService()
+        // let tracking = LocationService()
         //Actual Coordinate is saved in Location as static fields
         print(Location.sharedInstance.latitude,Location.sharedInstance.longitude)
 
