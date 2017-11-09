@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		047A20251FB4E24D0077A55A /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047A20241FB4E24D0077A55A /* Location.swift */; };
 		04FA93D31FAC2FFA009CF147 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FA93D21FAC2FFA009CF147 /* LocationService.swift */; };
 		1E2CCF9643516423E73146EF /* Pods_Bazaar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC295DA87E1E15574C9D22C0 /* Pods_Bazaar.framework */; };
 		435E04691F61A57D00711254 /* ItemSearchedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435E04681F61A57D00711254 /* ItemSearchedViewController.swift */; };
@@ -29,6 +30,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		047A20241FB4E24D0077A55A /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		04FA93D21FAC2FFA009CF147 /* LocationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		435E04681F61A57D00711254 /* ItemSearchedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemSearchedViewController.swift; sourceTree = "<group>"; };
 		435E046A1F61B8C100711254 /* SearchItemCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchItemCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 				7DC73A891FAA782100B19114 /* AuthService.swift */,
 				7DC73A8B1FAA786A00B19114 /* DataService.swift */,
 				04FA93D21FAC2FFA009CF147 /* LocationService.swift */,
+				047A20241FB4E24D0077A55A /* Location.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -337,6 +340,7 @@
 				7DC73A8C1FAA786A00B19114 /* DataService.swift in Sources */,
 				7D3E39FB1F579C2900627D9F /* ChildViewController1.swift in Sources */,
 				435E04691F61A57D00711254 /* ItemSearchedViewController.swift in Sources */,
+				047A20251FB4E24D0077A55A /* Location.swift in Sources */,
 				7DC73A8A1FAA782100B19114 /* AuthService.swift in Sources */,
 				43945DB21F466DFA00BDE07E /* ShopCollectionViewCell.swift in Sources */,
 				43945D981F44118E00BDE07E /* MainViewController.swift in Sources */,

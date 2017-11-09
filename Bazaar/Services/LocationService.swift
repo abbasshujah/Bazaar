@@ -9,33 +9,76 @@
 import CoreLocation
 import Foundation
 
-class LocationService: NSObject, CLLocationManagerDelegate{
+class LocationService: NSObject, CLLocationManagerDelegate {
     
     let locationManager = CLLocationManager()
-    
-    
-    func initLocationManager(){
+    var currentLocation: CLLocation!
+
+    override init(){
+        super.init()
         locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
-        locationManager.startUpdatingLocation()
+        locationManager.startMonitoringSignificantLocationChanges()
+        
+        locationAuthStatus()
+     
     }
     
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let location = locations[locations.count - 1]
-        if location.horizontalAccuracy > 0 {
-            locationManager.stopUpdatingLocation()
-            print("Latitude: \(location.coordinate.latitude),  Longitude: \(location.coordinate.longitude)")
+    func locationAuthStatus() {
+        if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
+            currentLocation = locationManager.location
+            Location.sharedInstance.latitude = currentLocation.coordinate.latitude
+            Location.sharedInstance.longitude = currentLocation.coordinate.longitude
+            
+        }else {
+            locationManager.requestWhenInUseAuthorization()
+            locationAuthStatus()
         }
     }
     
     
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print(error)
-        
-    }
-    
-    
-    
 }
+
+
+/*
+ let locationManager = CLLocationManager()
+ //static let instance = LocationService()
+ var latitide: Double?
+ var longitude: Double?
+ 
+ func initLocationManager(){
+ 
+ locationManager.delegate = self
+ locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
+ locationManager.requestWhenInUseAuthorization()
+ locationManager.startUpdatingLocation()
+ 
+ }
+ 
+ 
+ func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+ let location = locations[locations.count - 1]
+ if location.horizontalAccuracy > 0 {
+ locationManager.stopUpdatingLocation()
+ //print("Latitude: \(location.coordinate.latitude),  Longitude: \(location.coordinate.longitude)")
+ latitide = location.coordinate.latitude
+ longitude = location.coordinate.longitude
+ }
+ }
+ 
+ func getLatitude() -> Double {
+ print("Lattitte from serv \(latitide)")
+ return self.latitide!
+ 
+ }
+ 
+ 
+ func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+ print(error)
+ 
+ }
+ 
+ */
+
+
