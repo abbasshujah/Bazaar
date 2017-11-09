@@ -87,6 +87,7 @@ class ItemSearchedViewController: UIViewController, UICollectionViewDelegate, Hi
         InstantSearch.shared.register(searchController: searchController)
         InstantSearch.shared.registerAllWidgets(in: self.view)
         InstantSearch.shared.updateSearchResults(for: searchController)
+        
         InstantSearch.shared.searcher.params.aroundLatLng = LatLng(lat: 43.261199, lng: -79.919054)
         InstantSearch.shared.searcher.search()
     }

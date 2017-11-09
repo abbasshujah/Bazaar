@@ -48,15 +48,13 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
     var ref: DatabaseReference!
     
     let Manage_location = CLLocationManager()
-    var Current_Location: CLLocation = CLLocation(latitude: 43.261199, longitude: -79.919054)
+    static var Current_Location: CLLocation = CLLocation(latitude: 43.261199, longitude: -79.919054)
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
 //        Uncomment this before uploading the app on any phone.
         //        TODO: Get current location
-        Current_Location = locations[0]
+        MainViewController.Current_Location = locations[0]
     }
-    
-
     
     override func viewDidAppear(_ animated: Bool) {
         locationAuthStatus()
@@ -80,8 +78,6 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
-        
         TopBar.layer.shadowColor = UIColor(red:0/255.0, green:0/255.0, blue:0/255.0, alpha: 1.0).cgColor
         TopBar.layer.shadowOffset = CGSize(width: 0, height: 1.25)
         TopBar.layer.shadowRadius = 1.2
@@ -157,10 +153,9 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
                     let location = placemarks.first?.location
                     else {
                         return
-                        
                 }
-                cell.Shop_adress.text = "\(round(self.Current_Location.distance(from: location)/10)/100)"
-                self.shop_distance = "\(round(self.Current_Location.distance(from: location)/10)/100)"
+                cell.Shop_adress.text = "\(round(MainViewController.Current_Location.distance(from: location)/10)/100)"
+                self.shop_distance = "\(round(MainViewController.Current_Location.distance(from: location)/10)/100)"
             }
 
             return cell

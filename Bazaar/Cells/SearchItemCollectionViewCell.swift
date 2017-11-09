@@ -23,14 +23,6 @@ class SearchItemCollectionViewCell: UICollectionViewCell {
     
     static let placeholder = UIImage(named: "placeholder")
     
-    var Current_Location: CLLocation = CLLocation(latitude: 43.261199, longitude: -79.919054)
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        //        Uncomment this before uploading the app on any phone.
-        //        TODO: Get current location
-        Current_Location = locations[0]
-    }
-    
     var item: AlgoliaUnwrapJSON? {
         didSet {
             guard let item = item else { return }
@@ -55,10 +47,9 @@ class SearchItemCollectionViewCell: UICollectionViewCell {
             }
             
 /*............Showing Location for each product............. */
-            
             let product_location: CLLocation = CLLocation(latitude: item.lat!, longitude: item.lng!)
             
-            Distance.text = "\(round(self.Current_Location.distance(from: product_location)/10)/100)"
+            Distance.text = "\(round(MainViewController.Current_Location.distance(from: product_location)/10)/100)"
             
         }
     }
