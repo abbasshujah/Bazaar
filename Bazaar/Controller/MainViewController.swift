@@ -122,7 +122,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
     
     //When a user enters a item in a search box and presses enter
-    func enterPressed(){
+    @objc func enterPressed(){
         SearchInput(Input: SearchField.text!)
         
     }

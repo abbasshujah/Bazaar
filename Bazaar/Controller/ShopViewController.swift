@@ -92,7 +92,7 @@ class ShopViewController: ButtonBarPagerTabStripViewController {
 //        print(self.view_titles)
     }
     
-    func enterPressed(){
+    @objc func enterPressed(){
         //do something with typed text if needed
 //        print(SearchField.text ?? "")
         SearchInput(Input: SearchField.text!)
