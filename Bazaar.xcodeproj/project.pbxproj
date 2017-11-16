@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		041776E61FBD65B500C55BA7 /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041776E51FBD65B500C55BA7 /* MapVC.swift */; };
 		047A20251FB4E24D0077A55A /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047A20241FB4E24D0077A55A /* Location.swift */; };
 		04FA93D31FAC2FFA009CF147 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FA93D21FAC2FFA009CF147 /* LocationService.swift */; };
 		1E2CCF9643516423E73146EF /* Pods_Bazaar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC295DA87E1E15574C9D22C0 /* Pods_Bazaar.framework */; };
@@ -30,6 +31,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		041776E51FBD65B500C55BA7 /* MapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
 		047A20241FB4E24D0077A55A /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		04FA93D21FAC2FFA009CF147 /* LocationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		435E04681F61A57D00711254 /* ItemSearchedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemSearchedViewController.swift; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 				43945E7F1F5DE77900BDE07E /* ShopItemViewController.swift */,
 				43945E5D1F53515800BDE07E /* ShopViewController.swift */,
 				7D3E39FA1F579C2900627D9F /* ChildViewController1.swift */,
+				041776E51FBD65B500C55BA7 /* MapVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -213,6 +216,7 @@
 				TargetAttributes = {
 					43945D911F44118E00BDE07E = {
 						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = 9395DW4P4D;
 						LastSwiftMigration = 0910;
 						ProvisioningStyle = Automatic;
 					};
@@ -347,6 +351,7 @@
 				43945D981F44118E00BDE07E /* MainViewController.swift in Sources */,
 				7DC73A8E1FAA78B500B19114 /* LoginVC.swift in Sources */,
 				43945D961F44118E00BDE07E /* AppDelegate.swift in Sources */,
+				041776E61FBD65B500C55BA7 /* MapVC.swift in Sources */,
 				43945E7E1F5CE66700BDE07E /* ShopItemCollectionViewCell.swift in Sources */,
 				43945E801F5DE77900BDE07E /* ShopItemViewController.swift in Sources */,
 			);
@@ -472,6 +477,7 @@
 			baseConfigurationReference = B955C90BE439793E3FF6BBE8 /* Pods-Bazaar.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 9395DW4P4D;
 				INFOPLIST_FILE = Bazaar/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.silly.song.Bazaar;
@@ -486,6 +492,7 @@
 			baseConfigurationReference = F933126B9CDE29727A9E5975 /* Pods-Bazaar.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 9395DW4P4D;
 				INFOPLIST_FILE = Bazaar/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.silly.song.Bazaar;

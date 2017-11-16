@@ -2,7 +2,7 @@
 //  MapVC.swift
 //  Bazaar
 //
-//  Created by AVIN on 2017-11-15.
+//  Created by AVIN on 2017-11-16.
 //  Copyright © 2017 Syed Abbas. All rights reserved.
 //
 
@@ -16,24 +16,39 @@ class MapVC: UIViewController {
     
     var locationManager = CLLocationManager()
     let authorizationStatus = CLLocationManager.authorizationStatus()
+    let regionRadius: Double = 1000
+
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
         locationManager.delegate = self
         configureLocationServices()
     }
-    
-    
+
   
- 
+    @IBAction func centerMapBtnWasPressed(_ sender: Any) {
+        
+        if authorizationStatus == .authorizedAlways || authorizationStatus == .authorizedWhenInUse {
+            centerMapOnUserLocation()
+            mapView.showsUserLocation = true
+        }
+    }
+    
 }
 
 extension MapVC: MKMapViewDelegate {
     
+    func centerMapOnUserLocation() {
+        guard let coordinate = locationManager.location?.coordinate else { return }
+        let coordinateRegion = MKCoordinateRegionMakeWithDistance(coordinate, regionRadius * 2.0, regionRadius * 2.0)
+        mapView.setRegion(coordinateRegion, animated: true)
+    }
+        
 }
-
+    
 extension MapVC: CLLocationManagerDelegate {
-    func configureLocationServices(){
+    
+    func configureLocationServices() {
         if authorizationStatus == .notDetermined {
             locationManager.requestAlwaysAuthorization()
         } else {
@@ -41,6 +56,12 @@ extension MapVC: CLLocationManagerDelegate {
         }
     }
     
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        centerMapOnUserLocation()
+    }
     
 }
+    
+    
+
 

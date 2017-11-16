@@ -299,10 +299,10 @@
             </objects>
             <point key="canvasLocation" x="354" y="-263"/>
         </scene>
-        <!--View Controller-->
+        <!--MapVC-->
         <scene sceneID="yft-C6-yuA">
             <objects>
-                <viewController id="JMg-jh-S9p" sceneMemberID="viewController">
+                <viewController id="JMg-jh-S9p" customClass="MapVC" customModule="Bazaar" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1K1-vH-CId"/>
                         <viewControllerLayoutGuide type="bottom" id="l5U-Kr-MeF"/>
@@ -346,11 +346,24 @@
                                     <constraint firstItem="7qn-LE-Jvg" firstAttribute="top" secondItem="Rnv-Qd-ixQ" secondAttribute="top" constant="4" id="rn0-Y1-Lfv"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wnm-60-94T">
+                                <rect key="frame" x="309" y="597" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="AiQ-b5-AcY"/>
+                                    <constraint firstAttribute="height" constant="50" id="wc6-Sm-VT7"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="locationButton"/>
+                                <connections>
+                                    <action selector="centerMapBtnWasPressed:" destination="JMg-jh-S9p" eventType="touchUpInside" id="OUR-cV-oQ7"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0039215686274509803" green="0.55686274509803924" blue="0.30196078431372547" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="l5U-Kr-MeF" firstAttribute="top" secondItem="wnm-60-94T" secondAttribute="bottom" constant="20" id="7VK-b1-EC7"/>
                             <constraint firstAttribute="trailing" secondItem="ZmW-Ur-Krp" secondAttribute="trailing" id="7Yq-9K-9L3"/>
                             <constraint firstItem="ZmW-Ur-Krp" firstAttribute="top" secondItem="hbs-xw-iE3" secondAttribute="top" id="Haf-V5-Qg7"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="wnm-60-94T" secondAttribute="trailing" id="YSs-fN-rz1"/>
                             <constraint firstItem="ZmW-Ur-Krp" firstAttribute="leading" secondItem="hbs-xw-iE3" secondAttribute="leading" id="cWk-kI-hQS"/>
                             <constraint firstItem="l5U-Kr-MeF" firstAttribute="top" secondItem="ZmW-Ur-Krp" secondAttribute="bottom" id="gxO-ha-6Lr"/>
                             <constraint firstAttribute="trailing" secondItem="Rnv-Qd-ixQ" secondAttribute="trailing" constant="6" id="hR3-gk-nWX"/>
@@ -358,6 +371,9 @@
                             <constraint firstItem="Rnv-Qd-ixQ" firstAttribute="leading" secondItem="hbs-xw-iE3" secondAttribute="leading" constant="6" id="tbX-H8-A09"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="ZmW-Ur-Krp" id="iXV-1e-jQ4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wl1-Vk-BUZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1063,6 +1079,7 @@
     </scenes>
     <resources>
         <image name="back_btn" width="13" height="21"/>
+        <image name="locationButton" width="67" height="67"/>
         <image name="menu_btn" width="29" height="20"/>
         <image name="search" width="16" height="16"/>
     </resources>
