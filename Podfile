@@ -13,7 +13,7 @@ target 'Bazaar' do
   pod 'Firebase/Database'
   pod 'Alamofire', '~> 4.4'
   pod 'AFNetworking', '~> 3.0'
-  pod 'InstantSearch-iOS', '~> 1.0.0'
+  pod 'InstantSearch-iOS'
   pod 'GoogleSignIn'
   pod 'SwiftKeychainWrapper', :git => 'https://github.com/jrendel/SwiftKeychainWrapper.git', :branch => 'master'
 

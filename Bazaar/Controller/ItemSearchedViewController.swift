@@ -99,7 +99,7 @@ class ItemSearchedViewController: UIViewController, UICollectionViewDelegate, Hi
     func configureNavBar() {
         navigationController?.navigationBar.barTintColor = UIColor.purple
         navigationController?.navigationBar.isTranslucent = false
-        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.blue]
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor : UIColor.blue]
     }
     
     func configureToolBar() {

@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "AB6E42879BB2D0C5A7C49B8B5ABA7B1C"
+               BlueprintIdentifier = "DE738C7962AA0AF3B8B84AA0484224D5"
                BuildableName = "InstantSearch.framework"
                BlueprintName = "InstantSearch-iOS"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -26,6 +26,7 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      language = ""
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
       </Testables>
@@ -36,6 +37,7 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      language = ""
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
       ignoresPersistentStateOnLaunch = "NO"
@@ -45,7 +47,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "AB6E42879BB2D0C5A7C49B8B5ABA7B1C"
+            BlueprintIdentifier = "DE738C7962AA0AF3B8B84AA0484224D5"
             BuildableName = "InstantSearch.framework"
             BlueprintName = "InstantSearch-iOS"
             ReferencedContainer = "container:Pods.xcodeproj">
