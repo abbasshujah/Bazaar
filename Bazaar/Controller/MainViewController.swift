@@ -202,12 +202,13 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 self.store_location = []
                 
                 for snap in snapshots{
+//                    print(snap.key)
 //                    print("SNAP:\(snap)")
                     
                     self.image_url.append(snap.childSnapshot(forPath: "StoreImage").value as! String)
-                    self.store_name.append(snap.childSnapshot(forPath: "StoreName").value as! String)
+//                    self.store_name.append(snap.childSnapshot(forPath: "StoreName").value as! String)
                     self.store_location.append(snap.childSnapshot(forPath: "StoreAddress").value as! String)
-                    
+                    self.store_name.append(snap.key)
                 }
             }
             self.ShopCollectionView.reloadData()
