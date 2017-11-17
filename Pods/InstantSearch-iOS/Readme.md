@@ -1,20 +1,16 @@
-# InstantSearch
+![InstantSearch iOS](./docgen/assets/img/InstantSearch-iOS-ReadMe.png)
 
 <p align="left">
 <img src="https://img.shields.io/badge/platform-iOS-blue.svg?style=flat" alt="Platform iOS" />
-<a href="https://developer.apple.com/swift"><img src="https://img.shields.io/badge/swift3-compatible-4BC51D.svg?style=flat" alt="Swift 3 compatible" /></a>
+<a href="https://developer.apple.com/swift"><img src="https://img.shields.io/badge/Swift-4.0-blue.svg" alt="Swift 4 compatible" /></a>
+<a href="https://developer.apple.com/documentation/objectivec"><img src="https://img.shields.io/badge/Objective--C-compatible-blue.svg" alt="Objective-C compatible" /></a>
 <a href="https://cocoapods.org/pods/XLActionController"><img src="https://img.shields.io/cocoapods/v/InstantSearch-iOS.svg" alt="CocoaPods compatible" /></a>
 <a href="https://raw.githubusercontent.com/algolia/InstantSearch/master/LICENSE"><img src="http://img.shields.io/badge/license-MIT-blue.svg?style=flat" alt="License: MIT" /></a>
 </p>
 
 By [Algolia](http://algolia.com).
 
-
-## Warning
-
-**This repo is still in beta**. Do not use it in production as the APIs can still change.
-
------
+InstantSearch family: **InstantSearch iOS** | [InstantSearch Android][instantsearch-android-github] | [React InstantSearch][react-instantsearch-github] | [InstantSearch.js][instantsearch-js-github].
 
 **InstantSearch iOS** is a library providing widgets and helpers to help you build the best instant-search experience on iOS with Algolia. It is built on top of Algolia's [Swift API Client](https://github.com/algolia/algoliasearch-client-swift) to provide you a high-level solution to quickly build various search interfaces.
 
@@ -40,10 +36,32 @@ You can see InstantSearch iOS in action in our [Examples repository][ecommerce-u
 To install InstantSearch, simply add the following line to your Podfile:
 
 ```ruby
-pod 'InstantSearch-iOS', '~> 1.0.0-beta4'
+pod 'InstantSearch-iOS', '~> 2.0.0'
 ```
 
-## Usage
+Then, run the following command:
+
+```bash
+$ pod update
+```
+
+#### Carthage
+
+[Carthage](https://github.com/Carthage/Carthage) is a simple, decentralized dependency manager for Cocoa.
+
+To install InstantSearch, simply add the following line to your Cartfile:
+
+```ogdl
+github "algolia/instantsearch-ios" ~> 2.0
+```
+
+## Documentation
+
+**You can start with the [Getting Started Guide](https://community.algolia.com/instantsearch-ios/getting-started.html).**
+
+Learn more about instantSearch iOS in the [dedicated documentation website](https://community.algolia.com/instantsearch-ios).
+
+## Basic Usage
 
 In your `AppDelegate.swift`: 
 
@@ -52,7 +70,7 @@ import InstantSearch
 
 func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     // Configure InstantSearch
-    InstantSearch.reference.configure(appID: "latency", apiKey: "1f6fd3a6fb973cb08419fe7d288fa4db", index: "bestbuy_promo")
+    InstantSearch.shared.configure(appID: "latency", apiKey: "1f6fd3a6fb973cb08419fe7d288fa4db", index: "bestbuy_promo")
 }
 ```
 
@@ -70,11 +88,13 @@ override func viewDidLoad() {
     self.view.addSubview(statsWidget)
 
     // Add all widgets in view to InstantSearch
-    InstantSearch.reference.addAllWidgets(in: self.view)
+    InstantSearch.shared.registerAllWidgets(in: self.view)
 }
 ```
 
 Run your app and you will the most basic search experience: a `UISearchBar` with the number of results each time you write a query.
+
+To get a more meaningful search experience, please follow our [Getting Started Guide](https://community.algolia.com/instantsearch-ios/getting-started.html).
 
 ## Getting Help
 
@@ -92,3 +112,7 @@ Run your app and you will the most basic search experience: a `UISearchBar` with
 # License
 
 InstantSearch iOS is [MIT licensed](LICENSE.md).
+
+[react-instantsearch-github]: https://github.com/algolia/react-instantsearch/
+[instantsearch-android-github]: https://github.com/algolia/instantsearch-android
+[instantsearch-js-github]: https://github.com/algolia/instantsearch.js
