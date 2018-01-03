@@ -102,6 +102,8 @@ extension MapVC: CLLocationManagerDelegate {
     
 }
 
+//extension MapVC: UICollectionViewDelegate, 
+
 
 
 
